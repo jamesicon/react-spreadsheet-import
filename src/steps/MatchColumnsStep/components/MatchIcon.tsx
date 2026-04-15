@@ -1,5 +1,5 @@
 import { chakra, useStyleConfig, Flex } from "@chakra-ui/react"
-import { dataAttr } from "@chakra-ui/utils"
+const dataAttr = (condition: boolean): string | undefined => (condition ? "" : undefined)
 import { motion } from "framer-motion"
 import { CgCheck } from "react-icons/cg"
 

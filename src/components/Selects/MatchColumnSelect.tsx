@@ -16,8 +16,7 @@ export const MatchColumnSelect = ({ onChange, value, options, placeholder, name 
   return (
     <Select<SelectOption, false>
       value={value || null}
-      colorScheme="gray"
-      onChange={onChange}
+onChange={onChange}
       placeholder={placeholder}
       options={options}
       chakraStyles={styles.select}

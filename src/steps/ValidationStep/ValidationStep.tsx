@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { Box, Button, Heading, Switch, useStyleConfig } from "@chakra-ui/react"
 import { ContinueButton } from "../../components/ContinueButton"
 import { useRsi } from "../../hooks/useRsi"
@@ -26,7 +26,7 @@ export const ValidationStep = <T extends string>({ initialData }: Props<T>) => {
       [],
     ),
   )
-  const [selectedRows, setSelectedRows] = useState<ReadonlySet<number | string>>(new Set())
+  const [selectedRows, setSelectedRows] = useState<ReadonlySet<React.Key>>(new Set())
   const [filterByErrors, setFilterByErrors] = useState(false)
   const [showSubmitAlert, setShowSubmitAlert] = useState(false)
 
@@ -136,8 +136,9 @@ export const ValidationStep = <T extends string>({ initialData }: Props<T>) => {
             onRowsChange={updateRow}
             columns={columns}
             selectedRows={selectedRows}
-            onSelectedRowsChange={setSelectedRows}
-            components={{
+            onSelectedRowsChange={(newRows) => setSelectedRows(newRows)}
+            onCellClick={(args) => args.selectCell(true)}
+            renderers={{
               noRowsFallback: (
                 <Box display="flex" justifyContent="center" gridColumn="1/-1" mt="32px">
                   {filterByErrors

@@ -1,4 +1,4 @@
-// Yeeted from https://github.com/adazzle/react-data-grid/blob/main/test/setup.ts
+// Adapted from https://github.com/adazzle/react-data-grid/blob/main/test/setup.ts
 if (typeof window !== "undefined") {
   window.ResizeObserver ??= class {
     callback: ResizeObserverCallback
@@ -8,7 +8,9 @@ if (typeof window !== "undefined") {
     }
 
     observe() {
-      this.callback([], this)
+      // No-op: initial grid dimensions are obtained from clientWidth/clientHeight
+      // (patched below). The ResizeObserver callback is only needed for
+      // subsequent resizes which don't occur in jsdom tests.
     }
 
     unobserve() {}
@@ -30,6 +32,25 @@ if (typeof window !== "undefined") {
   })
 
   Element.prototype.setPointerCapture ??= () => {}
+  Element.prototype.scrollIntoView ??= () => {}
+
+  // Chakra UI v2 uses matchMedia for responsive props — jsdom doesn't implement it
+  if (!window.matchMedia) {
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: (query: string) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: () => {},
+        removeListener: () => {},
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => false,
+      }),
+    })
+  }
 }
 
 jest.setTimeout(30000)
+

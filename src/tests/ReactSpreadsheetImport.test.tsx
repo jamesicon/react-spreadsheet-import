@@ -5,7 +5,7 @@ import { ReactSpreadsheetImport } from "../ReactSpreadsheetImport"
 import { mockRsiValues } from "../stories/mockRsiValues"
 
 test("Should throw error if no fields are provided", async () => {
-  const errorRender = () => render(<ReactSpreadsheetImport {...mockRsiValues} fields={undefined} />)
+  const errorRender = () => render(<ReactSpreadsheetImport {...mockRsiValues} fields={undefined as any} />)
 
   expect(errorRender).toThrow()
 })

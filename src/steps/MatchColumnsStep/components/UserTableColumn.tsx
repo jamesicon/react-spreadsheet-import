@@ -2,7 +2,7 @@ import { Box, Flex, IconButton, Text, useStyleConfig } from "@chakra-ui/react"
 import { CgClose, CgUndo } from "react-icons/cg"
 import type { Column } from "../MatchColumnsStep"
 import { ColumnType } from "../MatchColumnsStep"
-import { dataAttr } from "@chakra-ui/utils"
+const dataAttr = (condition: boolean): string | undefined => (condition ? "" : undefined)
 import type { Styles } from "./ColumnGrid"
 import type { RawData } from "../../../types"
 

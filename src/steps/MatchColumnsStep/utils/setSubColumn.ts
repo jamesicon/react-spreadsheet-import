@@ -1,4 +1,4 @@
-import { ColumnType, MatchedOptions, MatchedSelectColumn, MatchedSelectOptionsColumn } from "../MatchColumnsStep"
+import { ColumnType, type MatchedOptions, type MatchedSelectColumn, type MatchedSelectOptionsColumn } from "../MatchColumnsStep"
 export const setSubColumn = <T>(
   oldColumn: MatchedSelectColumn<T> | MatchedSelectOptionsColumn<T>,
   entry: string,

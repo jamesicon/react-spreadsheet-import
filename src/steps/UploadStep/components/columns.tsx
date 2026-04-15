@@ -9,7 +9,7 @@ export const generateColumns = <T extends string>(fields: Fields<T>) =>
       key: column.key,
       name: column.label,
       minWidth: 150,
-      headerRenderer: () => (
+      renderHeaderCell: () => (
         <Box display="flex" gap={1} alignItems="center" position="relative">
           <Box flex={1} overflow="hidden" textOverflow="ellipsis">
             {column.label}
@@ -23,7 +23,7 @@ export const generateColumns = <T extends string>(fields: Fields<T>) =>
           )}
         </Box>
       ),
-      formatter: ({ row }) => (
+      renderCell: ({ row }: { row: any }) => (
         <Box minWidth="100%" minHeight="100%" overflow="hidden" textOverflow="ellipsis">
           {row[column.key]}
         </Box>

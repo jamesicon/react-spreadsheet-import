@@ -1,5 +1,6 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react"
 import { createContext } from "react"
+import { ToastContainer } from "react-toastify"
 import type { RsiProps } from "../types"
 import type { CustomTheme } from "../theme"
 
@@ -25,6 +26,7 @@ export const Providers = <T extends string>({ children, theme, rsiValues }: Prov
       <ChakraProvider>
         {/* cssVarsRoot used to override RSI defaultTheme but not the rest of chakra defaultTheme */}
         <ChakraProvider cssVarsRoot={`#${rootId}`} theme={mergedTheme}>
+          <ToastContainer />
           {children}
         </ChakraProvider>
       </ChakraProvider>

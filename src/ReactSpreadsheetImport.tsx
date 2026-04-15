@@ -20,7 +20,8 @@ export const defaultRSIProps: Partial<RsiProps<any>> = {
   parseRaw: true,
 } as const
 
-export const ReactSpreadsheetImport = <T extends string>(props: RsiProps<T>) => {
+export const ReactSpreadsheetImport = <T extends string>(incomingProps: RsiProps<T>) => {
+  const props = { ...defaultRSIProps, ...incomingProps } as RsiProps<T>
   const mergedTranslations =
     props.translations !== translations ? merge(translations, props.translations) : translations
   const mergedThemes = merge(defaultTheme, props.customTheme)
@@ -31,5 +32,3 @@ export const ReactSpreadsheetImport = <T extends string>(props: RsiProps<T>) => 
     </Providers>
   )
 }
-
-ReactSpreadsheetImport.defaultProps = defaultRSIProps
