@@ -228,8 +228,123 @@ Required because React 19 types are stricter about required props.
 
 ---
 
+## Storybook Fixes
+
+Storybook 6 uses webpack 4 (acorn 7), which cannot parse optional chaining (`?.`) or nullish coalescing (`??`) natively. Modern versions of `@chakra-ui`, `react-draggable`, and related packages all use this syntax in their published CJS/ESM output.
+
+### `.storybook/main.ts` → `main.js`
+
+Storybook 6's Babel instance (used to parse the config file itself) has no TypeScript plugin, so `.storybook/main.ts` fails to load. Renamed to `main.js` and removed the `: string` / `: any` type annotations.
+
+### webpack `webpackFinal` rules
+
+Three rules added to `webpackFinal` in `.storybook/main.js` to transpile all of `node_modules` through Babel for unsupported syntax:
+
+```js
+const modernSyntaxPlugins = {
+  loader: require.resolve("babel-loader"),
+  options: {
+    plugins: [
+      require.resolve("@babel/plugin-transform-optional-chaining"),
+      require.resolve("@babel/plugin-transform-nullish-coalescing-operator"),
+      require.resolve("@babel/plugin-transform-logical-assignment-operators"),
+    ],
+  },
+}
+
+// In webpackFinal:
+config.module.rules.push({ test: /\.js$/,  include: /node_modules/, use: modernSyntaxPlugins })
+config.module.rules.push({ test: /\.mjs$/, include: /node_modules/, type: "javascript/auto", use: modernSyntaxPlugins })
+config.module.rules.push({ test: /\.cjs$/, include: /node_modules/, type: "javascript/auto", use: modernSyntaxPlugins })
+```
+
+Using targeted transform plugins (rather than all of `@babel/preset-env`) keeps the rebuild fast. The `.mjs`/`.cjs` rules also set `type: "javascript/auto"` so webpack 4 treats those files as ordinary JS.
+
+**Why `.cjs`?** Chakra UI v2 ships its CommonJS output with a `.cjs` file extension (e.g. `@chakra-ui/utils/dist/cjs/context.cjs`). Webpack 4's default JS rule only covers `.js`, so these files were reaching acorn unparsed and failing on `?.`/`??`.
+
+**Why `@babel/plugin-transform-logical-assignment-operators`?** `react-data-grid` beta.45 uses `||=` (logical assignment), which is ES2021. The `.js` rule was already catching that file, but the original plugin list didn't include the logical-assignment transform, so acorn still choked on it.
+
+### webpack 4 `exports` field — `@chakra-ui/utils/context` alias
+
+Webpack 4 does not read the `exports` field in `package.json` (that's a webpack 5 feature). `@chakra-ui/react` v2 internally imports `@chakra-ui/utils/context` as a sub-path, which the `exports` field maps to `./dist/cjs/context.cjs`. Webpack 4 can't resolve this automatically, so an explicit alias is required:
+
+```js
+"@chakra-ui/utils/context": toPath("node_modules/@chakra-ui/utils/dist/cjs/context.cjs"),
+```
+
+`context` is the only sub-path import used inside `@chakra-ui/react`'s CJS/ESM dist (verified by grepping all `require`/`import` calls in both dist trees).
+
+### `typescript.reactDocgen` disabled
+
+`@storybook/react-docgen-typescript-plugin` (bundled with `@storybook/react` 6.4) calls TypeScript compiler API methods (`createIdentifier`, `createLiteral`, etc.) that were removed in TypeScript 4+. With TypeScript 5 in this project, this throws at build time. Fixed by adding to `main.js`:
+
+```js
+typescript: { reactDocgen: "none" }
+```
+
+Prop tables in Storybook docs are no longer auto-generated, but all stories load and render correctly.
+
+### `managerWebpack` — manager bundle syntax errors
+
+`webpackFinal` only configures the **preview** webpack (the bundle that runs stories). Storybook's manager UI (sidebar, toolbar, panels) is compiled by a completely separate webpack instance that `webpackFinal` does not touch.
+
+`react-draggable` 4.5+ is used by `@storybook/ui` for resizable panels and ships optional chaining in its CJS output (`build/cjs/Draggable.js`). With webpack 4 / acorn 7, this caused:
+
+```
+Module parse failed: Unexpected token
+```
+
+Fixed by adding a `managerWebpack` export to `main.js` that pushes the same three babel-loader rules as `webpackFinal`.
+
+### `ReactDOM.render` removed in React 19 — `.storybook/react-dom-compat.js`
+
+Once the manager bundle compiled cleanly, a new runtime error surfaced:
+
+```
+TypeError: react_dom_default.a.render is not a function
+    at renderStorybookUI
+```
+
+Storybook 6's manager calls `ReactDOM.render` to mount its UI. React 18 deprecated it (but kept it); React 19 removed it entirely.
+
+Fix: a shim at `.storybook/react-dom-compat.js` that adds `render` back using `createRoot`, then aliased into the manager webpack as `react-dom`.
+
+```js
+// .storybook/react-dom-compat.js
+const ReactDOM = require('react-dom/index.js')  // /index.js bypasses the alias — see below
+// NOTE: require('react-dom/client') must be lazy (inside the function body).
+// Eager top-level require creates a circular dependency that hands an
+// incomplete {} back to react-dom-client.development.js, making
+// ReactDOMSharedInternals undefined and crashing on .d access.
+const roots = new WeakMap()
+ReactDOM.render = function render(element, container, callback) {
+  const { createRoot } = require('react-dom/client')  // lazy — shim is fully init'd by call time
+  let root = roots.get(container)
+  if (!root) { root = createRoot(container); roots.set(container, root) }
+  root.render(element)
+  if (typeof callback === 'function') callback()
+}
+module.exports = ReactDOM
+```
+
+```js
+// In managerWebpack:
+const managerAlias = { ...(config.resolve.alias || {}) }
+delete managerAlias["react-dom"]
+managerAlias["react-dom$"] = path.resolve(__dirname, "react-dom-compat.js")
+config.resolve.alias = managerAlias
+```
+
+**Why `react-dom$` (with `$`)?** The `$` makes webpack do an exact-match alias: only `require('react-dom')` is redirected to the shim. `require('react-dom/client')` and `require('react-dom/index.js')` resolve normally. This is what breaks the circular dependency — inside the shim, `require('react-dom/index.js')` is a different module identifier so it loads the real package, not the shim again.
+
+**Why `WeakMap` for roots?** `createRoot` throws if called twice on the same container. The `WeakMap` caches the root per container so that any re-render calls reuse the existing root.
+
+**Why delete `"react-dom"` before adding `"react-dom$"`?** `@storybook/ui/paths` injects a non-exact `"react-dom"` alias (no `$`) pointing at the real package. Webpack's `AliasPlugin` iterates aliases in insertion order and stops at the first match. Because the non-exact alias was spread into the object before our `"react-dom$"`, it matched `require('react-dom')` first and bypassed the shim entirely — causing the same `render is not a function` error even with the alias present. Deleting the non-exact key first eliminates the conflict.
+
+---
+
 ## Known Limitations / Deferred Work
 
-- **Storybook**: Still on v6 (supports React 16/17 only). Storybook v8 would need a separate migration. The `.npmrc` flag allows development install to succeed.
+- **Storybook**: Still on v6. Storybook v8 would need a separate migration. The `.npmrc` flag allows development install to succeed.
 - **`motion()` deprecation**: `MatchIcon.tsx` still uses `motion(Flex)`. Should be updated to `motion.create(Flex)` — it's a runtime warning only.
 - **Select cell editor in tests**: The "All inputs change values" test no longer verifies the select-dropdown interaction (clicking a select cell to open its dropdown). In react-data-grid beta.45, opening the editor requires double-click or keyboard input rather than single-click; the jsdom test environment doesn't reliably simulate this. The select cell renders correctly and its value is verified.

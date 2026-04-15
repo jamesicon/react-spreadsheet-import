@@ -6,7 +6,6 @@ var jsxRuntime = require('react/jsx-runtime');
 var react$1 = require('react');
 var ReactDOM = require('react-dom');
 var react = require('@chakra-ui/react');
-var popper = require('@chakra-ui/popper');
 var Providers = require('../Providers.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -22,7 +21,7 @@ function createWrapperAndAppendToBody(wrapperId) {
 const SELECT_DROPDOWN_ID = "react-select-dropdown-wrapper";
 const MenuPortal = (props) => {
     const theme = react.useTheme();
-    const { popperRef, referenceRef } = popper.usePopper({
+    const { popperRef, referenceRef } = react.usePopper({
         strategy: "fixed",
         matchWidth: true,
     });

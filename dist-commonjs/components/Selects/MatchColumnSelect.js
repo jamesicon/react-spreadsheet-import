@@ -9,7 +9,7 @@ var react = require('@chakra-ui/react');
 
 const MatchColumnSelect = ({ onChange, value, options, placeholder, name }) => {
     const styles = react.useStyleConfig("MatchColumnsStep");
-    return (jsxRuntime.jsx(chakraReactSelect.Select, { value: value || null, colorScheme: "gray", onChange: onChange, placeholder: placeholder, options: options, chakraStyles: styles.select, menuPosition: "fixed", components: MenuPortal.customComponents, "aria-label": name }));
+    return (jsxRuntime.jsx(chakraReactSelect.Select, { value: value || null, onChange: onChange, placeholder: placeholder, options: options, chakraStyles: styles.select, menuPosition: "fixed", components: MenuPortal.customComponents, "aria-label": name }));
 };
 
 exports.MatchColumnSelect = MatchColumnSelect;

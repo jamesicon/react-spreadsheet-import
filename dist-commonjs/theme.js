@@ -2,44 +2,17 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var chakraUiSteps = require('chakra-ui-steps');
-var themeTools = require('@chakra-ui/theme-tools');
-
-const StepsTheme = {
-    ...chakraUiSteps.StepsStyleConfig,
-    baseStyle: (props) => {
-        return {
-            ...chakraUiSteps.StepsStyleConfig.baseStyle(props),
-            connector: {
-                ...chakraUiSteps.StepsStyleConfig.baseStyle(props).connector,
-                borderColor: "background",
-            },
-            label: {
-                ...chakraUiSteps.StepsStyleConfig.baseStyle(props).label,
-                color: "textColor",
-            },
-            stepIconContainer: {
-                ...chakraUiSteps.StepsStyleConfig.baseStyle(props).stepIconContainer,
-                bg: "background",
-                borderColor: "background",
-                _activeStep: {
-                    ...chakraUiSteps.StepsStyleConfig.baseStyle(props).stepIconContainer._activeStep,
-                    bg: themeTools.darken("background", 0.5),
-                },
-            },
-        };
-    },
-};
 const MatchIconTheme = {
-    baseStyle: (props) => {
-        return {
-            ...chakraUiSteps.StepsStyleConfig.baseStyle(props).stepIconContainer,
-            borderWidth: "2px",
-            bg: "background",
-            borderColor: "yellow.500",
-            color: "background",
-            transitionDuration: "ultra-fast",
-        };
+    baseStyle: {
+        borderRadius: "50%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: "2px",
+        bg: "background",
+        borderColor: "yellow.500",
+        color: "background",
+        transitionDuration: "ultra-fast",
     },
     defaultProps: {
         size: "md",
@@ -333,7 +306,6 @@ const themeOverrides = {
             },
         },
         MatchIcon: MatchIconTheme,
-        Steps: StepsTheme,
         Modal: {
             baseStyle: {
                 dialog: {

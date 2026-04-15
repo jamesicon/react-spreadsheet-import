@@ -1,9 +1,9 @@
 import { jsx } from 'react/jsx-runtime';
 import { Flex, useStyleConfig, chakra } from '@chakra-ui/react';
-import { dataAttr } from '@chakra-ui/utils';
 import { motion } from 'framer-motion';
 import { CgCheck } from 'react-icons/cg';
 
+const dataAttr = (condition) => (condition ? "" : undefined);
 const MotionFlex = motion(Flex);
 const animationConfig = {
     transition: {

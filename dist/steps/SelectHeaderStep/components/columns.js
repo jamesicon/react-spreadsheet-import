@@ -3,10 +3,11 @@ import { useRowSelection } from 'react-data-grid';
 import { Radio } from '@chakra-ui/react';
 
 const SELECT_COLUMN_KEY = "select-row";
-function SelectFormatter(props) {
+function SelectCell(props) {
     const [isRowSelected, onRowSelectionChange] = useRowSelection();
     return (jsx(Radio, { bg: "white", "aria-label": "Select", isChecked: isRowSelected, onChange: (event) => {
             onRowSelectionChange({
+                type: "ROW",
                 row: props.row,
                 checked: Boolean(event.target.checked),
                 isShiftClick: event.nativeEvent.shiftKey,
@@ -22,7 +23,7 @@ const SelectColumn = {
     sortable: false,
     frozen: true,
     cellClass: "rdg-radio",
-    formatter: SelectFormatter,
+    renderCell: SelectCell,
 };
 const generateSelectionColumns = (data) => {
     const longestRowLength = data.reduce((acc, curr) => (acc > curr.length ? acc : curr.length), 0);

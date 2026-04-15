@@ -1,8 +1,7 @@
 import { jsx } from 'react/jsx-runtime';
 import { useState, useLayoutEffect, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { useTheme, Box } from '@chakra-ui/react';
-import { usePopper } from '@chakra-ui/popper';
+import { useTheme, usePopper, Box } from '@chakra-ui/react';
 import { rootId } from '../Providers.js';
 
 function createWrapperAndAppendToBody(wrapperId) {

@@ -17,7 +17,11 @@ const DropZone = ({ onContinue, isLoading }) => {
         noKeyboard: true,
         maxFiles: 1,
         maxSize: maxFileSize,
-        accept: ".xls, .csv, .xlsx",
+        accept: {
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"],
+            "application/vnd.ms-excel": [".xls"],
+            "text/csv": [".csv"],
+        },
         onDropRejected: (fileRejections) => {
             setLoading(false);
             fileRejections.forEach((fileRejection) => {

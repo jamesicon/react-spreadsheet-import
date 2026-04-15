@@ -17,7 +17,7 @@ export default {
   plugins: [
     typescript({
       useTsconfigDeclarationDir: true,
-      typescript: require("ttypescript"),
+      typescript: require("ts-patch/compiler"),
       tsconfigDefaults: {
         exclude: ["**/*.test.ts", "**/*.test.tsx", "**/tests", "**/stories", "./dist", "./dist-commonjs"],
         compilerOptions: {

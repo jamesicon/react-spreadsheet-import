@@ -14,14 +14,14 @@ const defaultRSIProps = {
     uploadStepHook: async (value) => value,
     selectHeaderStepHook: async (headerValues, data) => ({ headerValues, data }),
     matchColumnsStepHook: async (table) => table,
-    dateFormat: "yyyy-mm-dd",
+    dateFormat: "yyyy-mm-dd", // ISO 8601,
     parseRaw: true,
 };
-const ReactSpreadsheetImport = (props) => {
+const ReactSpreadsheetImport = (incomingProps) => {
+    const props = { ...defaultRSIProps, ...incomingProps };
     const mergedTranslations = props.translations !== translations ? merge(translations, props.translations) : translations;
     const mergedThemes = merge(defaultTheme, props.customTheme);
     return (jsx(Providers, { theme: mergedThemes, rsiValues: { ...props, translations: mergedTranslations }, children: jsx(Steps, {}) }));
 };
-ReactSpreadsheetImport.defaultProps = defaultRSIProps;
 
 export { ReactSpreadsheetImport, defaultRSIProps, defaultTheme };

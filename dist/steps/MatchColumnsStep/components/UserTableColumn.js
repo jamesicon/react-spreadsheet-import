@@ -2,8 +2,8 @@ import { jsxs, jsx } from 'react/jsx-runtime';
 import { useStyleConfig, Box, Flex, Text, IconButton } from '@chakra-ui/react';
 import { CgUndo, CgClose } from 'react-icons/cg';
 import { ColumnType } from '../MatchColumnsStep.js';
-import { dataAttr } from '@chakra-ui/utils';
 
+const dataAttr = (condition) => (condition ? "" : undefined);
 const UserTableColumn = (props) => {
     const styles = useStyleConfig("MatchColumnsStep");
     const { column: { header, index, type }, entries, onIgnore, onRevertIgnore, } = props;

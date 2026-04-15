@@ -17,7 +17,7 @@ const SelectHeaderTable = ({ data, selectedRows, setSelectedRows }) => {
                     return;
                 }
             });
-        }, onRowClick: (row) => {
+        }, onCellClick: ({ row }) => {
             setSelectedRows(new Set([data.indexOf(row)]));
         }, headerRowHeight: 0, className: "rdg-static" }));
 };

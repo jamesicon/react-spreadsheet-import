@@ -1,27 +1,12 @@
-const path = require("path")
+import type { StorybookConfig } from "@storybook/react-vite"
 
-const toPath = (_path: string) => path.join(process.cwd(), _path)
-
-module.exports = {
+const config: StorybookConfig = {
   stories: ["../src/**/stories/*.stories.tsx"],
-  webpackFinal: async (config: any) => {
-    config.module.rules.push({
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: "javascript/auto",
-    })
-    return {
-      ...config,
-      devtool: "inline-source-map",
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
-        },
-      },
-    }
+  framework: {
+    name: "@storybook/react-vite",
+    options: {},
   },
   staticDirs: ["../src/stories/static"],
 }
+
+export default config

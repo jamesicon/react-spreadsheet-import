@@ -22,15 +22,15 @@ const defaultRSIProps = {
     uploadStepHook: async (value) => value,
     selectHeaderStepHook: async (headerValues, data) => ({ headerValues, data }),
     matchColumnsStepHook: async (table) => table,
-    dateFormat: "yyyy-mm-dd",
+    dateFormat: "yyyy-mm-dd", // ISO 8601,
     parseRaw: true,
 };
-const ReactSpreadsheetImport = (props) => {
+const ReactSpreadsheetImport = (incomingProps) => {
+    const props = { ...defaultRSIProps, ...incomingProps };
     const mergedTranslations = props.translations !== translationsRSIProps.translations ? merge__default["default"](translationsRSIProps.translations, props.translations) : translationsRSIProps.translations;
     const mergedThemes = merge__default["default"](defaultTheme, props.customTheme);
     return (jsxRuntime.jsx(Providers.Providers, { theme: mergedThemes, rsiValues: { ...props, translations: mergedTranslations }, children: jsxRuntime.jsx(Steps.Steps, {}) }));
 };
-ReactSpreadsheetImport.defaultProps = defaultRSIProps;
 
 exports.ReactSpreadsheetImport = ReactSpreadsheetImport;
 exports.defaultRSIProps = defaultRSIProps;

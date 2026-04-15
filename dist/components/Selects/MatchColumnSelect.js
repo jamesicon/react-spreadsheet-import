@@ -5,7 +5,7 @@ import { useStyleConfig } from '@chakra-ui/react';
 
 const MatchColumnSelect = ({ onChange, value, options, placeholder, name }) => {
     const styles = useStyleConfig("MatchColumnsStep");
-    return (jsx(Select, { value: value || null, colorScheme: "gray", onChange: onChange, placeholder: placeholder, options: options, chakraStyles: styles.select, menuPosition: "fixed", components: customComponents, "aria-label": name }));
+    return (jsx(Select, { value: value || null, onChange: onChange, placeholder: placeholder, options: options, chakraStyles: styles.select, menuPosition: "fixed", components: customComponents, "aria-label": name }));
 };
 
 export { MatchColumnSelect };

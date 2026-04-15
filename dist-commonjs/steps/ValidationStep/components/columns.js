@@ -13,6 +13,18 @@ function autoFocusAndSelect(input) {
     input?.focus();
     input?.select();
 }
+function SelectCell(props) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [isRowSelected, onRowSelectionChange] = DataGrid.useRowSelection();
+    return (jsxRuntime.jsx(react.Checkbox, { bg: "white", "aria-label": "Select", isChecked: isRowSelected, onChange: (event) => {
+            onRowSelectionChange({
+                type: "ROW",
+                row: props.row,
+                checked: Boolean(event.target.checked),
+                isShiftClick: event.nativeEvent.shiftKey,
+            });
+        } }));
+}
 const generateColumns = (fields) => [
     {
         key: SELECT_COLUMN_KEY,
@@ -23,26 +35,16 @@ const generateColumns = (fields) => [
         sortable: false,
         frozen: true,
         cellClass: "rdg-checkbox",
-        formatter: (props) => {
-            // eslint-disable-next-line  react-hooks/rules-of-hooks
-            const [isRowSelected, onRowSelectionChange] = DataGrid.useRowSelection();
-            return (jsxRuntime.jsx(react.Checkbox, { bg: "white", "aria-label": "Select", isChecked: isRowSelected, onChange: (event) => {
-                    onRowSelectionChange({
-                        row: props.row,
-                        checked: Boolean(event.target.checked),
-                        isShiftClick: event.nativeEvent.shiftKey,
-                    });
-                } }));
-        },
+        renderCell: SelectCell,
     },
     ...fields.map((column) => ({
         key: column.key,
         name: column.label,
         minWidth: 150,
         resizable: true,
-        headerRenderer: () => (jsxRuntime.jsxs(react.Box, { display: "flex", gap: 1, alignItems: "center", position: "relative", children: [jsxRuntime.jsx(react.Box, { flex: 1, overflow: "hidden", textOverflow: "ellipsis", children: column.label }), column.description && (jsxRuntime.jsx(react.Tooltip, { placement: "top", hasArrow: true, label: column.description, children: jsxRuntime.jsx(react.Box, { flex: "0 0 auto", children: jsxRuntime.jsx(cg.CgInfo, { size: "1rem" }) }) }))] })),
+        renderHeaderCell: () => (jsxRuntime.jsxs(react.Box, { display: "flex", gap: 1, alignItems: "center", position: "relative", children: [jsxRuntime.jsx(react.Box, { flex: 1, overflow: "hidden", textOverflow: "ellipsis", children: column.label }), column.description && (jsxRuntime.jsx(react.Tooltip, { placement: "top", hasArrow: true, label: column.description, children: jsxRuntime.jsx(react.Box, { flex: "0 0 auto", children: jsxRuntime.jsx(cg.CgInfo, { size: "1rem" }) }) }))] })),
         editable: column.fieldType.type !== "checkbox",
-        editor: ({ row, onRowChange, onClose }) => {
+        renderEditCell: ({ row, onRowChange, onClose }) => {
             let component;
             switch (column.fieldType.type) {
                 case "select":
@@ -57,10 +59,7 @@ const generateColumns = (fields) => [
             }
             return component;
         },
-        editorOptions: {
-            editOnClick: true,
-        },
-        formatter: ({ row, onRowChange }) => {
+        renderCell: ({ row, onRowChange }) => {
             let component;
             switch (column.fieldType.type) {
                 case "checkbox":
