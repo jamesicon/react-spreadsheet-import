@@ -69,7 +69,6 @@
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@jest/types": "27.5.1",
-    "@storybook/react": "^10.3.5",
     "@storybook/react-vite": "^10.3.5",
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^6.0.0",

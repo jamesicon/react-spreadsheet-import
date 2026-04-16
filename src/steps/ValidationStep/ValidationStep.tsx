@@ -129,7 +129,7 @@ export const ValidationStep = <T extends string>({ initialData }: Props<T>) => {
             </Switch>
           </Box>
         </Box>
-        <Box h={0} flexGrow={1} className={"validate-step"}>
+        <Box flexGrow={1} className={"validate-step"}>
           <Table
             rowKeyGetter={rowKeyGetter}
             rows={tableData}
