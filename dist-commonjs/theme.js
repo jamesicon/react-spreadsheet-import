@@ -357,11 +357,9 @@ const themeOverrides = {
     styles: {
         global: {
             ".rdg": {
-                contain: "size layout style paint",
                 borderRadius: "lg",
                 border: "none",
                 borderTop: "1px solid var(--rdg-border-color)",
-                blockSize: "100%",
                 // we have to use vars here because chakra does not autotransform unknown props
                 "--rdg-row-height": "35px",
                 "--rdg-color": "var(--chakra-colors-textColor)",

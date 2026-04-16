@@ -22,7 +22,7 @@ const SelectHeaderStep = ({ data, onContinue }) => {
         await onContinue(data[selectedRowIndex], trimmedData);
         setIsLoading(false);
     }, [onContinue, data, selectedRows]);
-    return (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs("div", { children: [jsxRuntime.jsx(react.Heading, { ...styles.heading, children: translations.selectHeaderStep.title }), jsxRuntime.jsx(react.Box, { h: 0, flexGrow: 1, className: "select-header", children: jsxRuntime.jsx(SelectHeaderTable.SelectHeaderTable, { data: data, selectedRows: selectedRows, setSelectedRows: setSelectedRows }) })] }), jsxRuntime.jsx(ContinueButton.ContinueButton, { onContinue: handleContinue, title: translations.selectHeaderStep.nextButtonTitle, isLoading: isLoading })] }));
+    return (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs("div", { children: [jsxRuntime.jsx(react.Heading, { ...styles.heading, children: translations.selectHeaderStep.title }), jsxRuntime.jsx(react.Box, { flexGrow: 1, className: "select-header", children: jsxRuntime.jsx(SelectHeaderTable.SelectHeaderTable, { data: data, selectedRows: selectedRows, setSelectedRows: setSelectedRows }) })] }), jsxRuntime.jsx(ContinueButton.ContinueButton, { onContinue: handleContinue, title: translations.selectHeaderStep.nextButtonTitle, isLoading: isLoading })] }));
 };
 
 exports.SelectHeaderStep = SelectHeaderStep;

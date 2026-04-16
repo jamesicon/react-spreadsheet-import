@@ -18,7 +18,7 @@ const SelectHeaderStep = ({ data, onContinue }) => {
         await onContinue(data[selectedRowIndex], trimmedData);
         setIsLoading(false);
     }, [onContinue, data, selectedRows]);
-    return (jsxs(Fragment, { children: [jsxs("div", { children: [jsx(Heading, { ...styles.heading, children: translations.selectHeaderStep.title }), jsx(Box, { h: 0, flexGrow: 1, className: "select-header", children: jsx(SelectHeaderTable, { data: data, selectedRows: selectedRows, setSelectedRows: setSelectedRows }) })] }), jsx(ContinueButton, { onContinue: handleContinue, title: translations.selectHeaderStep.nextButtonTitle, isLoading: isLoading })] }));
+    return (jsxs(Fragment, { children: [jsxs("div", { children: [jsx(Heading, { ...styles.heading, children: translations.selectHeaderStep.title }), jsx(Box, { flexGrow: 1, className: "select-header", children: jsx(SelectHeaderTable, { data: data, selectedRows: selectedRows, setSelectedRows: setSelectedRows }) })] }), jsx(ContinueButton, { onContinue: handleContinue, title: translations.selectHeaderStep.nextButtonTitle, isLoading: isLoading })] }));
 };
 
 export { SelectHeaderStep };

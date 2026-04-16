@@ -224,11 +224,9 @@ export declare const themeOverrides: {
     readonly styles: {
         readonly global: {
             readonly ".rdg": {
-                readonly contain: "size layout style paint";
                 readonly borderRadius: "lg";
                 readonly border: "none";
                 readonly borderTop: "1px solid var(--rdg-border-color)";
-                readonly blockSize: "100%";
                 readonly "--rdg-row-height": "35px";
                 readonly "--rdg-color": "var(--chakra-colors-textColor)";
                 readonly "--rdg-background-color": "var(--chakra-colors-background)";

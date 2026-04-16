@@ -1,4 +1,5 @@
 import { type DataGridProps } from "react-data-grid";
+import "react-data-grid/lib/styles.css";
 interface Props<Data> extends DataGridProps<Data> {
     rowHeight?: number;
     hiddenHeader?: boolean;
