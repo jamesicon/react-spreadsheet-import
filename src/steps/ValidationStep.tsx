@@ -92,6 +92,7 @@ export function ValidationStep<Key extends string>({
         return (
           <OverlayTrigger
             placement="top"
+            container={document.body}
             overlay={
               <Tooltip id={`rsi-err-${f.key}-${row.__index}`} className="rsi-error-tooltip">
                 {err.message}
@@ -180,6 +181,7 @@ export function ValidationStep<Key extends string>({
             columns={columns}
             rows={visibleRows}
             rowKeyGetter={(r: ImportedRow<Key>) => r.__index}
+            rowClass={(row: ImportedRow<Key>) => rowHasErrors(row) ? "rsi-row-error" : undefined}
             selectedRows={selected as Set<string>}
             onSelectedRowsChange={(rows: Set<string>) => setSelected(rows)}
             onRowsChange={(updated: ImportedRow<Key>[]) => {

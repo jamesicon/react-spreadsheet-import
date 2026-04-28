@@ -1,3 +1,5 @@
+import "./styles.css";
+
 export { ReactSpreadsheetImport } from "./ReactSpreadsheetImport";
 export { defaultTranslations } from "./translations/defaultTranslations";
 export { autoMatchColumns } from "./utils/autoMatch";

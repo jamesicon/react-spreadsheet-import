@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@icon/react-spreadsheet-importer/styles.css": path.resolve(__dirname, "../src/styles.css"),
-      "@icon/react-spreadsheet-importer": path.resolve(__dirname, "../src/index.ts"),
+      "@jamesicon/react-spreadsheet-importer/styles.css": path.resolve(__dirname, "../src/styles.css"),
+      "@jamesicon/react-spreadsheet-importer": path.resolve(__dirname, "../src/index.ts"),
     },
   },
   server: {

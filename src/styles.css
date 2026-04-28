@@ -26,6 +26,10 @@
   font-size: 0.875rem;
 }
 
+.rsi-row-error > .rdg-cell {
+  background-color: var(--bs-danger-bg-subtle);
+}
+
 .rsi-cell-error {
   background-color: var(--bs-danger-bg-subtle);
   color: var(--bs-danger-text-emphasis);

@@ -14,8 +14,5 @@ export default defineConfig({
     "bootstrap",
     "yup",
   ],
-  loader: {
-    ".css": "copy",
-  },
-  injectStyle: false,
+  injectStyle: true,
 });
