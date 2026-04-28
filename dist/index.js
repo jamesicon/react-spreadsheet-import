@@ -21,7 +21,7 @@ function styleInject(css, { insertAt } = {}) {
 }
 
 // src/styles.css
-styleInject(".rsi-modal-content {\n  --rsi-error: var(--bs-danger);\n  --rsi-warning: var(--bs-warning);\n  --rsi-info: var(--bs-info);\n}\n.rsi-dropzone {\n  border-style: dashed !important;\n  transition: background-color 120ms ease, border-color 120ms ease;\n}\n.rsi-grid-wrapper .rdg {\n  block-size: 100%;\n  border: 1px solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n  --rdg-border-color: var(--bs-border-color-translucent);\n  --rdg-color: var(--bs-body-color);\n  --rdg-background-color: var(--bs-body-bg);\n  --rdg-header-background-color: var(--bs-tertiary-bg);\n  --rdg-row-hover-background-color: var(--bs-secondary-bg);\n  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);\n  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);\n  --rdg-selection-color: var(--bs-primary);\n  font-family: inherit;\n  font-size: 0.875rem;\n}\n.rsi-cell-error {\n  background-color: var(--bs-danger-bg-subtle);\n  color: var(--bs-danger-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n  cursor: help;\n}\n.rsi-error-tooltip .tooltip-inner {\n  background-color: #0a2540;\n  color: #ffffff;\n  font-size: 0.8125rem;\n  max-width: 320px;\n  text-align: left;\n}\n.rsi-error-tooltip.bs-tooltip-top .tooltip-arrow::before,\n.rsi-error-tooltip.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {\n  border-top-color: #0a2540;\n}\n.rsi-error-tooltip.bs-tooltip-bottom .tooltip-arrow::before,\n.rsi-error-tooltip.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {\n  border-bottom-color: #0a2540;\n}\n.rsi-cell-warning {\n  background-color: var(--bs-warning-bg-subtle);\n  color: var(--bs-warning-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-info {\n  background-color: var(--bs-info-bg-subtle);\n  color: var(--bs-info-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-edit {\n  height: 100%;\n  border-radius: 0;\n}\n.rsi-stepper-row {\n  gap: 1px;\n  background-color: transparent;\n}\n.rsi-stepper-item {\n  min-width: 0;\n  padding-right: 1rem;\n}\n.rsi-stepper-item:last-child {\n  padding-right: 0;\n}\n.rsi-stepper-bar {\n  height: 4px;\n  background-color: var(--bs-border-color);\n  border-radius: 2px;\n  margin-bottom: 0.5rem;\n}\n.rsi-stepper-done .rsi-stepper-bar,\n.rsi-stepper-active .rsi-stepper-bar {\n  background-color: var(--bs-primary);\n}\n.rsi-stepper-label {\n  color: var(--bs-secondary-color);\n  font-weight: 500;\n}\n.rsi-stepper-active .rsi-stepper-label {\n  color: var(--bs-body-color);\n  font-weight: 600;\n}\n.rsi-stepper-num {\n  color: inherit;\n}\n.rsi-stepper-active .rsi-stepper-num {\n  color: #1b9aa9;\n}\n.rsi-inline .btn-primary,\n.rsi-modal-content .btn-primary {\n  color: #1b9aa9;\n  background-color: #ffffff;\n  border-color: #dfeff3;\n}\n.rsi-inline .btn-primary:hover,\n.rsi-modal-content .btn-primary:hover,\n.rsi-inline .btn-primary:focus,\n.rsi-modal-content .btn-primary:focus {\n  color: #2696a6;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:active,\n.rsi-modal-content .btn-primary:active,\n.rsi-inline .btn-primary:disabled,\n.rsi-modal-content .btn-primary:disabled {\n  color: #1b9aa9;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:focus-visible,\n.rsi-modal-content .btn-primary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);\n}\n.rsi-inline .btn-outline-secondary,\n.rsi-modal-content .btn-outline-secondary {\n  color: #858c9c;\n  background-color: #ffffff;\n  border-color: #e7e7ec;\n}\n.rsi-inline .btn-outline-secondary:hover,\n.rsi-modal-content .btn-outline-secondary:hover,\n.rsi-inline .btn-outline-secondary:focus,\n.rsi-modal-content .btn-outline-secondary:focus {\n  color: #0a2540;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:active,\n.rsi-modal-content .btn-outline-secondary:active,\n.rsi-inline .btn-outline-secondary:disabled,\n.rsi-modal-content .btn-outline-secondary:disabled {\n  color: #858c9c;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:focus-visible,\n.rsi-modal-content .btn-outline-secondary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);\n}\n.rsi-match-grid > * {\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-grid > *:last-child,\n.rsi-match-grid .rsi-match-col-header:last-child {\n  border-right: 0;\n}\n.rsi-match-section-label {\n  position: sticky;\n  left: 0;\n  padding: 0.75rem 1rem;\n  font-weight: 600;\n  background-color: var(--bs-tertiary-bg);\n  color: var(--bs-body-color);\n  width: max-content;\n  min-width: 100%;\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-section-divider {\n  border-top: 1px solid var(--bs-border-color);\n}\n.rsi-status-dot {\n  display: inline-block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  border: 2px solid var(--bs-border-color);\n  flex-shrink: 0;\n}\n.rsi-status-dot.rsi-status-matched {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-matched-required {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-ignored {\n  background-color: transparent;\n  border-color: var(--bs-secondary-border-subtle);\n}\n.rsi-ignore-btn {\n  border: 1px solid var(--bs-border-color);\n  background-color: var(--bs-secondary-bg);\n  color: var(--bs-secondary-color);\n  font-size: 14px;\n}\n.rsi-ignore-btn:hover {\n  background-color: var(--bs-tertiary-bg);\n}\n");
+styleInject(".rsi-modal-content {\n  --rsi-error: var(--bs-danger);\n  --rsi-warning: var(--bs-warning);\n  --rsi-info: var(--bs-info);\n}\n.rsi-dropzone {\n  border-style: dashed !important;\n  transition: background-color 120ms ease, border-color 120ms ease;\n}\n.rsi-grid-wrapper .rdg {\n  block-size: 100%;\n  border: 1px solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n  --rdg-border-color: var(--bs-border-color-translucent);\n  --rdg-color: var(--bs-body-color);\n  --rdg-background-color: var(--bs-body-bg);\n  --rdg-header-background-color: var(--bs-tertiary-bg);\n  --rdg-row-hover-background-color: var(--bs-secondary-bg);\n  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);\n  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);\n  --rdg-selection-color: var(--bs-primary);\n  font-family: inherit;\n  font-size: 0.875rem;\n}\n.rsi-cell-error {\n  background-color: var(--bs-danger-bg-subtle);\n  color: var(--bs-danger-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n  cursor: help;\n}\n.rsi-tooltip-fixed {\n  pointer-events: none;\n}\n.rsi-tooltip-inner {\n  background-color: #0a2540;\n  color: #ffffff;\n  font-size: 0.8125rem;\n  max-width: 320px;\n  text-align: left;\n  padding: 6px 10px;\n  border-radius: 4px;\n}\n.rsi-tooltip-arrow {\n  width: 0;\n  height: 0;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-top: 6px solid #0a2540;\n  margin: 0 auto;\n}\n.rsi-cell-warning {\n  background-color: var(--bs-warning-bg-subtle);\n  color: var(--bs-warning-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-info {\n  background-color: var(--bs-info-bg-subtle);\n  color: var(--bs-info-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-edit {\n  height: 100%;\n  border-radius: 0;\n}\n.rsi-stepper-row {\n  gap: 1px;\n  background-color: transparent;\n}\n.rsi-stepper-item {\n  min-width: 0;\n  padding-right: 1rem;\n}\n.rsi-stepper-item:last-child {\n  padding-right: 0;\n}\n.rsi-stepper-bar {\n  height: 4px;\n  background-color: var(--bs-border-color);\n  border-radius: 2px;\n  margin-bottom: 0.5rem;\n}\n.rsi-stepper-done .rsi-stepper-bar,\n.rsi-stepper-active .rsi-stepper-bar {\n  background-color: var(--bs-primary);\n}\n.rsi-stepper-label {\n  color: var(--bs-secondary-color);\n  font-weight: 500;\n}\n.rsi-stepper-active .rsi-stepper-label {\n  color: var(--bs-body-color);\n  font-weight: 600;\n}\n.rsi-stepper-num {\n  color: inherit;\n}\n.rsi-stepper-active .rsi-stepper-num {\n  color: #1b9aa9;\n}\n.rsi-inline .btn-primary,\n.rsi-modal-content .btn-primary {\n  color: #1b9aa9;\n  background-color: #ffffff;\n  border-color: #dfeff3;\n}\n.rsi-inline .btn-primary:hover,\n.rsi-modal-content .btn-primary:hover,\n.rsi-inline .btn-primary:focus,\n.rsi-modal-content .btn-primary:focus {\n  color: #2696a6;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:active,\n.rsi-modal-content .btn-primary:active,\n.rsi-inline .btn-primary:disabled,\n.rsi-modal-content .btn-primary:disabled {\n  color: #1b9aa9;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:focus-visible,\n.rsi-modal-content .btn-primary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);\n}\n.rsi-inline .btn-outline-secondary,\n.rsi-modal-content .btn-outline-secondary {\n  color: #858c9c;\n  background-color: #ffffff;\n  border-color: #e7e7ec;\n}\n.rsi-inline .btn-outline-secondary:hover,\n.rsi-modal-content .btn-outline-secondary:hover,\n.rsi-inline .btn-outline-secondary:focus,\n.rsi-modal-content .btn-outline-secondary:focus {\n  color: #0a2540;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:active,\n.rsi-modal-content .btn-outline-secondary:active,\n.rsi-inline .btn-outline-secondary:disabled,\n.rsi-modal-content .btn-outline-secondary:disabled {\n  color: #858c9c;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:focus-visible,\n.rsi-modal-content .btn-outline-secondary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);\n}\n.rsi-match-grid > * {\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-grid > *:last-child,\n.rsi-match-grid .rsi-match-col-header:last-child {\n  border-right: 0;\n}\n.rsi-match-section-label {\n  position: sticky;\n  left: 0;\n  padding: 0.75rem 1rem;\n  font-weight: 600;\n  background-color: var(--bs-tertiary-bg);\n  color: var(--bs-body-color);\n  width: max-content;\n  min-width: 100%;\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-section-divider {\n  border-top: 1px solid var(--bs-border-color);\n}\n.rsi-status-dot {\n  display: inline-block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  border: 2px solid var(--bs-border-color);\n  flex-shrink: 0;\n}\n.rsi-status-dot.rsi-status-matched {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-matched-required {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-ignored {\n  background-color: transparent;\n  border-color: var(--bs-secondary-border-subtle);\n}\n.rsi-ignore-btn {\n  border: 1px solid var(--bs-border-color);\n  background-color: var(--bs-secondary-bg);\n  color: var(--bs-secondary-color);\n  font-size: 14px;\n}\n.rsi-ignore-btn:hover {\n  background-color: var(--bs-tertiary-bg);\n}\n");
 
 // src/ReactSpreadsheetImport.tsx
 import { useEffect as useEffect3, useMemo as useMemo3, useState as useState6 } from "react";
@@ -532,8 +532,9 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
 }
 
 // src/steps/ValidationStep.tsx
-import { useEffect as useEffect2, useMemo as useMemo2, useState as useState5 } from "react";
-import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, OverlayTrigger, Spinner as Spinner2, Tooltip } from "react-bootstrap";
+import { useEffect as useEffect2, useMemo as useMemo2, useRef, useState as useState5 } from "react";
+import { createPortal } from "react-dom";
+import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, Spinner as Spinner2 } from "react-bootstrap";
 import { DataGrid } from "react-data-grid";
 import "react-data-grid/lib/styles.css";
 
@@ -607,7 +608,39 @@ function rowHasErrors(row) {
 }
 
 // src/steps/ValidationStep.tsx
-import { jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
+function ErrorCell({ className, message, children }) {
+  const ref = useRef(null);
+  const [show, setShow] = useState5(false);
+  const [pos, setPos] = useState5({ top: 0, left: 0 });
+  function handleEnter() {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setPos({ top: rect.top - 6, left: rect.left + rect.width / 2 });
+    }
+    setShow(true);
+  }
+  return /* @__PURE__ */ jsxs6(Fragment2, { children: [
+    /* @__PURE__ */ jsx6(
+      "div",
+      {
+        ref,
+        className,
+        style: { width: "100%", height: "100%", display: "flex", alignItems: "center" },
+        onMouseEnter: handleEnter,
+        onMouseLeave: () => setShow(false),
+        children
+      }
+    ),
+    show && createPortal(
+      /* @__PURE__ */ jsxs6("div", { className: "rsi-tooltip-fixed", style: { position: "fixed", top: pos.top, left: pos.left, transform: "translate(-50%, -100%)", zIndex: 9999 }, children: [
+        /* @__PURE__ */ jsx6("div", { className: "rsi-tooltip-inner", children: message }),
+        /* @__PURE__ */ jsx6("div", { className: "rsi-tooltip-arrow" })
+      ] }),
+      document.body
+    )
+  ] });
+}
 function ValidationStep({
   fields,
   initialRows,
@@ -662,25 +695,10 @@ function ValidationStep({
       renderCell: ({ row }) => {
         const value = row[f.key];
         const err = row.__errors?.[f.key];
-        const inner = /* @__PURE__ */ jsx6(
-          "div",
-          {
-            className: err ? `rsi-cell-${err.level}` : void 0,
-            style: { width: "100%", height: "100%", display: "flex", alignItems: "center" },
-            children: value ?? ""
-          }
-        );
-        if (!err) return inner;
-        return /* @__PURE__ */ jsx6(
-          OverlayTrigger,
-          {
-            placement: "top",
-            container: document.body,
-            popperConfig: { strategy: "fixed" },
-            overlay: /* @__PURE__ */ jsx6(Tooltip, { id: `rsi-err-${f.key}-${row.__index}`, className: "rsi-error-tooltip", children: err.message }),
-            children: inner
-          }
-        );
+        if (!err) {
+          return /* @__PURE__ */ jsx6("div", { style: { width: "100%", height: "100%", display: "flex", alignItems: "center" }, children: value ?? "" });
+        }
+        return /* @__PURE__ */ jsx6(ErrorCell, { className: `rsi-cell-${err.level}`, message: err.message, children: value ?? "" });
       }
     }));
   }, [fields]);
@@ -885,7 +903,7 @@ function mergeTranslations(base, override) {
 }
 
 // src/ReactSpreadsheetImport.tsx
-import { Fragment as Fragment2, jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
 var INITIAL_STATE = {
   step: "upload",
   workbook: null,
@@ -1064,7 +1082,7 @@ function ReactSpreadsheetImport(props) {
   if (inline) {
     return /* @__PURE__ */ jsx7("div", { className: "rsi-inline", children: body });
   }
-  return /* @__PURE__ */ jsxs7(Fragment2, { children: [
+  return /* @__PURE__ */ jsxs7(Fragment3, { children: [
     /* @__PURE__ */ jsxs7(
       Modal3,
       {

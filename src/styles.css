@@ -34,20 +34,27 @@
   cursor: help;
 }
 
-.rsi-error-tooltip .tooltip-inner {
+.rsi-tooltip-fixed {
+  pointer-events: none;
+}
+
+.rsi-tooltip-inner {
   background-color: #0a2540;
   color: #ffffff;
   font-size: 0.8125rem;
   max-width: 320px;
   text-align: left;
+  padding: 6px 10px;
+  border-radius: 4px;
 }
-.rsi-error-tooltip.bs-tooltip-top .tooltip-arrow::before,
-.rsi-error-tooltip.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
-  border-top-color: #0a2540;
-}
-.rsi-error-tooltip.bs-tooltip-bottom .tooltip-arrow::before,
-.rsi-error-tooltip.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
-  border-bottom-color: #0a2540;
+
+.rsi-tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #0a2540;
+  margin: 0 auto;
 }
 
 .rsi-cell-warning {

@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { Alert, Button, Form, Modal, OverlayTrigger, Spinner, Tooltip } from "react-bootstrap";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { DataGrid, type Column } from "react-data-grid";
 import "react-data-grid/lib/styles.css";
 import type { ObjectSchema } from "yup";
@@ -11,6 +12,41 @@ import type {
   Translations,
 } from "../types";
 import { rowHasErrors, validateRows } from "../utils/validateRows";
+
+function ErrorCell({ className, message, children }: { className: string; message: string; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+
+  function handleEnter() {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setPos({ top: rect.top - 6, left: rect.left + rect.width / 2 });
+    }
+    setShow(true);
+  }
+
+  return (
+    <>
+      <div
+        ref={ref}
+        className={className}
+        style={{ width: "100%", height: "100%", display: "flex", alignItems: "center" }}
+        onMouseEnter={handleEnter}
+        onMouseLeave={() => setShow(false)}
+      >
+        {children}
+      </div>
+      {show && createPortal(
+        <div className="rsi-tooltip-fixed" style={{ position: "fixed", top: pos.top, left: pos.left, transform: "translate(-50%, -100%)", zIndex: 9999 }}>
+          <div className="rsi-tooltip-inner">{message}</div>
+          <div className="rsi-tooltip-arrow" />
+        </div>,
+        document.body,
+      )}
+    </>
+  );
+}
 
 interface Props<Key extends string> {
   fields: ReadonlyArray<Field<Key>>;
@@ -80,28 +116,17 @@ export function ValidationStep<Key extends string>({
       renderCell: ({ row }) => {
         const value = (row as any)[f.key] as string | undefined;
         const err = row.__errors?.[f.key];
-        const inner = (
-          <div
-            className={err ? `rsi-cell-${err.level}` : undefined}
-            style={{ width: "100%", height: "100%", display: "flex", alignItems: "center" }}
-          >
-            {value ?? ""}
-          </div>
-        );
-        if (!err) return inner;
+        if (!err) {
+          return (
+            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center" }}>
+              {value ?? ""}
+            </div>
+          );
+        }
         return (
-          <OverlayTrigger
-            placement="top"
-            container={document.body}
-            popperConfig={{ strategy: "fixed" }}
-            overlay={
-              <Tooltip id={`rsi-err-${f.key}-${row.__index}`} className="rsi-error-tooltip">
-                {err.message}
-              </Tooltip>
-            }
-          >
-            {inner}
-          </OverlayTrigger>
+          <ErrorCell className={`rsi-cell-${err.level}`} message={err.message}>
+            {value ?? ""}
+          </ErrorCell>
         );
       },
     }));
