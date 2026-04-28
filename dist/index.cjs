@@ -702,13 +702,23 @@ function ValidationStep({
       renderCell: ({ row }) => {
         const value = row[f.key];
         const err = row.__errors?.[f.key];
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        const inner = /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "div",
           {
             className: err ? `rsi-cell-${err.level}` : void 0,
-            title: err?.message,
             style: { width: "100%", height: "100%", display: "flex", alignItems: "center" },
             children: value ?? ""
+          }
+        );
+        if (!err) return inner;
+        return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          import_react_bootstrap5.OverlayTrigger,
+          {
+            placement: "top",
+            container: document.body,
+            popperConfig: { strategy: "fixed" },
+            overlay: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Tooltip, { id: `rsi-err-${f.key}-${row.__index}`, className: "rsi-error-tooltip", children: err.message }),
+            children: inner
           }
         );
       }
