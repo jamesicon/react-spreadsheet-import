@@ -1,9 +1,49 @@
+"use strict";
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/index.ts
+var index_exports = {};
+__export(index_exports, {
+  ReactSpreadsheetImport: () => ReactSpreadsheetImport,
+  autoMatchColumns: () => autoMatchColumns,
+  defaultTranslations: () => defaultTranslations,
+  rowHasErrors: () => rowHasErrors,
+  validateRows: () => validateRows
+});
+module.exports = __toCommonJS(index_exports);
+
 // src/ReactSpreadsheetImport.tsx
-import { useEffect as useEffect3, useMemo as useMemo3, useState as useState6 } from "react";
-import { Alert as Alert4, Button as Button6, Modal as Modal3 } from "react-bootstrap";
+var import_react6 = require("react");
+var import_react_bootstrap6 = require("react-bootstrap");
 
 // src/components/Stepper.tsx
-import { jsx, jsxs } from "react/jsx-runtime";
+var import_jsx_runtime = require("react/jsx-runtime");
 var ORDER = ["upload", "selectSheet", "selectHeader", "matchColumns", "validate"];
 var POSITIONS = [
   { stepNames: ["upload", "selectSheet"], key: "upload" },
@@ -13,14 +53,14 @@ var POSITIONS = [
 ];
 function Stepper({ current, translations }) {
   const currentOrder = ORDER.indexOf(current);
-  return /* @__PURE__ */ jsx("nav", { "aria-label": "Import progress", className: "rsi-stepper", children: /* @__PURE__ */ jsx("div", { className: "rsi-stepper-row d-flex", children: POSITIONS.map((pos, idx) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { "aria-label": "Import progress", className: "rsi-stepper", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "rsi-stepper-row d-flex", children: POSITIONS.map((pos, idx) => {
     const positionMaxOrder = Math.max(...pos.stepNames.map((s) => ORDER.indexOf(s)));
     const positionMinOrder = Math.min(...pos.stepNames.map((s) => ORDER.indexOf(s)));
     const status = currentOrder > positionMaxOrder ? "done" : currentOrder >= positionMinOrder ? "active" : "todo";
-    return /* @__PURE__ */ jsxs("div", { className: `rsi-stepper-item flex-fill rsi-stepper-${status}`, children: [
-      /* @__PURE__ */ jsx("div", { className: "rsi-stepper-bar", "aria-hidden": "true" }),
-      /* @__PURE__ */ jsxs("div", { className: "rsi-stepper-label small", children: [
-        /* @__PURE__ */ jsxs("span", { className: "rsi-stepper-num", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `rsi-stepper-item flex-fill rsi-stepper-${status}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "rsi-stepper-bar", "aria-hidden": "true" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "rsi-stepper-label small", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: "rsi-stepper-num", children: [
           idx + 1,
           "."
         ] }),
@@ -32,11 +72,11 @@ function Stepper({ current, translations }) {
 }
 
 // src/steps/MatchColumnsStep.tsx
-import { useEffect, useMemo, useState } from "react";
-import { Alert, Button, Form, Modal } from "react-bootstrap";
+var import_react = require("react");
+var import_react_bootstrap = require("react-bootstrap");
 
 // src/utils/autoMatch.ts
-import Fuse from "fuse.js";
+var import_fuse = __toESM(require("fuse.js"), 1);
 var NORMALIZE = /[\s_\-./]+/g;
 function normalize(s) {
   return s.toLowerCase().replace(NORMALIZE, "").trim();
@@ -49,7 +89,7 @@ function autoMatchColumns(headers, fields, distance = 0.25) {
       entries.push({ fieldKey: f.key, candidate: normalize(c) });
     }
   }
-  const fuse = new Fuse(entries, {
+  const fuse = new import_fuse.default(entries, {
     keys: ["candidate"],
     threshold: distance,
     ignoreLocation: true,
@@ -85,7 +125,7 @@ function autoMatchColumns(headers, fields, distance = 0.25) {
 }
 
 // src/steps/MatchColumnsStep.tsx
-import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+var import_jsx_runtime2 = require("react/jsx-runtime");
 var IGNORE = "__ignore__";
 var SAMPLE_ROWS = 3;
 var COLUMN_MIN_WIDTH = 180;
@@ -100,13 +140,13 @@ function MatchColumnsStep({
   onNext,
   showTitle = true
 }) {
-  const initial = useMemo(
+  const initial = (0, import_react.useMemo)(
     () => autoMatchColumns(headers, fields, autoMapDistance),
     [headers, fields, autoMapDistance]
   );
-  const [mapping, setMapping] = useState(initial);
-  const [showWarn, setShowWarn] = useState(false);
-  useEffect(() => setMapping(initial), [initial]);
+  const [mapping, setMapping] = (0, import_react.useState)(initial);
+  const [showWarn, setShowWarn] = (0, import_react.useState)(false);
+  (0, import_react.useEffect)(() => setMapping(initial), [initial]);
   const sample = rows.slice(0, SAMPLE_ROWS);
   function setColumn(idx, value) {
     setMapping((prev) => {
@@ -132,20 +172,20 @@ function MatchColumnsStep({
     onNext(mapping);
   }
   const gridCols = `repeat(${headers.length}, minmax(${COLUMN_MIN_WIDTH}px, 1fr))`;
-  return /* @__PURE__ */ jsxs2("div", { className: "d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx2("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsx2("div", { className: "rsi-match-card border rounded overflow-auto", children: /* @__PURE__ */ jsxs2("div", { className: "rsi-match-grid", style: { display: "grid", gridTemplateColumns: gridCols }, children: [
-      /* @__PURE__ */ jsx2("div", { className: "rsi-match-section-label", style: { gridColumn: "1 / -1" }, children: translations.userTableTitle }),
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "rsi-match-card border rounded overflow-auto", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "rsi-match-grid", style: { display: "grid", gridTemplateColumns: gridCols }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "rsi-match-section-label", style: { gridColumn: "1 / -1" }, children: translations.userTableTitle }),
       headers.map((h, idx) => {
         const isIgnored = mapping[idx] === void 0;
-        return /* @__PURE__ */ jsx2(
+        return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "div",
           {
             className: `rsi-match-col-header p-3 border-end ${isIgnored ? "opacity-50" : ""}`,
-            children: /* @__PURE__ */ jsxs2("div", { className: "d-flex justify-content-between align-items-start gap-2", children: [
-              /* @__PURE__ */ jsx2("strong", { className: "text-truncate", title: h, children: h || `(column ${idx + 1})` }),
-              /* @__PURE__ */ jsx2(
-                Button,
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "d-flex justify-content-between align-items-start gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("strong", { className: "text-truncate", title: h, children: h || `(column ${idx + 1})` }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                import_react_bootstrap.Button,
                 {
                   variant: "light",
                   size: "sm",
@@ -165,7 +205,7 @@ function MatchColumnsStep({
       sample.map(
         (row, ri) => headers.map((_, ci) => {
           const isIgnored = mapping[ci] === void 0;
-          return /* @__PURE__ */ jsx2(
+          return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "div",
             {
               className: `rsi-match-col-sample px-3 py-2 border-end small text-muted text-truncate ${isIgnored ? "opacity-50" : ""}`,
@@ -177,21 +217,21 @@ function MatchColumnsStep({
           );
         })
       ),
-      /* @__PURE__ */ jsx2("div", { className: "rsi-match-section-label rsi-match-section-divider", style: { gridColumn: "1 / -1" }, children: translations.templateTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "rsi-match-section-label rsi-match-section-divider", style: { gridColumn: "1 / -1" }, children: translations.templateTitle }),
       headers.map((h, idx) => {
         const value = mapping[idx];
         const status = statusFor(value, fields);
-        return /* @__PURE__ */ jsxs2("div", { className: "p-3 border-end d-flex align-items-center gap-2", children: [
-          /* @__PURE__ */ jsxs2(
-            Form.Select,
+        return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "p-3 border-end d-flex align-items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            import_react_bootstrap.Form.Select,
             {
               size: "sm",
               value: value ?? IGNORE,
               onChange: (e) => setColumn(idx, e.target.value),
               "aria-label": `${translations.matchDropdownTitle}: ${h}`,
               children: [
-                /* @__PURE__ */ jsx2("option", { value: IGNORE, children: translations.ignoredColumnText }),
-                fields.map((f) => /* @__PURE__ */ jsxs2(
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: IGNORE, children: translations.ignoredColumnText }),
+                fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
                   "option",
                   {
                     value: f.key,
@@ -206,7 +246,7 @@ function MatchColumnsStep({
               ]
             }
           ),
-          /* @__PURE__ */ jsx2(
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "span",
             {
               className: `rsi-status-dot ${status.className}`,
@@ -217,23 +257,23 @@ function MatchColumnsStep({
         ] }, `m-${idx}`);
       })
     ] }) }),
-    unmatchedRequired.length > 0 && /* @__PURE__ */ jsxs2(Alert, { variant: "warning", className: "m-0", children: [
+    unmatchedRequired.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_bootstrap.Alert, { variant: "warning", className: "m-0", children: [
       translations.unmatched,
       ":",
       " ",
       unmatchedRequired.map((k) => fields.find((f) => f.key === k)?.label ?? k).join(", ")
     ] }),
-    /* @__PURE__ */ jsxs2("div", { className: "d-flex justify-content-between", children: [
-      /* @__PURE__ */ jsx2(Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx2(Button, { variant: "primary", onClick: handleNext, children: translations.nextButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "d-flex justify-content-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Button, { variant: "primary", onClick: handleNext, children: translations.nextButtonTitle })
     ] }),
-    /* @__PURE__ */ jsxs2(Modal, { show: showWarn, onHide: () => setShowWarn(false), centered: true, children: [
-      /* @__PURE__ */ jsx2(Modal.Header, { closeButton: true, children: /* @__PURE__ */ jsx2(Modal.Title, { children: alertTranslations.headerTitle }) }),
-      /* @__PURE__ */ jsx2(Modal.Body, { children: alertTranslations.bodyText }),
-      /* @__PURE__ */ jsxs2(Modal.Footer, { children: [
-        /* @__PURE__ */ jsx2(Button, { variant: "outline-secondary", onClick: () => setShowWarn(false), children: alertTranslations.cancelButtonTitle }),
-        /* @__PURE__ */ jsx2(
-          Button,
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_bootstrap.Modal, { show: showWarn, onHide: () => setShowWarn(false), centered: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Modal.Title, { children: alertTranslations.headerTitle }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Modal.Body, { children: alertTranslations.bodyText }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_bootstrap.Modal.Footer, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Button, { variant: "outline-secondary", onClick: () => setShowWarn(false), children: alertTranslations.cancelButtonTitle }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+          import_react_bootstrap.Button,
           {
             variant: "primary",
             onClick: () => {
@@ -255,21 +295,21 @@ function statusFor(key, fields) {
 }
 
 // src/steps/SelectHeaderStep.tsx
-import { useState as useState2 } from "react";
-import { Button as Button2, Table } from "react-bootstrap";
-import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
+var import_react2 = require("react");
+var import_react_bootstrap2 = require("react-bootstrap");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 function SelectHeaderStep({ rows, translations, onBack, onNext, showTitle = true }) {
-  const [selected, setSelected] = useState2(0);
-  return /* @__PURE__ */ jsxs3("div", { className: "d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx3("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsx3("div", { className: "border rounded overflow-auto", style: { maxHeight: 320 }, children: /* @__PURE__ */ jsx3(Table, { hover: true, size: "sm", className: "m-0 align-middle", children: /* @__PURE__ */ jsx3("tbody", { children: rows.slice(0, 25).map((row, idx) => /* @__PURE__ */ jsxs3(
+  const [selected, setSelected] = (0, import_react2.useState)(0);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "border rounded overflow-auto", style: { maxHeight: 320 }, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react_bootstrap2.Table, { hover: true, size: "sm", className: "m-0 align-middle", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("tbody", { children: rows.slice(0, 25).map((row, idx) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
       "tr",
       {
         onClick: () => setSelected(idx),
         className: selected === idx ? "table-primary" : void 0,
         style: { cursor: "pointer" },
         children: [
-          /* @__PURE__ */ jsx3("td", { style: { width: 36 }, children: /* @__PURE__ */ jsx3(
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("td", { style: { width: 36 }, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
             "input",
             {
               type: "radio",
@@ -280,28 +320,28 @@ function SelectHeaderStep({ rows, translations, onBack, onNext, showTitle = true
               onClick: (e) => e.stopPropagation()
             }
           ) }),
-          row.map((cell, ci) => /* @__PURE__ */ jsx3("td", { className: "small text-nowrap", children: cell }, ci))
+          row.map((cell, ci) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("td", { className: "small text-nowrap", children: cell }, ci))
         ]
       },
       idx
     )) }) }) }),
-    /* @__PURE__ */ jsxs3("div", { className: "d-flex justify-content-between", children: [
-      /* @__PURE__ */ jsx3(Button2, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx3(Button2, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "d-flex justify-content-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react_bootstrap2.Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react_bootstrap2.Button, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
     ] })
   ] });
 }
 
 // src/steps/SelectSheetStep.tsx
-import { useState as useState3 } from "react";
-import { Button as Button3, Form as Form2 } from "react-bootstrap";
-import { jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
+var import_react3 = require("react");
+var import_react_bootstrap3 = require("react-bootstrap");
+var import_jsx_runtime4 = require("react/jsx-runtime");
 function SelectSheetStep({ workbook, translations, onBack, onNext, showTitle = true }) {
-  const [selected, setSelected] = useState3(0);
-  return /* @__PURE__ */ jsxs4("div", { className: "d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx4("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsx4(Form2, { children: workbook.sheets.map((s, i) => /* @__PURE__ */ jsx4(
-      Form2.Check,
+  const [selected, setSelected] = (0, import_react3.useState)(0);
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_bootstrap3.Form, { children: workbook.sheets.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+      import_react_bootstrap3.Form.Check,
       {
         type: "radio",
         id: `rsi-sheet-${i}`,
@@ -312,20 +352,20 @@ function SelectSheetStep({ workbook, translations, onBack, onNext, showTitle = t
       },
       s.name + i
     )) }),
-    /* @__PURE__ */ jsxs4("div", { className: "d-flex justify-content-between mt-2", children: [
-      /* @__PURE__ */ jsx4(Button3, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx4(Button3, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "d-flex justify-content-between mt-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_bootstrap3.Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_bootstrap3.Button, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
     ] })
   ] });
 }
 
 // src/steps/UploadStep.tsx
-import { useCallback, useState as useState4 } from "react";
-import { useDropzone } from "react-dropzone";
-import { Alert as Alert2, Button as Button4, Spinner, Table as Table2 } from "react-bootstrap";
+var import_react4 = require("react");
+var import_react_dropzone = require("react-dropzone");
+var import_react_bootstrap4 = require("react-bootstrap");
 
 // src/utils/parseFile.ts
-import ExcelJS from "exceljs";
+var import_exceljs = __toESM(require("exceljs"), 1);
 var CSV_TYPES = ["text/csv", "application/csv"];
 var CSV_EXT = /\.csv$/i;
 function cellToString(value) {
@@ -366,7 +406,7 @@ async function parseFile(file) {
     }
     return { file, sheets: [{ name: "Sheet1", rows }] };
   }
-  const wb = new ExcelJS.Workbook();
+  const wb = new import_exceljs.default.Workbook();
   await wb.xlsx.load(buffer);
   const sheets = wb.worksheets.map((ws) => ({
     name: ws.name,
@@ -421,16 +461,16 @@ function splitCsv(input) {
 }
 
 // src/steps/UploadStep.tsx
-import { Fragment, jsx as jsx5, jsxs as jsxs5 } from "react/jsx-runtime";
+var import_jsx_runtime5 = require("react/jsx-runtime");
 var ACCEPT = {
   "text/csv": [".csv"],
   "application/vnd.ms-excel": [".xls"],
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"]
 };
 function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHook, showTitle = true }) {
-  const [loading, setLoading] = useState4(false);
-  const [error, setError] = useState4(null);
-  const onDrop = useCallback(
+  const [loading, setLoading] = (0, import_react4.useState)(false);
+  const [error, setError] = (0, import_react4.useState)(null);
+  const onDrop = (0, import_react4.useCallback)(
     async (accepted) => {
       const file = accepted[0];
       if (!file) return;
@@ -451,7 +491,7 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
     },
     [onLoaded, uploadStepHook, translations.dropzone.errorToastDescription]
   );
-  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open } = (0, import_react_dropzone.useDropzone)({
     onDrop,
     accept: ACCEPT,
     maxSize: maxFileSize,
@@ -459,20 +499,20 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
     noClick: true,
     noKeyboard: true
   });
-  return /* @__PURE__ */ jsxs5("div", { className: "rsi-upload-step d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx5("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsxs5("div", { children: [
-      /* @__PURE__ */ jsx5("div", { className: "text-secondary small mb-1", children: translations.manifestTitle }),
-      /* @__PURE__ */ jsx5("div", { className: "text-secondary small mb-2", children: translations.manifestDescription }),
-      /* @__PURE__ */ jsx5("div", { className: "border rounded overflow-auto", style: { maxHeight: 160 }, children: /* @__PURE__ */ jsxs5(Table2, { size: "sm", className: "m-0", children: [
-        /* @__PURE__ */ jsx5("thead", { children: /* @__PURE__ */ jsx5("tr", { children: fields.map((f) => /* @__PURE__ */ jsxs5("th", { className: "text-nowrap small", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "rsi-upload-step d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-secondary small mb-1", children: translations.manifestTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-secondary small mb-2", children: translations.manifestDescription }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "border rounded overflow-auto", style: { maxHeight: 160 }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_react_bootstrap4.Table, { size: "sm", className: "m-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tr", { children: fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("th", { className: "text-nowrap small", children: [
           f.label,
-          f.required && /* @__PURE__ */ jsx5("span", { className: "text-danger ms-1", children: "*" })
+          f.required && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-danger ms-1", children: "*" })
         ] }, f.key)) }) }),
-        /* @__PURE__ */ jsx5("tbody", { children: /* @__PURE__ */ jsx5("tr", { children: fields.map((f) => /* @__PURE__ */ jsx5("td", { className: "text-nowrap small text-muted", children: f.example ?? "" }, f.key)) }) })
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tbody", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tr", { children: fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "text-nowrap small text-muted", children: f.example ?? "" }, f.key)) }) })
       ] }) })
     ] }),
-    /* @__PURE__ */ jsxs5(
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
       "div",
       {
         ...getRootProps(),
@@ -480,14 +520,14 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
         style: { minHeight: 180, cursor: "pointer" },
         onClick: open,
         children: [
-          /* @__PURE__ */ jsx5("input", { ...getInputProps() }),
-          loading ? /* @__PURE__ */ jsxs5(Fragment, { children: [
-            /* @__PURE__ */ jsx5(Spinner, { animation: "border", className: "mb-2" }),
-            /* @__PURE__ */ jsx5("div", { children: translations.dropzone.loadingTitle })
-          ] }) : isDragActive ? /* @__PURE__ */ jsx5("div", { children: translations.dropzone.activeDropzoneTitle }) : /* @__PURE__ */ jsxs5(Fragment, { children: [
-            /* @__PURE__ */ jsx5("div", { className: "mb-2", children: translations.dropzone.title }),
-            /* @__PURE__ */ jsx5(
-              Button4,
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("input", { ...getInputProps() }),
+          loading ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_bootstrap4.Spinner, { animation: "border", className: "mb-2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: translations.dropzone.loadingTitle })
+          ] }) : isDragActive ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: translations.dropzone.activeDropzoneTitle }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "mb-2", children: translations.dropzone.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+              import_react_bootstrap4.Button,
               {
                 type: "button",
                 variant: "primary",
@@ -502,18 +542,18 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
         ]
       }
     ),
-    error && /* @__PURE__ */ jsx5(Alert2, { variant: "danger", className: "m-0", children: error })
+    error && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_bootstrap4.Alert, { variant: "danger", className: "m-0", children: error })
   ] });
 }
 
 // src/steps/ValidationStep.tsx
-import { useEffect as useEffect2, useMemo as useMemo2, useState as useState5 } from "react";
-import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, OverlayTrigger, Spinner as Spinner2, Tooltip } from "react-bootstrap";
-import { DataGrid } from "react-data-grid";
-import "react-data-grid/lib/styles.css";
+var import_react5 = require("react");
+var import_react_bootstrap5 = require("react-bootstrap");
+var import_react_data_grid = require("react-data-grid");
+var import_styles = require("react-data-grid/lib/styles.css");
 
 // src/utils/validateRows.ts
-import { ValidationError } from "yup";
+var import_yup = require("yup");
 async function validateRows(opts) {
   const { rows, fields, schema, rowHook } = opts;
   const uniqueFields = fields.filter((f) => f.unique);
@@ -525,7 +565,7 @@ async function validateRows(opts) {
       try {
         await schema.validate(values, { abortEarly: false });
       } catch (e) {
-        if (e instanceof ValidationError) {
+        if (e instanceof import_yup.ValidationError) {
           for (const inner of e.inner.length ? e.inner : [e]) {
             const path = inner.path;
             if (!path) continue;
@@ -582,7 +622,7 @@ function rowHasErrors(row) {
 }
 
 // src/steps/ValidationStep.tsx
-import { jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function ValidationStep({
   fields,
   initialRows,
@@ -595,13 +635,13 @@ function ValidationStep({
   onSubmit,
   showTitle = true
 }) {
-  const [rows, setRows] = useState5([]);
-  const [selected, setSelected] = useState5(/* @__PURE__ */ new Set());
-  const [filterErrors, setFilterErrors] = useState5(false);
-  const [submitting, setSubmitting] = useState5(false);
-  const [showConfirm, setShowConfirm] = useState5(false);
-  const [loading, setLoading] = useState5(true);
-  useEffect2(() => {
+  const [rows, setRows] = (0, import_react5.useState)([]);
+  const [selected, setSelected] = (0, import_react5.useState)(/* @__PURE__ */ new Set());
+  const [filterErrors, setFilterErrors] = (0, import_react5.useState)(false);
+  const [submitting, setSubmitting] = (0, import_react5.useState)(false);
+  const [showConfirm, setShowConfirm] = (0, import_react5.useState)(false);
+  const [loading, setLoading] = (0, import_react5.useState)(true);
+  (0, import_react5.useEffect)(() => {
     let cancelled = false;
     setLoading(true);
     validateRows({ rows: initialRows, fields, schema, rowHook }).then((res) => {
@@ -614,13 +654,13 @@ function ValidationStep({
       cancelled = true;
     };
   }, [initialRows, fields, schema, rowHook]);
-  const columns = useMemo2(() => {
+  const columns = (0, import_react5.useMemo)(() => {
     return fields.map((f) => ({
       key: f.key,
       name: f.label,
       editable: true,
       resizable: true,
-      renderEditCell: ({ row, onRowChange, onClose }) => /* @__PURE__ */ jsx6(
+      renderEditCell: ({ row, onRowChange, onClose }) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         "input",
         {
           autoFocus: true,
@@ -637,7 +677,7 @@ function ValidationStep({
       renderCell: ({ row }) => {
         const value = row[f.key];
         const err = row.__errors?.[f.key];
-        const inner = /* @__PURE__ */ jsx6(
+        const inner = /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "div",
           {
             className: err ? `rsi-cell-${err.level}` : void 0,
@@ -646,11 +686,11 @@ function ValidationStep({
           }
         );
         if (!err) return inner;
-        return /* @__PURE__ */ jsx6(
-          OverlayTrigger,
+        return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          import_react_bootstrap5.OverlayTrigger,
           {
             placement: "top",
-            overlay: /* @__PURE__ */ jsx6(Tooltip, { id: `rsi-err-${f.key}-${row.__index}`, className: "rsi-error-tooltip", children: err.message }),
+            overlay: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Tooltip, { id: `rsi-err-${f.key}-${row.__index}`, className: "rsi-error-tooltip", children: err.message }),
             children: inner
           }
         );
@@ -693,12 +733,12 @@ function ValidationStep({
     }
     void doSubmit();
   }
-  return /* @__PURE__ */ jsxs6("div", { className: "d-flex flex-column gap-3", style: { minHeight: 400 }, children: [
-    /* @__PURE__ */ jsxs6("div", { className: "d-flex align-items-center justify-content-between", children: [
-      showTitle ? /* @__PURE__ */ jsx6("h5", { className: "m-0", children: translations.title }) : /* @__PURE__ */ jsx6("div", {}),
-      /* @__PURE__ */ jsxs6("div", { className: "d-flex align-items-center gap-3", children: [
-        /* @__PURE__ */ jsx6(
-          Form3.Check,
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "d-flex flex-column gap-3", style: { minHeight: 400 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "d-flex align-items-center justify-content-between", children: [
+      showTitle ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h5", { className: "m-0", children: translations.title }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {}),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "d-flex align-items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          import_react_bootstrap5.Form.Check,
           {
             type: "switch",
             id: "rsi-filter-errors",
@@ -707,7 +747,7 @@ function ValidationStep({
             onChange: (e) => setFilterErrors(e.target.checked)
           }
         ),
-        /* @__PURE__ */ jsxs6(Button5, { variant: "outline-danger", size: "sm", disabled: selected.size === 0, onClick: handleDiscard, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_react_bootstrap5.Button, { variant: "outline-danger", size: "sm", disabled: selected.size === 0, onClick: handleDiscard, children: [
           translations.discardButtonTitle,
           " (",
           selected.size,
@@ -715,8 +755,8 @@ function ValidationStep({
         ] })
       ] })
     ] }),
-    loading ? /* @__PURE__ */ jsx6("div", { className: "d-flex align-items-center justify-content-center flex-grow-1", children: /* @__PURE__ */ jsx6(Spinner2, { animation: "border" }) }) : visibleRows.length === 0 ? /* @__PURE__ */ jsx6(Alert3, { variant: "info", className: "m-0", children: filterErrors ? translations.noRowsMessageWhenFiltered : translations.noRowsMessage }) : /* @__PURE__ */ jsx6("div", { className: "rsi-grid-wrapper", style: { flex: 1, minHeight: 320 }, children: /* @__PURE__ */ jsx6(
-      DataGrid,
+    loading ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "d-flex align-items-center justify-content-center flex-grow-1", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Spinner, { animation: "border" }) }) : visibleRows.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Alert, { variant: "info", className: "m-0", children: filterErrors ? translations.noRowsMessageWhenFiltered : translations.noRowsMessage }) : /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "rsi-grid-wrapper", style: { flex: 1, minHeight: 320 }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+      import_react_data_grid.DataGrid,
       {
         className: "rdg-light",
         columns,
@@ -733,23 +773,23 @@ function ValidationStep({
         style: { blockSize: "100%" }
       }
     ) }),
-    errorCount > 0 && /* @__PURE__ */ jsxs6("div", { className: "text-danger small", children: [
+    errorCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "text-danger small", children: [
       errorCount,
       " row",
       errorCount === 1 ? "" : "s",
       " with errors"
     ] }),
-    /* @__PURE__ */ jsxs6("div", { className: "d-flex justify-content-between", children: [
-      /* @__PURE__ */ jsx6(Button5, { variant: "outline-secondary", onClick: onBack, disabled: submitting, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx6(Button5, { variant: "primary", onClick: handleSubmit, disabled: submitting || !allowInvalidSubmit && errorCount > 0, children: submitting ? /* @__PURE__ */ jsx6(Spinner2, { size: "sm", animation: "border" }) : translations.submitButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "d-flex justify-content-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Button, { variant: "outline-secondary", onClick: onBack, disabled: submitting, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Button, { variant: "primary", onClick: handleSubmit, disabled: submitting || !allowInvalidSubmit && errorCount > 0, children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Spinner, { size: "sm", animation: "border" }) : translations.submitButtonTitle })
     ] }),
-    /* @__PURE__ */ jsxs6(Modal2, { show: showConfirm, onHide: () => setShowConfirm(false), centered: true, children: [
-      /* @__PURE__ */ jsx6(Modal2.Header, { closeButton: true, children: /* @__PURE__ */ jsx6(Modal2.Title, { children: alertTranslations.headerTitle }) }),
-      /* @__PURE__ */ jsx6(Modal2.Body, { children: allowInvalidSubmit ? alertTranslations.bodyText : alertTranslations.bodyTextSubmitForbidden }),
-      /* @__PURE__ */ jsxs6(Modal2.Footer, { children: [
-        /* @__PURE__ */ jsx6(Button5, { variant: "outline-secondary", onClick: () => setShowConfirm(false), children: alertTranslations.cancelButtonTitle }),
-        allowInvalidSubmit && /* @__PURE__ */ jsx6(
-          Button5,
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_react_bootstrap5.Modal, { show: showConfirm, onHide: () => setShowConfirm(false), centered: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Modal.Title, { children: alertTranslations.headerTitle }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Modal.Body, { children: allowInvalidSubmit ? alertTranslations.bodyText : alertTranslations.bodyTextSubmitForbidden }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_react_bootstrap5.Modal.Footer, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react_bootstrap5.Button, { variant: "outline-secondary", onClick: () => setShowConfirm(false), children: alertTranslations.cancelButtonTitle }),
+        allowInvalidSubmit && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          import_react_bootstrap5.Button,
           {
             variant: "primary",
             onClick: () => {
@@ -858,7 +898,7 @@ function mergeTranslations(base, override) {
 }
 
 // src/ReactSpreadsheetImport.tsx
-import { Fragment as Fragment2, jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
+var import_jsx_runtime7 = require("react/jsx-runtime");
 var INITIAL_STATE = {
   step: "upload",
   workbook: null,
@@ -891,12 +931,12 @@ function ReactSpreadsheetImport(props) {
     hideStepper = false,
     hideStepTitles = false
   } = props;
-  const t = useMemo3(
+  const t = (0, import_react6.useMemo)(
     () => mergeTranslations(defaultTranslations, translationsOverride),
     [translationsOverride]
   );
-  const [state, setState] = useState6(INITIAL_STATE);
-  useEffect3(() => {
+  const [state, setState] = (0, import_react6.useState)(INITIAL_STATE);
+  (0, import_react6.useEffect)(() => {
     if (!inline && isOpen) {
       setState(INITIAL_STATE);
     }
@@ -966,10 +1006,10 @@ function ReactSpreadsheetImport(props) {
     await onSubmit(result, state.workbook.file);
     onClose?.();
   }
-  const body = /* @__PURE__ */ jsxs7("div", { className: "d-flex flex-column gap-3", children: [
-    !hideStepper && /* @__PURE__ */ jsx7(Stepper, { current: state.step, translations: t.stepper }),
-    state.maxExceeded && maxRecords !== void 0 && /* @__PURE__ */ jsx7(Alert4, { variant: "danger", className: "m-0", children: t.uploadStep.maxRecordsExceeded(maxRecords) }),
-    state.step === "upload" && /* @__PURE__ */ jsx7(
+  const body = /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    !hideStepper && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Stepper, { current: state.step, translations: t.stepper }),
+    state.maxExceeded && maxRecords !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Alert, { variant: "danger", className: "m-0", children: t.uploadStep.maxRecordsExceeded(maxRecords) }),
+    state.step === "upload" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       UploadStep,
       {
         fields,
@@ -980,7 +1020,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "selectSheet" && state.workbook && /* @__PURE__ */ jsx7(
+    state.step === "selectSheet" && state.workbook && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       SelectSheetStep,
       {
         workbook: state.workbook,
@@ -990,7 +1030,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "selectHeader" && /* @__PURE__ */ jsx7(
+    state.step === "selectHeader" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       SelectHeaderStep,
       {
         rows: dataRows,
@@ -1003,7 +1043,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "matchColumns" && /* @__PURE__ */ jsx7(
+    state.step === "matchColumns" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       MatchColumnsStep,
       {
         fields,
@@ -1018,7 +1058,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "validate" && /* @__PURE__ */ jsx7(
+    state.step === "validate" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       ValidationStep,
       {
         fields,
@@ -1035,11 +1075,11 @@ function ReactSpreadsheetImport(props) {
     )
   ] });
   if (inline) {
-    return /* @__PURE__ */ jsx7("div", { className: "rsi-inline", children: body });
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "rsi-inline", children: body });
   }
-  return /* @__PURE__ */ jsxs7(Fragment2, { children: [
-    /* @__PURE__ */ jsxs7(
-      Modal3,
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+      import_react_bootstrap6.Modal,
       {
         show: isOpen,
         onHide: tryClose,
@@ -1049,24 +1089,24 @@ function ReactSpreadsheetImport(props) {
         className: "rsi-modal",
         contentClassName: "rsi-modal-content",
         children: [
-          /* @__PURE__ */ jsx7(Modal3.Header, { closeButton: true, children: /* @__PURE__ */ jsx7(Modal3.Title, { children: title ?? "Spreadsheet importer" }) }),
-          /* @__PURE__ */ jsx7(Modal3.Body, { children: body })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Modal.Title, { children: title ?? "Spreadsheet importer" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Modal.Body, { children: body })
         ]
       }
     ),
-    /* @__PURE__ */ jsxs7(
-      Modal3,
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+      import_react_bootstrap6.Modal,
       {
         show: state.showCloseConfirm,
         onHide: () => setState((s) => ({ ...s, showCloseConfirm: false })),
         centered: true,
         children: [
-          /* @__PURE__ */ jsx7(Modal3.Header, { closeButton: true, children: /* @__PURE__ */ jsx7(Modal3.Title, { children: t.alerts.confirmClose.headerTitle }) }),
-          /* @__PURE__ */ jsx7(Modal3.Body, { children: t.alerts.confirmClose.bodyText }),
-          /* @__PURE__ */ jsxs7(Modal3.Footer, { children: [
-            /* @__PURE__ */ jsx7(Button6, { variant: "outline-secondary", onClick: () => setState((s) => ({ ...s, showCloseConfirm: false })), children: t.alerts.confirmClose.cancelButtonTitle }),
-            /* @__PURE__ */ jsx7(
-              Button6,
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Modal.Title, { children: t.alerts.confirmClose.headerTitle }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Modal.Body, { children: t.alerts.confirmClose.bodyText }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_react_bootstrap6.Modal.Footer, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap6.Button, { variant: "outline-secondary", onClick: () => setState((s) => ({ ...s, showCloseConfirm: false })), children: t.alerts.confirmClose.cancelButtonTitle }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+              import_react_bootstrap6.Button,
               {
                 variant: "danger",
                 onClick: () => {
@@ -1082,11 +1122,12 @@ function ReactSpreadsheetImport(props) {
     )
   ] });
 }
-export {
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
   ReactSpreadsheetImport,
   autoMatchColumns,
   defaultTranslations,
   rowHasErrors,
   validateRows
-};
-//# sourceMappingURL=index.js.map
+});
+//# sourceMappingURL=index.cjs.map
