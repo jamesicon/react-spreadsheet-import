@@ -533,7 +533,7 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
 
 // src/steps/ValidationStep.tsx
 import { useEffect as useEffect2, useMemo as useMemo2, useState as useState5 } from "react";
-import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, OverlayTrigger, Spinner as Spinner2, Tooltip } from "react-bootstrap";
+import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, Spinner as Spinner2 } from "react-bootstrap";
 import { DataGrid } from "react-data-grid";
 import "react-data-grid/lib/styles.css";
 
@@ -662,22 +662,13 @@ function ValidationStep({
       renderCell: ({ row }) => {
         const value = row[f.key];
         const err = row.__errors?.[f.key];
-        const inner = /* @__PURE__ */ jsx6(
+        return /* @__PURE__ */ jsx6(
           "div",
           {
             className: err ? `rsi-cell-${err.level}` : void 0,
+            title: err?.message,
             style: { width: "100%", height: "100%", display: "flex", alignItems: "center" },
             children: value ?? ""
-          }
-        );
-        if (!err) return inner;
-        return /* @__PURE__ */ jsx6(
-          OverlayTrigger,
-          {
-            placement: "top",
-            container: document.body,
-            overlay: /* @__PURE__ */ jsx6(Tooltip, { id: `rsi-err-${f.key}-${row.__index}`, className: "rsi-error-tooltip", children: err.message }),
-            children: inner
           }
         );
       }

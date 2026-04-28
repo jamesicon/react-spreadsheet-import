@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Alert, Button, Form, Modal, OverlayTrigger, Spinner, Tooltip } from "react-bootstrap";
+import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { DataGrid, type Column } from "react-data-grid";
 import "react-data-grid/lib/styles.css";
 import type { ObjectSchema } from "yup";
@@ -80,27 +80,14 @@ export function ValidationStep<Key extends string>({
       renderCell: ({ row }) => {
         const value = (row as any)[f.key] as string | undefined;
         const err = row.__errors?.[f.key];
-        const inner = (
+        return (
           <div
             className={err ? `rsi-cell-${err.level}` : undefined}
+            title={err?.message}
             style={{ width: "100%", height: "100%", display: "flex", alignItems: "center" }}
           >
             {value ?? ""}
           </div>
-        );
-        if (!err) return inner;
-        return (
-          <OverlayTrigger
-            placement="top"
-            container={document.body}
-            overlay={
-              <Tooltip id={`rsi-err-${f.key}-${row.__index}`} className="rsi-error-tooltip">
-                {err.message}
-              </Tooltip>
-            }
-          >
-            {inner}
-          </OverlayTrigger>
         );
       },
     }));
