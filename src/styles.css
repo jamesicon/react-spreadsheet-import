@@ -109,6 +109,10 @@
   color: inherit;
 }
 
+.rsi-stepper-active .rsi-stepper-num {
+  color: #1b9aa9;
+}
+
 /* Primary action buttons (Next / Submit / Select file) match the host app's .button-action. */
 .rsi-inline .btn-primary,
 .rsi-modal-content .btn-primary {
@@ -177,7 +181,7 @@
 .rsi-match-section-label {
   position: sticky;
   left: 0;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
   font-weight: 600;
   background-color: var(--bs-tertiary-bg);
   color: var(--bs-body-color);
