@@ -14,8 +14,8 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "paths": {
-      "@icon/react-spreadsheet-importer": ["../src/index.ts"],
-      "@icon/react-spreadsheet-importer/styles.css": ["../src/styles.css"]
+      "react-spreadsheet-import": ["../src/index.ts"],
+      "react-spreadsheet-import/styles.css": ["../src/styles.css"]
     }
   },
   "include": ["src"],

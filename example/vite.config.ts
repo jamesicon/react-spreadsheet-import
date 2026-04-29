@@ -6,9 +6,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@jamesicon/react-spreadsheet-importer/styles.css": path.resolve(__dirname, "../src/styles.css"),
-      "@jamesicon/react-spreadsheet-importer": path.resolve(__dirname, "../src/index.ts"),
+      "react-spreadsheet-import/styles.css": path.resolve(__dirname, "../src/styles.css"),
+      "react-spreadsheet-import": path.resolve(__dirname, "../src/index.ts"),
     },
+    dedupe: ["react", "react-dom"],
   },
   server: {
     port: 5173,

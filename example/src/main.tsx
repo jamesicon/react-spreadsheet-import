@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./theme.css";
-import "@jamesicon/react-spreadsheet-import/styles.css";
+import "react-spreadsheet-import/styles.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

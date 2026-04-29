@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
-import { ReactSpreadsheetImport, type Field, type ImportResult } from "@icon/react-spreadsheet-importer";
+import { ReactSpreadsheetImport, type Field, type ImportResult } from "react-spreadsheet-import";
 import { schema, type Key } from "./schema";
 
 const fields: ReadonlyArray<Field<Key>> = [

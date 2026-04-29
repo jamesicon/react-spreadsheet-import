@@ -21,7 +21,244 @@ function styleInject(css, { insertAt } = {}) {
 }
 
 // src/styles.css
-styleInject(".rsi-modal-content {\n  --rsi-error: var(--bs-danger);\n  --rsi-warning: var(--bs-warning);\n  --rsi-info: var(--bs-info);\n}\n.rsi-dropzone {\n  border-style: dashed !important;\n  transition: background-color 120ms ease, border-color 120ms ease;\n}\n.rsi-grid-wrapper .rdg {\n  block-size: 100%;\n  border: 1px solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n  --rdg-border-color: var(--bs-border-color-translucent);\n  --rdg-color: var(--bs-body-color);\n  --rdg-background-color: var(--bs-body-bg);\n  --rdg-header-background-color: var(--bs-tertiary-bg);\n  --rdg-row-hover-background-color: var(--bs-secondary-bg);\n  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);\n  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);\n  --rdg-selection-color: var(--bs-primary);\n  font-family: inherit;\n  font-size: 0.875rem;\n}\n.rsi-cell-error {\n  background-color: var(--bs-danger-bg-subtle);\n  color: var(--bs-danger-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n  cursor: default;\n}\n.rsi-tooltip-fixed {\n  pointer-events: none;\n}\n.rsi-tooltip-inner {\n  background-color: #0a2540;\n  color: #ffffff;\n  font-size: 0.8125rem;\n  max-width: 320px;\n  text-align: left;\n  padding: 6px 10px;\n  border-radius: 4px;\n}\n.rsi-tooltip-arrow {\n  width: 0;\n  height: 0;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-top: 6px solid #0a2540;\n  margin: 0 auto;\n}\n.rsi-cell-warning {\n  background-color: var(--bs-warning-bg-subtle);\n  color: var(--bs-warning-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-info {\n  background-color: var(--bs-info-bg-subtle);\n  color: var(--bs-info-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-edit {\n  height: 100%;\n  border-radius: 0;\n}\n.rsi-stepper-row {\n  gap: 1px;\n  background-color: transparent;\n}\n.rsi-stepper-item {\n  min-width: 0;\n  padding-right: 1rem;\n}\n.rsi-stepper-item:last-child {\n  padding-right: 0;\n}\n.rsi-stepper-bar {\n  height: 4px;\n  background-color: var(--bs-border-color);\n  border-radius: 2px;\n  margin-bottom: 0.5rem;\n}\n.rsi-stepper-done .rsi-stepper-bar,\n.rsi-stepper-active .rsi-stepper-bar {\n  background-color: var(--bs-primary);\n}\n.rsi-stepper-label {\n  color: var(--bs-secondary-color);\n  font-weight: 500;\n}\n.rsi-stepper-active .rsi-stepper-label {\n  color: var(--bs-body-color);\n  font-weight: 600;\n}\n.rsi-stepper-num {\n  color: inherit;\n}\n.rsi-stepper-active .rsi-stepper-num {\n  color: #1b9aa9;\n}\n.rsi-inline .btn-primary,\n.rsi-modal-content .btn-primary {\n  color: #1b9aa9;\n  background-color: #ffffff;\n  border-color: #dfeff3;\n}\n.rsi-inline .btn-primary:hover,\n.rsi-modal-content .btn-primary:hover,\n.rsi-inline .btn-primary:focus,\n.rsi-modal-content .btn-primary:focus {\n  color: #2696a6;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:active,\n.rsi-modal-content .btn-primary:active,\n.rsi-inline .btn-primary:disabled,\n.rsi-modal-content .btn-primary:disabled {\n  color: #1b9aa9;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:focus-visible,\n.rsi-modal-content .btn-primary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);\n}\n.rsi-inline .btn-outline-secondary,\n.rsi-modal-content .btn-outline-secondary {\n  color: #858c9c;\n  background-color: #ffffff;\n  border-color: #e7e7ec;\n}\n.rsi-inline .btn-outline-secondary:hover,\n.rsi-modal-content .btn-outline-secondary:hover,\n.rsi-inline .btn-outline-secondary:focus,\n.rsi-modal-content .btn-outline-secondary:focus {\n  color: #0a2540;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:active,\n.rsi-modal-content .btn-outline-secondary:active,\n.rsi-inline .btn-outline-secondary:disabled,\n.rsi-modal-content .btn-outline-secondary:disabled {\n  color: #858c9c;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:focus-visible,\n.rsi-modal-content .btn-outline-secondary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);\n}\n.rsi-match-grid > * {\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-grid > *:last-child,\n.rsi-match-grid .rsi-match-col-header:last-child {\n  border-right: 0;\n}\n.rsi-match-section-label {\n  position: sticky;\n  left: 0;\n  padding: 0.75rem 1rem;\n  font-weight: 600;\n  background-color: var(--bs-tertiary-bg);\n  color: var(--bs-body-color);\n  width: max-content;\n  min-width: 100%;\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-section-divider {\n  border-top: 1px solid var(--bs-border-color);\n}\n.rsi-status-dot {\n  display: inline-block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  border: 2px solid var(--bs-border-color);\n  flex-shrink: 0;\n}\n.rsi-status-dot.rsi-status-matched {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-matched-required {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-ignored {\n  background-color: transparent;\n  border-color: var(--bs-secondary-border-subtle);\n}\n.rsi-ignore-btn {\n  border: 1px solid var(--bs-border-color);\n  background-color: var(--bs-secondary-bg);\n  color: var(--bs-secondary-color);\n  font-size: 14px;\n}\n.rsi-ignore-btn:hover {\n  background-color: var(--bs-tertiary-bg);\n}\n");
+styleInject(`.rsi-modal-content {
+  --rsi-error: var(--bs-danger);
+  --rsi-warning: var(--bs-warning);
+  --rsi-info: var(--bs-info);
+}
+.rsi-dropzone {
+  border-style: dashed !important;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.rsi-grid-wrapper .rdg {
+  block-size: 100%;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  --rdg-border-color: var(--bs-border-color-translucent);
+  --rdg-color: var(--bs-body-color);
+  --rdg-background-color: var(--bs-body-bg);
+  --rdg-header-background-color: var(--bs-tertiary-bg);
+  --rdg-row-hover-background-color: var(--bs-secondary-bg);
+  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);
+  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);
+  --rdg-selection-color: var(--bs-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+.rsi-grid-wrapper .rdg-checkbox-input {
+  inline-size: 1em;
+  block-size: 1em;
+  margin: auto;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: 0.25em;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+.rsi-grid-wrapper .rdg-checkbox-input:checked {
+  background-color: var(--bs-primary, #0d6efd);
+  border-color: var(--bs-primary, #0d6efd);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rsi-grid-wrapper .rdg-checkbox-input:indeterminate {
+  background-color: var(--bs-primary, #0d6efd);
+  border-color: var(--bs-primary, #0d6efd);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rsi-grid-wrapper .rdg-checkbox-input:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25);
+}
+.rsi-cell-error {
+  background-color: var(--bs-danger-bg-subtle);
+  color: var(--bs-danger-text-emphasis);
+  padding: 0 4px;
+  border-radius: 2px;
+  cursor: default;
+}
+.rsi-tooltip-fixed {
+  pointer-events: none;
+}
+.rsi-tooltip-inner {
+  background-color: #0a2540;
+  color: #ffffff;
+  font-size: 0.8125rem;
+  max-width: 320px;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+.rsi-tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #0a2540;
+  margin: 0 auto;
+}
+.rsi-cell-warning {
+  background-color: var(--bs-warning-bg-subtle);
+  color: var(--bs-warning-text-emphasis);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+.rsi-cell-info {
+  background-color: var(--bs-info-bg-subtle);
+  color: var(--bs-info-text-emphasis);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+.rsi-cell-edit {
+  height: 100%;
+  border-radius: 0;
+}
+.rsi-stepper-row {
+  gap: 1px;
+  background-color: transparent;
+}
+.rsi-stepper-item {
+  min-width: 0;
+  padding-right: 1rem;
+}
+.rsi-stepper-item:last-child {
+  padding-right: 0;
+}
+.rsi-stepper-bar {
+  height: 4px;
+  background-color: var(--bs-border-color);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+.rsi-stepper-done .rsi-stepper-bar,
+.rsi-stepper-active .rsi-stepper-bar {
+  background-color: var(--bs-primary);
+}
+.rsi-stepper-label {
+  color: var(--bs-secondary-color);
+  font-weight: 500;
+}
+.rsi-stepper-active .rsi-stepper-label {
+  color: var(--bs-body-color);
+  font-weight: 600;
+}
+.rsi-stepper-num {
+  color: inherit;
+}
+.rsi-stepper-active .rsi-stepper-num {
+  color: #1b9aa9;
+}
+.rsi-inline .btn-primary,
+.rsi-modal-content .btn-primary {
+  color: #1b9aa9;
+  background-color: #ffffff;
+  border-color: #dfeff3;
+}
+.rsi-inline .btn-primary:hover,
+.rsi-modal-content .btn-primary:hover,
+.rsi-inline .btn-primary:focus,
+.rsi-modal-content .btn-primary:focus {
+  color: #2696a6;
+  background-color: #f2fafb;
+  border-color: #d1ebee;
+}
+.rsi-inline .btn-primary:active,
+.rsi-modal-content .btn-primary:active,
+.rsi-inline .btn-primary:disabled,
+.rsi-modal-content .btn-primary:disabled {
+  color: #1b9aa9;
+  background-color: #f2fafb;
+  border-color: #d1ebee;
+}
+.rsi-inline .btn-primary:focus-visible,
+.rsi-modal-content .btn-primary:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);
+}
+.rsi-inline .btn-outline-secondary,
+.rsi-modal-content .btn-outline-secondary {
+  color: #858c9c;
+  background-color: #ffffff;
+  border-color: #e7e7ec;
+}
+.rsi-inline .btn-outline-secondary:hover,
+.rsi-modal-content .btn-outline-secondary:hover,
+.rsi-inline .btn-outline-secondary:focus,
+.rsi-modal-content .btn-outline-secondary:focus {
+  color: #0a2540;
+  background-color: #f8f8f8;
+  border-color: #cfcfd7;
+}
+.rsi-inline .btn-outline-secondary:active,
+.rsi-modal-content .btn-outline-secondary:active,
+.rsi-inline .btn-outline-secondary:disabled,
+.rsi-modal-content .btn-outline-secondary:disabled {
+  color: #858c9c;
+  background-color: #f8f8f8;
+  border-color: #cfcfd7;
+}
+.rsi-inline .btn-outline-secondary:focus-visible,
+.rsi-modal-content .btn-outline-secondary:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);
+}
+.rsi-match-grid > * {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+.rsi-match-grid > *:last-child,
+.rsi-match-grid .rsi-match-col-header:last-child {
+  border-right: 0;
+}
+.rsi-match-section-label {
+  position: sticky;
+  left: 0;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  width: max-content;
+  min-width: 100%;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+.rsi-match-section-divider {
+  border-top: 1px solid var(--bs-border-color);
+}
+.rsi-status-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--bs-border-color);
+  flex-shrink: 0;
+}
+.rsi-status-dot.rsi-status-matched {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+.rsi-status-dot.rsi-status-matched-required {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+.rsi-status-dot.rsi-status-ignored {
+  background-color: transparent;
+  border-color: var(--bs-secondary-border-subtle);
+}
+.rsi-ignore-btn {
+  border: 1px solid var(--bs-border-color);
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-secondary-color);
+  font-size: 14px;
+}
+.rsi-ignore-btn:hover {
+  background-color: var(--bs-tertiary-bg);
+}
+`);
 
 // src/ReactSpreadsheetImport.tsx
 import { useEffect as useEffect3, useMemo as useMemo3, useState as useState6 } from "react";
@@ -535,7 +772,7 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
 import { useEffect as useEffect2, useMemo as useMemo2, useRef, useState as useState5 } from "react";
 import { createPortal } from "react-dom";
 import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, Spinner as Spinner2 } from "react-bootstrap";
-import { DataGrid } from "react-data-grid";
+import { DataGrid, SelectColumn } from "react-data-grid";
 import "react-data-grid/lib/styles.css";
 
 // src/utils/validateRows.ts
@@ -673,7 +910,7 @@ function ValidationStep({
     };
   }, [initialRows, fields, schema, rowHook]);
   const columns = useMemo2(() => {
-    return fields.map((f) => ({
+    return [SelectColumn, ...fields.map((f) => ({
       key: f.key,
       name: f.label,
       editable: true,
@@ -700,7 +937,7 @@ function ValidationStep({
         }
         return /* @__PURE__ */ jsx6(ErrorCell, { className: `rsi-cell-${err.level}`, message: err.message, children: value ?? "" });
       }
-    }));
+    }))];
   }, [fields]);
   async function revalidate(next) {
     const stripped = next.map((r) => {
