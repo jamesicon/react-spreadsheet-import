@@ -434,21 +434,22 @@ styleInject(`@layer rdg {
   font-family: inherit;
   font-size: 0.875rem;
 }
-.rsi-grid-wrapper .rdg-checkbox-input {
+.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input {
   inline-size: 1em !important;
   block-size: 1em !important;
   margin: auto;
   appearance: none !important;
   -webkit-appearance: none !important;
-  background-color: var(--bs-body-bg);
-  border: var(--bs-border-width) solid var(--bs-border-color);
+  background-color: var(--bs-body-bg, #fff);
+  border: 1px solid var(--bs-border-color, #dee2e6);
   border-radius: 0.25em;
+  cursor: pointer;
   transition:
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
 }
-.rsi-grid-wrapper .rdg-checkbox-input:checked {
+.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input:checked {
   background-color: var(--bs-primary, #0d6efd);
   border-color: var(--bs-primary, #0d6efd);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
@@ -456,7 +457,7 @@ styleInject(`@layer rdg {
   background-position: center;
   background-repeat: no-repeat;
 }
-.rsi-grid-wrapper .rdg-checkbox-input:indeterminate {
+.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input:indeterminate {
   background-color: var(--bs-primary, #0d6efd);
   border-color: var(--bs-primary, #0d6efd);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
@@ -464,7 +465,7 @@ styleInject(`@layer rdg {
   background-position: center;
   background-repeat: no-repeat;
 }
-.rsi-grid-wrapper .rdg-checkbox-input:focus-visible {
+.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input:focus-visible {
   outline: 0 !important;
   box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25);
 }
