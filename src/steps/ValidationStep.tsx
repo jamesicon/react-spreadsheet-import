@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
 import { DataGrid, type Column, SelectColumn } from "react-data-grid";
-import "react-data-grid/lib/styles.css";
 import type { ObjectSchema } from "yup";
 import type {
   Field,
