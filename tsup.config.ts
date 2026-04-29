@@ -14,5 +14,8 @@ export default defineConfig({
     "bootstrap",
     "yup",
   ],
+  noExternal: [
+    "react-data-grid",
+  ],
   injectStyle: true,
 });
