@@ -21,595 +21,7 @@ function styleInject(css, { insertAt } = {}) {
 }
 
 // src/styles.css
-styleInject(`@layer rdg {
-  @layer Defaults, FocusSink, CheckboxInput, CheckboxIcon, CheckboxLabel, Cell, HeaderCell, SummaryCell, EditCell, Row, HeaderRow, SummaryRow, GroupedRow, Root;
-}
-.rdg-7-0-0-beta-58-fa71d63e {
-  @layer rdg.MeasuringCell {
-    contain: strict;
-    grid-row: 1;
-    visibility: hidden;
-  }
-}
-.rdg-7-0-0-beta-58-85c48527 {
-  @layer rdg.Cell {
-    position: relative;
-    padding-block: 0;
-    padding-inline: 8px;
-    border-inline-end: var(--rdg-border-width) solid var(--rdg-border-color);
-    border-block-end: var(--rdg-border-width) solid var(--rdg-border-color);
-    grid-row-start: var(--rdg-grid-row-start);
-    align-content: center;
-    background-color: inherit;
-    white-space: nowrap;
-    overflow: clip;
-    text-overflow: ellipsis;
-    outline: none;
-    &[aria-selected=true] {
-      outline: var(--rdg-selection-width) solid var(--rdg-selection-color);
-      outline-offset: calc(var(--rdg-selection-width) * -1);
-    }
-  }
-}
-.rdg-7-0-0-beta-58-17a9a6d4 {
-  @layer rdg.Cell {
-    position: sticky;
-    z-index: 1;
-    &:nth-last-child(1 of &) {
-      box-shadow: var(--rdg-cell-frozen-box-shadow);
-    }
-  }
-}
-.rdg-7-0-0-beta-58-bfba19bc {
-  @layer rdg.DragHandle {
-    --rdg-drag-handle-size: 8px;
-    z-index: 0;
-    cursor: move;
-    inline-size: var(--rdg-drag-handle-size);
-    block-size: var(--rdg-drag-handle-size);
-    background-color: var(--rdg-selection-color);
-    place-self: end;
-    &:hover {
-      --rdg-drag-handle-size: 16px;
-      border: 2px solid var(--rdg-selection-color);
-      background-color: var(--rdg-background-color);
-    }
-  }
-}
-.rdg-7-0-0-beta-58-7abddb3e {
-  @layer rdg.DragHandle {
-    z-index: 1;
-    position: sticky;
-  }
-}
-.rdg-7-0-0-beta-58-3b807ead {
-  @layer rdg.CheckboxInput {
-    display: block;
-    margin: auto;
-    inline-size: 20px;
-    block-size: 20px;
-    &:focus-visible {
-      outline: 2px solid var(--rdg-checkbox-focus-color);
-      outline-offset: -3px;
-    }
-    &:enabled {
-      cursor: pointer;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-07919382 {
-  @layer rdg.GroupCellContent {
-    outline: none;
-  }
-}
-.rdg-7-0-0-beta-58-02a50147 {
-  @layer rdg.GroupCellCaret {
-    margin-inline-start: 4px;
-    stroke: currentColor;
-    stroke-width: 1.5px;
-    fill: transparent;
-    vertical-align: middle;
-    > path {
-      transition: d 0.1s;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-56a248e4 {
-  @layer rdg.SortableHeaderCell {
-    display: flex;
-  }
-}
-.rdg-7-0-0-beta-58-7fad8c83 {
-  @layer rdg.SortableHeaderCellName {
-    flex-grow: 1;
-    overflow: clip;
-    text-overflow: ellipsis;
-  }
-}
-.rdg-7-0-0-beta-58-35ccb4c8 {
-  @layer rdg.Cell {
-    background-color: #ccccff;
-  }
-}
-.rdg-7-0-0-beta-58-46f9ea88 {
-  @layer rdg.EditCell {
-    padding: 0;
-  }
-}
-.rdg-7-0-0-beta-58-0dbd5994 {
-  @layer rdg.HeaderRow {
-    display: contents;
-    background-color: var(--rdg-header-background-color);
-    font-weight: bold;
-    & > .rdg-7-0-0-beta-58-85c48527 {
-      z-index: 2;
-      position: sticky;
-    }
-    & > .rdg-7-0-0-beta-58-17a9a6d4 {
-      z-index: 3;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-2a7e240d {
-  @layer rdg.HeaderCell {
-    cursor: pointer;
-  }
-}
-.rdg-7-0-0-beta-58-1893dc0f {
-  @layer rdg.HeaderCell {
-    touch-action: none;
-  }
-}
-.rdg-7-0-0-beta-58-4e60db91 {
-  @layer rdg.HeaderCell {
-    cursor: col-resize;
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-end: 0;
-    inset-block-end: 0;
-    inline-size: 10px;
-  }
-}
-.rdg-7-0-0-beta-58-3e1a4ad4 {
-  @layer rdg.HeaderCell {
-    background-color: var(--rdg-header-draggable-background-color);
-  }
-}
-.rdg-7-0-0-beta-58-51abd8b8 {
-  @layer rdg.HeaderCell {
-    background-color: var(--rdg-header-draggable-background-color);
-  }
-}
-.rdg-7-0-0-beta-58-c8d7aa64 {
-  @layer rdg.HeaderCell {
-    border-radius: 4px;
-    width: fit-content;
-    outline: 2px solid hsl(207, 100%, 50%);
-    outline-offset: -2px;
-  }
-}
-.rdg-7-0-0-beta-58-3c083f1b {
-  @layer rdg.Row {
-    display: contents;
-    background-color: var(--rdg-background-color);
-    &:hover {
-      background-color: var(--rdg-row-hover-background-color);
-    }
-    &[aria-selected=true] {
-      background-color: var(--rdg-row-selected-background-color);
-      &:hover {
-        background-color: var(--rdg-row-selected-hover-background-color);
-      }
-    }
-  }
-}
-.rdg-7-0-0-beta-58-3fe773c3 {
-  @layer rdg.FocusSink {
-    outline: 2px solid var(--rdg-selection-color);
-    outline-offset: -2px;
-  }
-}
-.rdg-7-0-0-beta-58-97ce3fde {
-  @layer rdg.FocusSink {
-    &::before {
-      content: "";
-      display: inline-block;
-      block-size: 100%;
-      position: sticky;
-      inset-inline-start: 0;
-      border-inline-start: 2px solid var(--rdg-selection-color);
-    }
-  }
-}
-.rdg-7-0-0-beta-58-3d5115f3 {
-  @layer rdg.SortIcon {
-    fill: currentColor;
-    > path {
-      transition: d 0.1s;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-ccd2e5d9 {
-  @layer rdg.Defaults {
-    *,
-    *::before,
-    *::after {
-      box-sizing: inherit;
-    }
-  }
-  @layer rdg.Root {
-    --rdg-selection-width: 2px;
-    --rdg-selection-color: hsl(207, 75%, 66%);
-    --rdg-font-size: 14px;
-    --rdg-cell-frozen-box-shadow: 2px 0 5px -2px rgba(136, 136, 136, 0.3);
-    --rdg-border-width: 1px;
-    --rdg-summary-border-width: calc(var(--rdg-border-width) * 2);
-    --rdg-color: light-dark(#000, #ddd);
-    --rdg-border-color: light-dark(#ddd, #444);
-    --rdg-summary-border-color: light-dark(#aaa, #555);
-    --rdg-background-color: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 13%));
-    --rdg-header-background-color: light-dark(hsl(0deg 0% 97.5%), hsl(0deg 0% 10.5%));
-    --rdg-header-draggable-background-color: light-dark(hsl(0deg 0% 90.5%), hsl(0deg 0% 17.5%));
-    --rdg-row-hover-background-color: light-dark(hsl(0deg 0% 96%), hsl(0deg 0% 9%));
-    --rdg-row-selected-background-color: light-dark(hsl(207deg 76% 92%), hsl(207deg 76% 42%));
-    --rdg-row-selected-hover-background-color: light-dark(hsl(207deg 76% 88%), hsl(207deg 76% 38%));
-    --rdg-checkbox-focus-color: hsl(207deg 100% 69%);
-    &.rdg-dark {
-      --rdg-color-scheme: dark;
-    }
-    &.rdg-light {
-      --rdg-color-scheme: light;
-    }
-    color-scheme: var(--rdg-color-scheme, light dark);
-    &:dir(rtl) {
-      --rdg-cell-frozen-box-shadow: -2px 0 5px -2px rgba(136, 136, 136, 0.3);
-    }
-    display: grid;
-    accent-color: light-dark(hsl(207deg 100% 29%), hsl(207deg 100% 79%));
-    contain: content;
-    content-visibility: auto;
-    block-size: 350px;
-    border: 1px solid var(--rdg-border-color);
-    box-sizing: border-box;
-    overflow: auto;
-    background-color: var(--rdg-background-color);
-    color: var(--rdg-color);
-    font-size: var(--rdg-font-size);
-    &::before {
-      content: "";
-      grid-column: 1/-1;
-      grid-row: 1/-1;
-    }
-    > :nth-last-child(1 of .rdg-top-summary-row) {
-      > .rdg-7-0-0-beta-58-85c48527 {
-        border-block-end: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);
-      }
-    }
-    > :nth-child(1 of .rdg-bottom-summary-row) {
-      > .rdg-7-0-0-beta-58-85c48527 {
-        border-block-start: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);
-      }
-    }
-  }
-}
-.rdg-7-0-0-beta-58-e9b0e1c9 {
-  @layer rdg.Root {
-    user-select: none;
-    & .rdg-7-0-0-beta-58-3c083f1b {
-      cursor: move;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-dbb8b3c5 {
-  @layer rdg.FocusSink {
-    grid-column: 1/-1;
-    pointer-events: none;
-    z-index: 1;
-  }
-}
-.rdg-7-0-0-beta-58-e9f55541 {
-  @layer rdg.FocusSink {
-    z-index: 3;
-  }
-}
-.rdg-7-0-0-beta-58-0b90c82c {
-  @layer rdg.SummaryRow {
-    > .rdg-7-0-0-beta-58-85c48527 {
-      position: sticky;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-d0520eab {
-  @layer rdg.SummaryRow {
-    > .rdg-7-0-0-beta-58-85c48527 {
-      z-index: 2;
-    }
-    > .rdg-7-0-0-beta-58-17a9a6d4 {
-      z-index: 3;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-d907aa87 {
-  @layer rdg.SummaryCell {
-    inset-block-start: var(--rdg-summary-row-top);
-    inset-block-end: var(--rdg-summary-row-bottom);
-  }
-}
-.rdg-7-0-0-beta-58-e74a2be3 {
-  @layer rdg.GroupedRow {
-    &:not([aria-selected=true]) {
-      background-color: var(--rdg-header-background-color);
-    }
-    > .rdg-7-0-0-beta-58-85c48527:not(:last-child, .rdg-7-0-0-beta-58-17a9a6d4),
-    > :nth-last-child(n+2 of .rdg-7-0-0-beta-58-17a9a6d4) {
-      border-inline-end: none;
-    }
-  }
-}
-.rdg-7-0-0-beta-58-2f8db206 {
-  @layer rdg.TextEditor {
-    appearance: none;
-    box-sizing: border-box;
-    inline-size: 100%;
-    block-size: 100%;
-    padding-block: 0;
-    padding-inline: 6px;
-    border: 2px solid #ccc;
-    vertical-align: top;
-    color: var(--rdg-color);
-    background-color: var(--rdg-background-color);
-    font-family: inherit;
-    font-size: var(--rdg-font-size);
-    &:focus {
-      border-color: var(--rdg-selection-color);
-      outline: none;
-    }
-    &::placeholder {
-      color: #999;
-      opacity: 1;
-    }
-  }
-}
-.rsi-modal-content {
-  --rsi-error: var(--bs-danger);
-  --rsi-warning: var(--bs-warning);
-  --rsi-info: var(--bs-info);
-}
-.rsi-dropzone {
-  border-style: dashed !important;
-  transition: background-color 120ms ease, border-color 120ms ease;
-}
-.rsi-grid-wrapper .rdg {
-  block-size: 100%;
-  border: 1px solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
-  --rdg-border-color: var(--bs-border-color-translucent);
-  --rdg-color: var(--bs-body-color);
-  --rdg-background-color: var(--bs-body-bg);
-  --rdg-header-background-color: var(--bs-tertiary-bg);
-  --rdg-row-hover-background-color: var(--bs-secondary-bg);
-  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);
-  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);
-  --rdg-selection-color: var(--bs-primary);
-  font-family: inherit;
-  font-size: 0.875rem;
-}
-.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input {
-  inline-size: 1em !important;
-  block-size: 1em !important;
-  margin: auto;
-  appearance: none !important;
-  -webkit-appearance: none !important;
-  background-color: var(--bs-body-bg, #fff);
-  border: 1px solid var(--bs-border-color, #dee2e6);
-  border-radius: 0.25em;
-  cursor: pointer;
-  transition:
-    background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
-}
-.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input:checked {
-  background-color: var(--bs-primary, #0d6efd);
-  border-color: var(--bs-primary, #0d6efd);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input:indeterminate {
-  background-color: var(--bs-primary, #0d6efd);
-  border-color: var(--bs-primary, #0d6efd);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.rsi-grid-wrapper .rdg input[type=checkbox].rdg-checkbox-input:focus-visible {
-  outline: 0 !important;
-  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb, 13, 110, 253), 0.25);
-}
-.rsi-cell-error {
-  background-color: var(--bs-danger-bg-subtle);
-  color: var(--bs-danger-text-emphasis);
-  padding: 0 4px;
-  border-radius: 2px;
-  cursor: default;
-}
-.rsi-tooltip-fixed {
-  pointer-events: none;
-}
-.rsi-tooltip-inner {
-  background-color: #0a2540;
-  color: #ffffff;
-  font-size: 0.8125rem;
-  max-width: 320px;
-  text-align: left;
-  padding: 6px 10px;
-  border-radius: 4px;
-}
-.rsi-tooltip-arrow {
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #0a2540;
-  margin: 0 auto;
-}
-.rsi-cell-warning {
-  background-color: var(--bs-warning-bg-subtle);
-  color: var(--bs-warning-text-emphasis);
-  padding: 0 4px;
-  border-radius: 2px;
-}
-.rsi-cell-info {
-  background-color: var(--bs-info-bg-subtle);
-  color: var(--bs-info-text-emphasis);
-  padding: 0 4px;
-  border-radius: 2px;
-}
-.rsi-cell-edit {
-  height: 100%;
-  border-radius: 0;
-}
-.rsi-stepper-row {
-  gap: 1px;
-  background-color: transparent;
-}
-.rsi-stepper-item {
-  min-width: 0;
-  padding-right: 1rem;
-}
-.rsi-stepper-item:last-child {
-  padding-right: 0;
-}
-.rsi-stepper-bar {
-  height: 4px;
-  background-color: var(--bs-border-color);
-  border-radius: 2px;
-  margin-bottom: 0.5rem;
-}
-.rsi-stepper-done .rsi-stepper-bar,
-.rsi-stepper-active .rsi-stepper-bar {
-  background-color: var(--bs-primary);
-}
-.rsi-stepper-label {
-  color: var(--bs-secondary-color);
-  font-weight: 500;
-}
-.rsi-stepper-active .rsi-stepper-label {
-  color: var(--bs-body-color);
-  font-weight: 600;
-}
-.rsi-stepper-num {
-  color: inherit;
-}
-.rsi-stepper-active .rsi-stepper-num {
-  color: #1b9aa9;
-}
-.rsi-inline .btn-primary,
-.rsi-modal-content .btn-primary {
-  color: #1b9aa9;
-  background-color: #ffffff;
-  border-color: #dfeff3;
-}
-.rsi-inline .btn-primary:hover,
-.rsi-modal-content .btn-primary:hover,
-.rsi-inline .btn-primary:focus,
-.rsi-modal-content .btn-primary:focus {
-  color: #2696a6;
-  background-color: #f2fafb;
-  border-color: #d1ebee;
-}
-.rsi-inline .btn-primary:active,
-.rsi-modal-content .btn-primary:active,
-.rsi-inline .btn-primary:disabled,
-.rsi-modal-content .btn-primary:disabled {
-  color: #1b9aa9;
-  background-color: #f2fafb;
-  border-color: #d1ebee;
-}
-.rsi-inline .btn-primary:focus-visible,
-.rsi-modal-content .btn-primary:focus-visible {
-  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);
-}
-.rsi-inline .btn-outline-secondary,
-.rsi-modal-content .btn-outline-secondary {
-  color: #858c9c;
-  background-color: #ffffff;
-  border-color: #e7e7ec;
-}
-.rsi-inline .btn-outline-secondary:hover,
-.rsi-modal-content .btn-outline-secondary:hover,
-.rsi-inline .btn-outline-secondary:focus,
-.rsi-modal-content .btn-outline-secondary:focus {
-  color: #0a2540;
-  background-color: #f8f8f8;
-  border-color: #cfcfd7;
-}
-.rsi-inline .btn-outline-secondary:active,
-.rsi-modal-content .btn-outline-secondary:active,
-.rsi-inline .btn-outline-secondary:disabled,
-.rsi-modal-content .btn-outline-secondary:disabled {
-  color: #858c9c;
-  background-color: #f8f8f8;
-  border-color: #cfcfd7;
-}
-.rsi-inline .btn-outline-secondary:focus-visible,
-.rsi-modal-content .btn-outline-secondary:focus-visible {
-  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);
-}
-.rsi-match-grid > * {
-  border-bottom: 1px solid var(--bs-border-color);
-}
-.rsi-match-grid > *:last-child,
-.rsi-match-grid .rsi-match-col-header:last-child {
-  border-right: 0;
-}
-.rsi-match-section-label {
-  position: sticky;
-  left: 0;
-  padding: 0.75rem 1rem;
-  font-weight: 600;
-  background-color: var(--bs-tertiary-bg);
-  color: var(--bs-body-color);
-  width: max-content;
-  min-width: 100%;
-  border-bottom: 1px solid var(--bs-border-color);
-}
-.rsi-match-section-divider {
-  border-top: 1px solid var(--bs-border-color);
-}
-.rsi-status-dot {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--bs-border-color);
-  flex-shrink: 0;
-}
-.rsi-status-dot.rsi-status-matched {
-  background-color: var(--bs-success);
-  border-color: var(--bs-success);
-}
-.rsi-status-dot.rsi-status-matched-required {
-  background-color: var(--bs-success);
-  border-color: var(--bs-success);
-}
-.rsi-status-dot.rsi-status-ignored {
-  background-color: transparent;
-  border-color: var(--bs-secondary-border-subtle);
-}
-.rsi-ignore-btn {
-  border: 1px solid var(--bs-border-color);
-  background-color: var(--bs-secondary-bg);
-  color: var(--bs-secondary-color);
-  font-size: 14px;
-}
-.rsi-ignore-btn:hover {
-  background-color: var(--bs-tertiary-bg);
-}
-`);
+styleInject('@layer rdg {\n  @layer Defaults, FocusSink, CheckboxInput, CheckboxIcon, CheckboxLabel, Cell, HeaderCell, SummaryCell, EditCell, Row, HeaderRow, SummaryRow, GroupedRow, Root;\n}\n.rdg-7-0-0-beta-58-fa71d63e {\n  @layer rdg.MeasuringCell {\n    contain: strict;\n    grid-row: 1;\n    visibility: hidden;\n  }\n}\n.rdg-7-0-0-beta-58-85c48527 {\n  @layer rdg.Cell {\n    position: relative;\n    padding-block: 0;\n    padding-inline: 8px;\n    border-inline-end: var(--rdg-border-width) solid var(--rdg-border-color);\n    border-block-end: var(--rdg-border-width) solid var(--rdg-border-color);\n    grid-row-start: var(--rdg-grid-row-start);\n    align-content: center;\n    background-color: inherit;\n    white-space: nowrap;\n    overflow: clip;\n    text-overflow: ellipsis;\n    outline: none;\n    &[aria-selected=true] {\n      outline: var(--rdg-selection-width) solid var(--rdg-selection-color);\n      outline-offset: calc(var(--rdg-selection-width) * -1);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-17a9a6d4 {\n  @layer rdg.Cell {\n    position: sticky;\n    z-index: 1;\n    &:nth-last-child(1 of &) {\n      box-shadow: var(--rdg-cell-frozen-box-shadow);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-bfba19bc {\n  @layer rdg.DragHandle {\n    --rdg-drag-handle-size: 8px;\n    z-index: 0;\n    cursor: move;\n    inline-size: var(--rdg-drag-handle-size);\n    block-size: var(--rdg-drag-handle-size);\n    background-color: var(--rdg-selection-color);\n    place-self: end;\n    &:hover {\n      --rdg-drag-handle-size: 16px;\n      border: 2px solid var(--rdg-selection-color);\n      background-color: var(--rdg-background-color);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-7abddb3e {\n  @layer rdg.DragHandle {\n    z-index: 1;\n    position: sticky;\n  }\n}\n.rdg-7-0-0-beta-58-3b807ead {\n  @layer rdg.CheckboxInput {\n    display: block;\n    margin: auto;\n    inline-size: 20px;\n    block-size: 20px;\n    &:focus-visible {\n      outline: 2px solid var(--rdg-checkbox-focus-color);\n      outline-offset: -3px;\n    }\n    &:enabled {\n      cursor: pointer;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-07919382 {\n  @layer rdg.GroupCellContent {\n    outline: none;\n  }\n}\n.rdg-7-0-0-beta-58-02a50147 {\n  @layer rdg.GroupCellCaret {\n    margin-inline-start: 4px;\n    stroke: currentColor;\n    stroke-width: 1.5px;\n    fill: transparent;\n    vertical-align: middle;\n    > path {\n      transition: d 0.1s;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-56a248e4 {\n  @layer rdg.SortableHeaderCell {\n    display: flex;\n  }\n}\n.rdg-7-0-0-beta-58-7fad8c83 {\n  @layer rdg.SortableHeaderCellName {\n    flex-grow: 1;\n    overflow: clip;\n    text-overflow: ellipsis;\n  }\n}\n.rdg-7-0-0-beta-58-35ccb4c8 {\n  @layer rdg.Cell {\n    background-color: #ccccff;\n  }\n}\n.rdg-7-0-0-beta-58-46f9ea88 {\n  @layer rdg.EditCell {\n    padding: 0;\n  }\n}\n.rdg-7-0-0-beta-58-0dbd5994 {\n  @layer rdg.HeaderRow {\n    display: contents;\n    background-color: var(--rdg-header-background-color);\n    font-weight: bold;\n    & > .rdg-7-0-0-beta-58-85c48527 {\n      z-index: 2;\n      position: sticky;\n    }\n    & > .rdg-7-0-0-beta-58-17a9a6d4 {\n      z-index: 3;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-2a7e240d {\n  @layer rdg.HeaderCell {\n    cursor: pointer;\n  }\n}\n.rdg-7-0-0-beta-58-1893dc0f {\n  @layer rdg.HeaderCell {\n    touch-action: none;\n  }\n}\n.rdg-7-0-0-beta-58-4e60db91 {\n  @layer rdg.HeaderCell {\n    cursor: col-resize;\n    position: absolute;\n    inset-block-start: 0;\n    inset-inline-end: 0;\n    inset-block-end: 0;\n    inline-size: 10px;\n  }\n}\n.rdg-7-0-0-beta-58-3e1a4ad4 {\n  @layer rdg.HeaderCell {\n    background-color: var(--rdg-header-draggable-background-color);\n  }\n}\n.rdg-7-0-0-beta-58-51abd8b8 {\n  @layer rdg.HeaderCell {\n    background-color: var(--rdg-header-draggable-background-color);\n  }\n}\n.rdg-7-0-0-beta-58-c8d7aa64 {\n  @layer rdg.HeaderCell {\n    border-radius: 4px;\n    width: fit-content;\n    outline: 2px solid hsl(207, 100%, 50%);\n    outline-offset: -2px;\n  }\n}\n.rdg-7-0-0-beta-58-3c083f1b {\n  @layer rdg.Row {\n    display: contents;\n    background-color: var(--rdg-background-color);\n    &:hover {\n      background-color: var(--rdg-row-hover-background-color);\n    }\n    &[aria-selected=true] {\n      background-color: var(--rdg-row-selected-background-color);\n      &:hover {\n        background-color: var(--rdg-row-selected-hover-background-color);\n      }\n    }\n  }\n}\n.rdg-7-0-0-beta-58-3fe773c3 {\n  @layer rdg.FocusSink {\n    outline: 2px solid var(--rdg-selection-color);\n    outline-offset: -2px;\n  }\n}\n.rdg-7-0-0-beta-58-97ce3fde {\n  @layer rdg.FocusSink {\n    &::before {\n      content: "";\n      display: inline-block;\n      block-size: 100%;\n      position: sticky;\n      inset-inline-start: 0;\n      border-inline-start: 2px solid var(--rdg-selection-color);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-3d5115f3 {\n  @layer rdg.SortIcon {\n    fill: currentColor;\n    > path {\n      transition: d 0.1s;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-ccd2e5d9 {\n  @layer rdg.Defaults {\n    *,\n    *::before,\n    *::after {\n      box-sizing: inherit;\n    }\n  }\n  @layer rdg.Root {\n    --rdg-selection-width: 2px;\n    --rdg-selection-color: hsl(207, 75%, 66%);\n    --rdg-font-size: 14px;\n    --rdg-cell-frozen-box-shadow: 2px 0 5px -2px rgba(136, 136, 136, 0.3);\n    --rdg-border-width: 1px;\n    --rdg-summary-border-width: calc(var(--rdg-border-width) * 2);\n    --rdg-color: light-dark(#000, #ddd);\n    --rdg-border-color: light-dark(#ddd, #444);\n    --rdg-summary-border-color: light-dark(#aaa, #555);\n    --rdg-background-color: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 13%));\n    --rdg-header-background-color: light-dark(hsl(0deg 0% 97.5%), hsl(0deg 0% 10.5%));\n    --rdg-header-draggable-background-color: light-dark(hsl(0deg 0% 90.5%), hsl(0deg 0% 17.5%));\n    --rdg-row-hover-background-color: light-dark(hsl(0deg 0% 96%), hsl(0deg 0% 9%));\n    --rdg-row-selected-background-color: light-dark(hsl(207deg 76% 92%), hsl(207deg 76% 42%));\n    --rdg-row-selected-hover-background-color: light-dark(hsl(207deg 76% 88%), hsl(207deg 76% 38%));\n    --rdg-checkbox-focus-color: hsl(207deg 100% 69%);\n    &.rdg-dark {\n      --rdg-color-scheme: dark;\n    }\n    &.rdg-light {\n      --rdg-color-scheme: light;\n    }\n    color-scheme: var(--rdg-color-scheme, light dark);\n    &:dir(rtl) {\n      --rdg-cell-frozen-box-shadow: -2px 0 5px -2px rgba(136, 136, 136, 0.3);\n    }\n    display: grid;\n    accent-color: light-dark(hsl(207deg 100% 29%), hsl(207deg 100% 79%));\n    contain: content;\n    content-visibility: auto;\n    block-size: 350px;\n    border: 1px solid var(--rdg-border-color);\n    box-sizing: border-box;\n    overflow: auto;\n    background-color: var(--rdg-background-color);\n    color: var(--rdg-color);\n    font-size: var(--rdg-font-size);\n    &::before {\n      content: "";\n      grid-column: 1/-1;\n      grid-row: 1/-1;\n    }\n    > :nth-last-child(1 of .rdg-top-summary-row) {\n      > .rdg-7-0-0-beta-58-85c48527 {\n        border-block-end: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);\n      }\n    }\n    > :nth-child(1 of .rdg-bottom-summary-row) {\n      > .rdg-7-0-0-beta-58-85c48527 {\n        border-block-start: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);\n      }\n    }\n  }\n}\n.rdg-7-0-0-beta-58-e9b0e1c9 {\n  @layer rdg.Root {\n    user-select: none;\n    & .rdg-7-0-0-beta-58-3c083f1b {\n      cursor: move;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-dbb8b3c5 {\n  @layer rdg.FocusSink {\n    grid-column: 1/-1;\n    pointer-events: none;\n    z-index: 1;\n  }\n}\n.rdg-7-0-0-beta-58-e9f55541 {\n  @layer rdg.FocusSink {\n    z-index: 3;\n  }\n}\n.rdg-7-0-0-beta-58-0b90c82c {\n  @layer rdg.SummaryRow {\n    > .rdg-7-0-0-beta-58-85c48527 {\n      position: sticky;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-d0520eab {\n  @layer rdg.SummaryRow {\n    > .rdg-7-0-0-beta-58-85c48527 {\n      z-index: 2;\n    }\n    > .rdg-7-0-0-beta-58-17a9a6d4 {\n      z-index: 3;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-d907aa87 {\n  @layer rdg.SummaryCell {\n    inset-block-start: var(--rdg-summary-row-top);\n    inset-block-end: var(--rdg-summary-row-bottom);\n  }\n}\n.rdg-7-0-0-beta-58-e74a2be3 {\n  @layer rdg.GroupedRow {\n    &:not([aria-selected=true]) {\n      background-color: var(--rdg-header-background-color);\n    }\n    > .rdg-7-0-0-beta-58-85c48527:not(:last-child, .rdg-7-0-0-beta-58-17a9a6d4),\n    > :nth-last-child(n+2 of .rdg-7-0-0-beta-58-17a9a6d4) {\n      border-inline-end: none;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-2f8db206 {\n  @layer rdg.TextEditor {\n    appearance: none;\n    box-sizing: border-box;\n    inline-size: 100%;\n    block-size: 100%;\n    padding-block: 0;\n    padding-inline: 6px;\n    border: 2px solid #ccc;\n    vertical-align: top;\n    color: var(--rdg-color);\n    background-color: var(--rdg-background-color);\n    font-family: inherit;\n    font-size: var(--rdg-font-size);\n    &:focus {\n      border-color: var(--rdg-selection-color);\n      outline: none;\n    }\n    &::placeholder {\n      color: #999;\n      opacity: 1;\n    }\n  }\n}\n.rsi-modal-content {\n  --rsi-error: var(--bs-danger);\n  --rsi-warning: var(--bs-warning);\n  --rsi-info: var(--bs-info);\n}\n.rsi-dropzone {\n  border-style: dashed !important;\n  transition: background-color 120ms ease, border-color 120ms ease;\n}\n.rsi-grid-wrapper .rdg {\n  block-size: 100%;\n  border: 1px solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n  --rdg-border-color: var(--bs-border-color-translucent);\n  --rdg-color: var(--bs-body-color);\n  --rdg-background-color: var(--bs-body-bg);\n  --rdg-header-background-color: var(--bs-tertiary-bg);\n  --rdg-row-hover-background-color: var(--bs-secondary-bg);\n  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);\n  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);\n  --rdg-selection-color: var(--bs-primary);\n  font-family: inherit;\n  font-size: 0.875rem;\n}\n.rsi-cell-error {\n  background-color: var(--bs-danger-bg-subtle);\n  color: var(--bs-danger-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n  cursor: default;\n}\n.rsi-tooltip-fixed {\n  pointer-events: none;\n}\n.rsi-tooltip-inner {\n  background-color: #0a2540;\n  color: #ffffff;\n  font-size: 0.8125rem;\n  max-width: 320px;\n  text-align: left;\n  padding: 6px 10px;\n  border-radius: 4px;\n}\n.rsi-tooltip-arrow {\n  width: 0;\n  height: 0;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-top: 6px solid #0a2540;\n  margin: 0 auto;\n}\n.rsi-cell-warning {\n  background-color: var(--bs-warning-bg-subtle);\n  color: var(--bs-warning-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-info {\n  background-color: var(--bs-info-bg-subtle);\n  color: var(--bs-info-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-edit {\n  height: 100%;\n  border-radius: 0;\n}\n.rsi-stepper-row {\n  gap: 1px;\n  background-color: transparent;\n}\n.rsi-stepper-item {\n  min-width: 0;\n  padding-right: 1rem;\n}\n.rsi-stepper-item:last-child {\n  padding-right: 0;\n}\n.rsi-stepper-bar {\n  height: 4px;\n  background-color: var(--bs-border-color);\n  border-radius: 2px;\n  margin-bottom: 0.5rem;\n}\n.rsi-stepper-done .rsi-stepper-bar,\n.rsi-stepper-active .rsi-stepper-bar {\n  background-color: var(--bs-primary);\n}\n.rsi-stepper-label {\n  color: var(--bs-secondary-color);\n  font-weight: 500;\n}\n.rsi-stepper-active .rsi-stepper-label {\n  color: var(--bs-body-color);\n  font-weight: 600;\n}\n.rsi-stepper-num {\n  color: inherit;\n}\n.rsi-stepper-active .rsi-stepper-num {\n  color: #1b9aa9;\n}\n.rsi-inline .btn-primary,\n.rsi-modal-content .btn-primary {\n  color: #1b9aa9;\n  background-color: #ffffff;\n  border-color: #dfeff3;\n}\n.rsi-inline .btn-primary:hover,\n.rsi-modal-content .btn-primary:hover,\n.rsi-inline .btn-primary:focus,\n.rsi-modal-content .btn-primary:focus {\n  color: #2696a6;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:active,\n.rsi-modal-content .btn-primary:active,\n.rsi-inline .btn-primary:disabled,\n.rsi-modal-content .btn-primary:disabled {\n  color: #1b9aa9;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:focus-visible,\n.rsi-modal-content .btn-primary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);\n}\n.rsi-inline .btn-outline-secondary,\n.rsi-modal-content .btn-outline-secondary {\n  color: #858c9c;\n  background-color: #ffffff;\n  border-color: #e7e7ec;\n}\n.rsi-inline .btn-outline-secondary:hover,\n.rsi-modal-content .btn-outline-secondary:hover,\n.rsi-inline .btn-outline-secondary:focus,\n.rsi-modal-content .btn-outline-secondary:focus {\n  color: #0a2540;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:active,\n.rsi-modal-content .btn-outline-secondary:active,\n.rsi-inline .btn-outline-secondary:disabled,\n.rsi-modal-content .btn-outline-secondary:disabled {\n  color: #858c9c;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:focus-visible,\n.rsi-modal-content .btn-outline-secondary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);\n}\n.rsi-match-grid > * {\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-grid > *:last-child,\n.rsi-match-grid .rsi-match-col-header:last-child {\n  border-right: 0;\n}\n.rsi-match-section-label {\n  position: sticky;\n  left: 0;\n  padding: 0.75rem 1rem;\n  font-weight: 600;\n  background-color: var(--bs-tertiary-bg);\n  color: var(--bs-body-color);\n  width: max-content;\n  min-width: 100%;\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-section-divider {\n  border-top: 1px solid var(--bs-border-color);\n}\n.rsi-status-dot {\n  display: inline-block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  border: 2px solid var(--bs-border-color);\n  flex-shrink: 0;\n}\n.rsi-status-dot.rsi-status-matched {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-matched-required {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-ignored {\n  background-color: transparent;\n  border-color: var(--bs-secondary-border-subtle);\n}\n.rsi-ignore-btn {\n  border: 1px solid var(--bs-border-color);\n  background-color: var(--bs-secondary-bg);\n  color: var(--bs-secondary-color);\n  font-size: 14px;\n}\n.rsi-ignore-btn:hover {\n  background-color: var(--bs-tertiary-bg);\n}\n');
 
 // src/ReactSpreadsheetImport.tsx
 import { useEffect as useEffect3, useMemo as useMemo4, useState as useState7 } from "react";
@@ -1434,18 +846,6 @@ var DataGridDefaultRenderersContext = createContext(void 0);
 function useDefaultRenderers() {
   return useContext(DataGridDefaultRenderersContext);
 }
-function SelectCellFormatter({ value, tabIndex, indeterminate, disabled, onChange, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy }) {
-  const renderCheckbox$1 = useDefaultRenderers().renderCheckbox;
-  return renderCheckbox$1({
-    "aria-label": ariaLabel,
-    "aria-labelledby": ariaLabelledBy,
-    tabIndex,
-    indeterminate,
-    disabled,
-    checked: value,
-    onChange
-  });
-}
 var RowSelectionContext = createContext(void 0);
 var RowSelectionChangeContext = createContext(void 0);
 function useRowSelection() {
@@ -1471,68 +871,6 @@ function useHeaderRowSelection() {
   };
 }
 var SELECT_COLUMN_KEY = "rdg-select-column";
-function HeaderRenderer(props) {
-  const { isIndeterminate, isRowSelected, onRowSelectionChange } = useHeaderRowSelection();
-  return /* @__PURE__ */ jsx6(SelectCellFormatter, {
-    "aria-label": "Select All",
-    tabIndex: props.tabIndex,
-    indeterminate: isIndeterminate,
-    value: isRowSelected,
-    onChange: (checked) => {
-      onRowSelectionChange({ checked: isIndeterminate ? false : checked });
-    }
-  });
-}
-function SelectFormatter(props) {
-  const { isRowSelectionDisabled, isRowSelected, onRowSelectionChange } = useRowSelection();
-  return /* @__PURE__ */ jsx6(SelectCellFormatter, {
-    "aria-label": "Select",
-    tabIndex: props.tabIndex,
-    disabled: isRowSelectionDisabled,
-    value: isRowSelected,
-    onChange: (checked, isShiftClick) => {
-      onRowSelectionChange({
-        row: props.row,
-        checked,
-        isShiftClick
-      });
-    }
-  });
-}
-function SelectGroupFormatter(props) {
-  const { isRowSelected, onRowSelectionChange } = useRowSelection();
-  return /* @__PURE__ */ jsx6(SelectCellFormatter, {
-    "aria-label": "Select Group",
-    tabIndex: props.tabIndex,
-    value: isRowSelected,
-    onChange: (checked) => {
-      onRowSelectionChange({
-        row: props.row,
-        checked,
-        isShiftClick: false
-      });
-    }
-  });
-}
-var SelectColumn = {
-  key: SELECT_COLUMN_KEY,
-  name: "",
-  width: 35,
-  minWidth: 35,
-  maxWidth: 35,
-  resizable: false,
-  sortable: false,
-  frozen: true,
-  renderHeaderCell(props) {
-    return /* @__PURE__ */ jsx6(HeaderRenderer, { ...props });
-  },
-  renderCell(props) {
-    return /* @__PURE__ */ jsx6(SelectFormatter, { ...props });
-  },
-  renderGroupCell(props) {
-    return /* @__PURE__ */ jsx6(SelectGroupFormatter, { ...props });
-  }
-};
 var headerSortCellClassname = "rdg-7-0-0-beta-58-56a248e4";
 var headerSortNameClassname = `rdg-header-sort-name rdg-7-0-0-beta-58-7fad8c83`;
 function renderHeaderCell({ column, sortDirection, priority }) {
@@ -3573,6 +2911,47 @@ function rowHasErrors(row2) {
 
 // src/steps/ValidationStep.tsx
 import { Fragment as Fragment3, jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
+function SelectHeaderCell(props) {
+  const { isIndeterminate, isRowSelected, onRowSelectionChange } = useHeaderRowSelection();
+  return /* @__PURE__ */ jsx7("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }, children: /* @__PURE__ */ jsx7(
+    "input",
+    {
+      type: "checkbox",
+      className: "form-check-input m-0",
+      tabIndex: props.tabIndex,
+      ref: (el) => {
+        if (el) el.indeterminate = isIndeterminate;
+      },
+      checked: isRowSelected,
+      onChange: (e) => onRowSelectionChange({ checked: isIndeterminate ? false : e.target.checked })
+    }
+  ) });
+}
+function SelectRowCell(props) {
+  const { isRowSelected, onRowSelectionChange } = useRowSelection();
+  return /* @__PURE__ */ jsx7("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }, children: /* @__PURE__ */ jsx7(
+    "input",
+    {
+      type: "checkbox",
+      className: "form-check-input m-0",
+      tabIndex: props.tabIndex,
+      checked: isRowSelected,
+      onChange: (e) => onRowSelectionChange({ row: props.row, checked: e.target.checked, isShiftClick: false })
+    }
+  ) });
+}
+var CustomSelectColumn = {
+  key: SELECT_COLUMN_KEY,
+  name: "",
+  width: 40,
+  minWidth: 40,
+  maxWidth: 40,
+  resizable: false,
+  sortable: false,
+  frozen: true,
+  renderHeaderCell: (props) => /* @__PURE__ */ jsx7(SelectHeaderCell, { tabIndex: props.tabIndex }),
+  renderCell: (props) => /* @__PURE__ */ jsx7(SelectRowCell, { tabIndex: props.tabIndex, row: props.row })
+};
 function ErrorCell({ className, message, children }) {
   const ref = useRef2(null);
   const [show, setShow] = useState6(false);
@@ -3637,7 +3016,7 @@ function ValidationStep({
     };
   }, [initialRows, fields, schema, rowHook]);
   const columns = useMemo3(() => {
-    return [SelectColumn, ...fields.map((f) => ({
+    return [CustomSelectColumn, ...fields.map((f) => ({
       key: f.key,
       name: f.label,
       editable: true,

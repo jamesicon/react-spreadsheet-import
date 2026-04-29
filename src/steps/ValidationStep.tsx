@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
-import { DataGrid, type Column, SelectColumn } from "react-data-grid";
+import { DataGrid, type Column, SELECT_COLUMN_KEY, useRowSelection, useHeaderRowSelection } from "react-data-grid";
 import type { ObjectSchema } from "yup";
 import type {
   Field,
@@ -11,6 +11,50 @@ import type {
   Translations,
 } from "../types";
 import { rowHasErrors, validateRows } from "../utils/validateRows";
+
+function SelectHeaderCell(props: { tabIndex: number }) {
+  const { isIndeterminate, isRowSelected, onRowSelectionChange } = useHeaderRowSelection();
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+      <input
+        type="checkbox"
+        className="form-check-input m-0"
+        tabIndex={props.tabIndex}
+        ref={(el) => { if (el) el.indeterminate = isIndeterminate; }}
+        checked={isRowSelected}
+        onChange={(e) => onRowSelectionChange({ checked: isIndeterminate ? false : e.target.checked })}
+      />
+    </div>
+  );
+}
+
+function SelectRowCell(props: { tabIndex: number; row: any }) {
+  const { isRowSelected, onRowSelectionChange } = useRowSelection();
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+      <input
+        type="checkbox"
+        className="form-check-input m-0"
+        tabIndex={props.tabIndex}
+        checked={isRowSelected}
+        onChange={(e) => onRowSelectionChange({ row: props.row, checked: e.target.checked, isShiftClick: false })}
+      />
+    </div>
+  );
+}
+
+const CustomSelectColumn: Column<any> = {
+  key: SELECT_COLUMN_KEY,
+  name: "",
+  width: 40,
+  minWidth: 40,
+  maxWidth: 40,
+  resizable: false,
+  sortable: false,
+  frozen: true,
+  renderHeaderCell: (props) => <SelectHeaderCell tabIndex={props.tabIndex} />,
+  renderCell: (props) => <SelectRowCell tabIndex={props.tabIndex} row={props.row} />,
+};
 
 function ErrorCell({ className, message, children }: { className: string; message: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -94,7 +138,7 @@ export function ValidationStep<Key extends string>({
   }, [initialRows, fields, schema, rowHook]);
 
   const columns = useMemo<Column<ImportedRow<Key>>[]>(() => {
-    return [SelectColumn as Column<ImportedRow<Key>>, ...fields.map((f) => ({
+    return [CustomSelectColumn as Column<ImportedRow<Key>>, ...fields.map((f) => ({
       key: f.key,
       name: f.label,
       editable: true,
