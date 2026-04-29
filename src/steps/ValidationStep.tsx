@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Alert, Button, Form, Modal, Spinner } from "react-bootstrap";
-import { DataGrid, type Column } from "react-data-grid";
+import { DataGrid, type Column, SelectColumn } from "react-data-grid";
 import "react-data-grid/lib/styles.css";
 import type { ObjectSchema } from "yup";
 import type {
@@ -95,7 +95,7 @@ export function ValidationStep<Key extends string>({
   }, [initialRows, fields, schema, rowHook]);
 
   const columns = useMemo<Column<ImportedRow<Key>>[]>(() => {
-    return fields.map((f) => ({
+    return [SelectColumn as Column<ImportedRow<Key>>, ...fields.map((f) => ({
       key: f.key,
       name: f.label,
       editable: true,
@@ -129,7 +129,7 @@ export function ValidationStep<Key extends string>({
           </ErrorCell>
         );
       },
-    }));
+    }))];
   }, [fields]);
 
   async function revalidate(next: Array<ImportedRow<Key>>) {
