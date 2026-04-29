@@ -31,7 +31,7 @@
   color: var(--bs-danger-text-emphasis);
   padding: 0 4px;
   border-radius: 2px;
-  cursor: help;
+  cursor: default;
 }
 
 .rsi-tooltip-fixed {
