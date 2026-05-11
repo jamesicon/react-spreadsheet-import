@@ -1,147 +1,54 @@
 {
   "name": "react-spreadsheet-import",
-  "version": "2.0.8",
-  "description": "React spreadsheet import for xlsx and csv files with column matching and validation",
-  "main": "./dist-commonjs/index.js",
+  "version": "3.0.0",
+  "description": "Spreadsheet importer modal for React 19 with Bootstrap 5 and Yup validation.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./src/styles.css"
+  },
   "files": [
-    "dist-commonjs",
     "dist",
-    "types"
+    "src"
   ],
+  "sideEffects": true,
   "scripts": {
-    "start": "start-storybook -p 6006",
-    "test": "jest",
-    "ts": "tsc",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "prebuild": "rimraf dist && rimraf dist-commonjs && rimraf types",
-    "build": "rollup -c rollup.config.ts",
-    "build-storybook": "build-storybook -o docs-build",
-    "release:minor": "git checkout master && git pull && npm run test && npm run ts && npm run build && npm version patch && git add -A && git push && git push --tags && npm publish",
-    "release:major": "git checkout master && git pull && npm run test && npm run ts && npm run build && npm version major && git add -A && git push && git push --tags && npm publish",
-    "clean": "rimraf dist"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/UgnisSoftware/react-spreadsheet-import.git"
-  },
-  "keywords": [
-    "React",
-    "spreadsheet",
-    "import",
-    "upload",
-    "csv",
-    "xlsx",
-    "validate",
-    "automatic",
-    "match"
-  ],
-  "author": "Ugnis",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/UgnisSoftware/react-spreadsheet-import/issues"
-  },
-  "homepage": "https://github.com/UgnisSoftware/react-spreadsheet-import#readme",
   "peerDependencies": {
-    "@chakra-ui/react": "^1.8.8",
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "framer-motion": "^4.1.17 || ^6.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "bootstrap": ">=5.3.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-bootstrap": ">=2.10.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "yup": ">=1.0.0"
   },
   "dependencies": {
-    "chakra-react-select": "^3.1.2",
-    "chakra-ui-steps": "^1.7.2",
-    "js-levenshtein": "^1.1.6",
-    "lodash": "^4.17.21",
-    "react-data-grid": "7.0.0-beta.11",
-    "react-dropzone": "^12.0.5",
-    "react-icons": "^4.3.1",
-    "uuid": "^8.3.2",
-    "xlsx": "^0.18.5",
-    "react-toastify": "9.0.5"
+    "exceljs": "4.4.0",
+    "fuse.js": "7.3.0",
+    "react-data-grid": "7.0.0-beta.59",
+    "react-dropzone": "14.4.1"
   },
   "devDependencies": {
-    "@babel/core": "7.17.9",
-    "@emotion/jest": "11.9.1",
-    "@jest/types": "27.5.1",
-    "@storybook/react": "6.4.19",
-    "@testing-library/dom": "8.11.3",
-    "@testing-library/jest-dom": "5.16.2",
-    "@testing-library/react": "12.1.4",
-    "@testing-library/user-event": "13.5.0",
-    "@types/jest": "27.4.1",
-    "@types/js-levenshtein": "1.1.1",
-    "@types/react": "17.0.40",
-    "@types/react-dom": "17.0.13",
-    "@types/styled-system": "5.1.15",
-    "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "5.18.0",
-    "@typescript-eslint/parser": "5.18.0",
-    "babel-loader": "8.2.4",
-    "eslint": "8.13.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.29.4",
-    "eslint-plugin-react-hooks": "4.5.0",
-    "jest": "27.5.1",
-    "jest-watch-typeahead": "1.0.0",
-    "lint-staged": "12.4.1",
-    "prettier": "2.6.2",
-    "react-select-event": "5.5.0",
-    "rollup": "2.70.1",
-    "rollup-plugin-typescript2": "0.31.2",
-    "ts-essentials": "9.1.2",
-    "ts-jest": "27.1.4",
-    "ttypescript": "1.5.13",
-    "typescript": "4.6.3",
-    "typescript-transform-paths": "^3.3.1"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": "eslint",
-    "*.{js,ts,tsx,md,html,css,json}": "prettier --write"
-  },
-  "prettier": {
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "semi": false,
-    "printWidth": 120
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "jsdom",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)?$": "ts-jest/dist"
-    },
-    "moduleNameMapper": {
-      "~/(.*)": "<rootDir>/src/$1"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "setupFiles": [
-      "./src/tests/setup.ts"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-dom/extend-expect"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.json"
-      }
-    },
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ]
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "bootstrap": "5.3.8",
+    "react": "19.2.5",
+    "react-bootstrap": "2.10.10",
+    "react-dom": "19.2.5",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3",
+    "yup": "1.7.1"
   }
 }

@@ -1,0 +1,656 @@
+/* ==========================================================================
+   react-data-grid v7.0.0-beta.59 base styles (vendored)
+   Embedded here so consumers don't need react-data-grid in their node_modules.
+   ========================================================================== */
+@layer rdg {
+  @layer Defaults,
+    FocusSink,
+    CheckboxInput,
+    CheckboxIcon,
+    CheckboxLabel,
+    Cell,
+    HeaderCell,
+    SummaryCell,
+    EditCell,
+    Row,
+    HeaderRow,
+    SummaryRow,
+    GroupedRow,
+    Root;
+}
+
+.rdg-7-0-0-beta-58-fa71d63e {
+  @layer rdg.MeasuringCell {
+    contain: strict;
+    grid-row: 1;
+    visibility: hidden;
+  }
+}
+.rdg-7-0-0-beta-58-85c48527 {
+  @layer rdg.Cell {
+    position: relative;
+    padding-block: 0;
+    padding-inline: 8px;
+    border-inline-end: var(--rdg-border-width) solid var(--rdg-border-color);
+    border-block-end: var(--rdg-border-width) solid var(--rdg-border-color);
+    grid-row-start: var(--rdg-grid-row-start);
+    align-content: center;
+    background-color: inherit;
+
+    white-space: nowrap;
+    overflow: clip;
+    text-overflow: ellipsis;
+    outline: none;
+
+    &[aria-selected='true'] {
+      outline: var(--rdg-selection-width) solid var(--rdg-selection-color);
+      outline-offset: calc(var(--rdg-selection-width) * -1);
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-17a9a6d4 {
+  @layer rdg.Cell {
+    position: sticky;
+    z-index: 1;
+
+    &:nth-last-child(1 of &) {
+      box-shadow: var(--rdg-cell-frozen-box-shadow);
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-bfba19bc {
+  @layer rdg.DragHandle {
+    --rdg-drag-handle-size: 8px;
+    z-index: 0;
+    cursor: move;
+    inline-size: var(--rdg-drag-handle-size);
+    block-size: var(--rdg-drag-handle-size);
+    background-color: var(--rdg-selection-color);
+    place-self: end;
+
+    &:hover {
+      --rdg-drag-handle-size: 16px;
+      border: 2px solid var(--rdg-selection-color);
+      background-color: var(--rdg-background-color);
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-7abddb3e {
+  @layer rdg.DragHandle {
+    z-index: 1;
+    position: sticky;
+  }
+}
+.rdg-7-0-0-beta-58-3b807ead {
+  @layer rdg.CheckboxInput {
+    display: block;
+    margin: auto;
+    inline-size: 20px;
+    block-size: 20px;
+
+    &:focus-visible {
+      outline: 2px solid var(--rdg-checkbox-focus-color);
+      outline-offset: -3px;
+    }
+
+    &:enabled {
+      cursor: pointer;
+    }
+  }
+}
+.rdg-7-0-0-beta-58-07919382 {
+  @layer rdg.GroupCellContent {
+    outline: none;
+  }
+}
+
+.rdg-7-0-0-beta-58-02a50147 {
+  @layer rdg.GroupCellCaret {
+    margin-inline-start: 4px;
+    stroke: currentColor;
+    stroke-width: 1.5px;
+    fill: transparent;
+    vertical-align: middle;
+
+    > path {
+      transition: d 0.1s;
+    }
+  }
+}
+.rdg-7-0-0-beta-58-56a248e4 {
+  @layer rdg.SortableHeaderCell {
+    display: flex;
+  }
+}
+
+.rdg-7-0-0-beta-58-7fad8c83 {
+  @layer rdg.SortableHeaderCellName {
+    flex-grow: 1;
+    overflow: clip;
+    text-overflow: ellipsis;
+  }
+}
+.rdg-7-0-0-beta-58-35ccb4c8 {
+  @layer rdg.Cell {
+    background-color: #ccccff;
+  }
+}
+.rdg-7-0-0-beta-58-46f9ea88 {
+  @layer rdg.EditCell {
+    padding: 0;
+  }
+}
+.rdg-7-0-0-beta-58-0dbd5994 {
+  @layer rdg.HeaderRow {
+    display: contents;
+    background-color: var(--rdg-header-background-color);
+    font-weight: bold;
+
+    & > .rdg-7-0-0-beta-58-85c48527 {
+      z-index: 2;
+      position: sticky;
+    }
+
+    & > .rdg-7-0-0-beta-58-17a9a6d4 {
+      z-index: 3;
+    }
+  }
+}
+.rdg-7-0-0-beta-58-2a7e240d {
+  @layer rdg.HeaderCell {
+    cursor: pointer;
+  }
+}
+
+.rdg-7-0-0-beta-58-1893dc0f {
+  @layer rdg.HeaderCell {
+    touch-action: none;
+  }
+}
+
+.rdg-7-0-0-beta-58-4e60db91 {
+  @layer rdg.HeaderCell {
+    cursor: col-resize;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inline-size: 10px;
+  }
+}
+
+.rdg-7-0-0-beta-58-3e1a4ad4 {
+  @layer rdg.HeaderCell {
+    background-color: var(--rdg-header-draggable-background-color);
+  }
+}
+
+.rdg-7-0-0-beta-58-51abd8b8 {
+  @layer rdg.HeaderCell {
+    background-color: var(--rdg-header-draggable-background-color);
+  }
+}
+
+.rdg-7-0-0-beta-58-c8d7aa64 {
+  @layer rdg.HeaderCell {
+    border-radius: 4px;
+    width: fit-content;
+    outline: 2px solid hsl(207, 100%, 50%);
+    outline-offset: -2px;
+  }
+}
+.rdg-7-0-0-beta-58-3c083f1b {
+  @layer rdg.Row {
+    display: contents;
+    background-color: var(--rdg-background-color);
+
+    &:hover {
+      background-color: var(--rdg-row-hover-background-color);
+    }
+
+    &[aria-selected='true'] {
+      background-color: var(--rdg-row-selected-background-color);
+
+      &:hover {
+        background-color: var(--rdg-row-selected-hover-background-color);
+      }
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-3fe773c3 {
+  @layer rdg.FocusSink {
+    outline: 2px solid var(--rdg-selection-color);
+    outline-offset: -2px;
+  }
+}
+
+.rdg-7-0-0-beta-58-97ce3fde {
+  @layer rdg.FocusSink {
+    &::before {
+      content: '';
+      display: inline-block;
+      block-size: 100%;
+      position: sticky;
+      inset-inline-start: 0;
+      border-inline-start: 2px solid var(--rdg-selection-color);
+    }
+  }
+}
+.rdg-7-0-0-beta-58-3d5115f3 {
+  @layer rdg.SortIcon {
+    fill: currentColor;
+
+    > path {
+      transition: d 0.1s;
+    }
+  }
+}
+.rdg-7-0-0-beta-58-ccd2e5d9 {
+  @layer rdg.Defaults {
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+  }
+
+  @layer rdg.Root {
+    --rdg-selection-width: 2px;
+    --rdg-selection-color: hsl(207, 75%, 66%);
+    --rdg-font-size: 14px;
+    --rdg-cell-frozen-box-shadow: 2px 0 5px -2px rgba(136, 136, 136, 0.3);
+    --rdg-border-width: 1px;
+    --rdg-summary-border-width: calc(var(--rdg-border-width) * 2);
+    --rdg-color: light-dark(#000, #ddd);
+    --rdg-border-color: light-dark(#ddd, #444);
+    --rdg-summary-border-color: light-dark(#aaa, #555);
+    --rdg-background-color: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 13%));
+    --rdg-header-background-color: light-dark(hsl(0deg 0% 97.5%), hsl(0deg 0% 10.5%));
+    --rdg-header-draggable-background-color: light-dark(hsl(0deg 0% 90.5%), hsl(0deg 0% 17.5%));
+    --rdg-row-hover-background-color: light-dark(hsl(0deg 0% 96%), hsl(0deg 0% 9%));
+    --rdg-row-selected-background-color: light-dark(hsl(207deg 76% 92%), hsl(207deg 76% 42%));
+    --rdg-row-selected-hover-background-color: light-dark(hsl(207deg 76% 88%), hsl(207deg 76% 38%));
+    --rdg-checkbox-focus-color: hsl(207deg 100% 69%);
+
+    &.rdg-dark {
+      --rdg-color-scheme: dark;
+    }
+
+    &.rdg-light {
+      --rdg-color-scheme: light;
+    }
+
+    color-scheme: var(--rdg-color-scheme, light dark);
+
+    &:dir(rtl) {
+      --rdg-cell-frozen-box-shadow: -2px 0 5px -2px rgba(136, 136, 136, 0.3);
+    }
+
+    display: grid;
+
+    accent-color: light-dark(hsl(207deg 100% 29%), hsl(207deg 100% 79%));
+
+    contain: content;
+    content-visibility: auto;
+    block-size: 350px;
+    border: 1px solid var(--rdg-border-color);
+    box-sizing: border-box;
+    overflow: auto;
+    background-color: var(--rdg-background-color);
+    color: var(--rdg-color);
+    font-size: var(--rdg-font-size);
+
+    &::before {
+      content: '';
+      grid-column: 1/-1;
+      grid-row: 1/-1;
+    }
+
+    > :nth-last-child(1 of .rdg-top-summary-row) {
+      > .rdg-7-0-0-beta-58-85c48527 {
+        border-block-end: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);
+      }
+    }
+
+    > :nth-child(1 of .rdg-bottom-summary-row) {
+      > .rdg-7-0-0-beta-58-85c48527 {
+        border-block-start: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);
+      }
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-e9b0e1c9 {
+  @layer rdg.Root {
+    user-select: none;
+
+    & .rdg-7-0-0-beta-58-3c083f1b {
+      cursor: move;
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-dbb8b3c5 {
+  @layer rdg.FocusSink {
+    grid-column: 1/-1;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.rdg-7-0-0-beta-58-e9f55541 {
+  @layer rdg.FocusSink {
+    z-index: 3;
+  }
+}
+.rdg-7-0-0-beta-58-0b90c82c {
+  @layer rdg.SummaryRow {
+    > .rdg-7-0-0-beta-58-85c48527 {
+      position: sticky;
+    }
+  }
+}
+
+.rdg-7-0-0-beta-58-d0520eab {
+  @layer rdg.SummaryRow {
+    > .rdg-7-0-0-beta-58-85c48527 {
+      z-index: 2;
+    }
+
+    > .rdg-7-0-0-beta-58-17a9a6d4 {
+      z-index: 3;
+    }
+  }
+}
+.rdg-7-0-0-beta-58-d907aa87 {
+  @layer rdg.SummaryCell {
+    inset-block-start: var(--rdg-summary-row-top);
+    inset-block-end: var(--rdg-summary-row-bottom);
+  }
+}
+.rdg-7-0-0-beta-58-e74a2be3 {
+  @layer rdg.GroupedRow {
+    &:not([aria-selected='true']) {
+      background-color: var(--rdg-header-background-color);
+    }
+
+    > .rdg-7-0-0-beta-58-85c48527:not(:last-child, .rdg-7-0-0-beta-58-17a9a6d4),
+    > :nth-last-child(n + 2 of .rdg-7-0-0-beta-58-17a9a6d4) {
+      border-inline-end: none;
+    }
+  }
+}
+.rdg-7-0-0-beta-58-2f8db206 {
+  @layer rdg.TextEditor {
+    appearance: none;
+
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: 100%;
+    padding-block: 0;
+    padding-inline: 6px;
+    border: 2px solid #ccc;
+    vertical-align: top;
+    color: var(--rdg-color);
+    background-color: var(--rdg-background-color);
+
+    font-family: inherit;
+    font-size: var(--rdg-font-size);
+
+    &:focus {
+      border-color: var(--rdg-selection-color);
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #999;
+      opacity: 1;
+    }
+  }
+}
+
+/* ==========================================================================
+   RSI overrides — Bootstrap 5 integration
+   ========================================================================== */
+
+/* Cohesive styling for react-data-grid alongside Bootstrap 5. */
+.rsi-modal-content {
+  --rsi-error: var(--bs-danger);
+  --rsi-warning: var(--bs-warning);
+  --rsi-info: var(--bs-info);
+}
+
+.rsi-dropzone {
+  border-style: dashed !important;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.rsi-grid-wrapper .rdg {
+  block-size: 100%;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  --rdg-border-color: var(--bs-border-color-translucent);
+  --rdg-color: var(--bs-body-color);
+  --rdg-background-color: var(--bs-body-bg);
+  --rdg-header-background-color: var(--bs-tertiary-bg);
+  --rdg-row-hover-background-color: var(--bs-secondary-bg);
+  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);
+  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);
+  --rdg-selection-color: var(--bs-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+
+.rsi-cell-error {
+  background-color: var(--bs-danger-bg-subtle);
+  color: var(--bs-danger-text-emphasis);
+  padding: 0 4px;
+  border-radius: 2px;
+  cursor: default;
+}
+
+.rsi-tooltip-fixed {
+  pointer-events: none;
+}
+
+.rsi-tooltip-inner {
+  background-color: #0a2540;
+  color: #ffffff;
+  font-size: 0.8125rem;
+  max-width: 320px;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.rsi-tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #0a2540;
+  margin: 0 auto;
+}
+
+.rsi-cell-warning {
+  background-color: var(--bs-warning-bg-subtle);
+  color: var(--bs-warning-text-emphasis);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.rsi-cell-info {
+  background-color: var(--bs-info-bg-subtle);
+  color: var(--bs-info-text-emphasis);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.rsi-cell-edit {
+  height: 100%;
+  border-radius: 0;
+}
+
+.rsi-stepper-row {
+  gap: 1px;
+  background-color: transparent;
+}
+
+.rsi-stepper-item {
+  min-width: 0;
+  padding-right: 1rem;
+}
+
+.rsi-stepper-item:last-child {
+  padding-right: 0;
+}
+
+.rsi-stepper-bar {
+  height: 4px;
+  background-color: var(--bs-border-color);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.rsi-stepper-done .rsi-stepper-bar,
+.rsi-stepper-active .rsi-stepper-bar {
+  background-color: var(--bs-primary);
+}
+
+.rsi-stepper-label {
+  color: var(--bs-secondary-color);
+  font-weight: 500;
+}
+
+.rsi-stepper-active .rsi-stepper-label {
+  color: var(--bs-body-color);
+  font-weight: 600;
+}
+
+.rsi-stepper-num {
+  color: inherit;
+}
+
+.rsi-stepper-active .rsi-stepper-num {
+  color: #1b9aa9;
+}
+
+/* Primary action buttons (Next / Submit / Select file) match the host app's .button-action. */
+.rsi-inline .btn-primary,
+.rsi-modal-content .btn-primary {
+  color: #1b9aa9;
+  background-color: #ffffff;
+  border-color: #dfeff3;
+}
+.rsi-inline .btn-primary:hover,
+.rsi-modal-content .btn-primary:hover,
+.rsi-inline .btn-primary:focus,
+.rsi-modal-content .btn-primary:focus {
+  color: #2696a6;
+  background-color: #f2fafb;
+  border-color: #d1ebee;
+}
+.rsi-inline .btn-primary:active,
+.rsi-modal-content .btn-primary:active,
+.rsi-inline .btn-primary:disabled,
+.rsi-modal-content .btn-primary:disabled {
+  color: #1b9aa9;
+  background-color: #f2fafb;
+  border-color: #d1ebee;
+}
+.rsi-inline .btn-primary:focus-visible,
+.rsi-modal-content .btn-primary:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);
+}
+
+/* Back / Cancel buttons match the host app's .button-dismiss. */
+.rsi-inline .btn-outline-secondary,
+.rsi-modal-content .btn-outline-secondary {
+  color: #858c9c;
+  background-color: #ffffff;
+  border-color: #e7e7ec;
+}
+.rsi-inline .btn-outline-secondary:hover,
+.rsi-modal-content .btn-outline-secondary:hover,
+.rsi-inline .btn-outline-secondary:focus,
+.rsi-modal-content .btn-outline-secondary:focus {
+  color: #0a2540;
+  background-color: #f8f8f8;
+  border-color: #cfcfd7;
+}
+.rsi-inline .btn-outline-secondary:active,
+.rsi-modal-content .btn-outline-secondary:active,
+.rsi-inline .btn-outline-secondary:disabled,
+.rsi-modal-content .btn-outline-secondary:disabled {
+  color: #858c9c;
+  background-color: #f8f8f8;
+  border-color: #cfcfd7;
+}
+.rsi-inline .btn-outline-secondary:focus-visible,
+.rsi-modal-content .btn-outline-secondary:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);
+}
+
+.rsi-match-grid > * {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.rsi-match-grid > *:last-child,
+.rsi-match-grid .rsi-match-col-header:last-child {
+  border-right: 0;
+}
+
+.rsi-match-section-label {
+  position: sticky;
+  left: 0;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  width: max-content;
+  min-width: 100%;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.rsi-match-section-divider {
+  border-top: 1px solid var(--bs-border-color);
+}
+
+.rsi-status-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--bs-border-color);
+  flex-shrink: 0;
+}
+
+.rsi-status-dot.rsi-status-matched {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+.rsi-status-dot.rsi-status-matched-required {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+.rsi-status-dot.rsi-status-ignored {
+  background-color: transparent;
+  border-color: var(--bs-secondary-border-subtle);
+}
+
+.rsi-ignore-btn {
+  border: 1px solid var(--bs-border-color);
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-secondary-color);
+  font-size: 14px;
+}
+.rsi-ignore-btn:hover {
+  background-color: var(--bs-tertiary-bg);
+}

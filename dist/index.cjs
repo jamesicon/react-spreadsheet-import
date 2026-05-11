@@ -1,3 +1,43 @@
+"use strict";
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/index.ts
+var index_exports = {};
+__export(index_exports, {
+  ReactSpreadsheetImport: () => ReactSpreadsheetImport,
+  autoMatchColumns: () => autoMatchColumns,
+  defaultTranslations: () => defaultTranslations,
+  rowHasErrors: () => rowHasErrors,
+  validateRows: () => validateRows
+});
+module.exports = __toCommonJS(index_exports);
+
 // #style-inject:#style-inject
 function styleInject(css, { insertAt } = {}) {
   if (!css || typeof document === "undefined") return;
@@ -24,11 +64,11 @@ function styleInject(css, { insertAt } = {}) {
 styleInject('@layer rdg {\n  @layer Defaults, FocusSink, CheckboxInput, CheckboxIcon, CheckboxLabel, Cell, HeaderCell, SummaryCell, EditCell, Row, HeaderRow, SummaryRow, GroupedRow, Root;\n}\n.rdg-7-0-0-beta-58-fa71d63e {\n  @layer rdg.MeasuringCell {\n    contain: strict;\n    grid-row: 1;\n    visibility: hidden;\n  }\n}\n.rdg-7-0-0-beta-58-85c48527 {\n  @layer rdg.Cell {\n    position: relative;\n    padding-block: 0;\n    padding-inline: 8px;\n    border-inline-end: var(--rdg-border-width) solid var(--rdg-border-color);\n    border-block-end: var(--rdg-border-width) solid var(--rdg-border-color);\n    grid-row-start: var(--rdg-grid-row-start);\n    align-content: center;\n    background-color: inherit;\n    white-space: nowrap;\n    overflow: clip;\n    text-overflow: ellipsis;\n    outline: none;\n    &[aria-selected=true] {\n      outline: var(--rdg-selection-width) solid var(--rdg-selection-color);\n      outline-offset: calc(var(--rdg-selection-width) * -1);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-17a9a6d4 {\n  @layer rdg.Cell {\n    position: sticky;\n    z-index: 1;\n    &:nth-last-child(1 of &) {\n      box-shadow: var(--rdg-cell-frozen-box-shadow);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-bfba19bc {\n  @layer rdg.DragHandle {\n    --rdg-drag-handle-size: 8px;\n    z-index: 0;\n    cursor: move;\n    inline-size: var(--rdg-drag-handle-size);\n    block-size: var(--rdg-drag-handle-size);\n    background-color: var(--rdg-selection-color);\n    place-self: end;\n    &:hover {\n      --rdg-drag-handle-size: 16px;\n      border: 2px solid var(--rdg-selection-color);\n      background-color: var(--rdg-background-color);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-7abddb3e {\n  @layer rdg.DragHandle {\n    z-index: 1;\n    position: sticky;\n  }\n}\n.rdg-7-0-0-beta-58-3b807ead {\n  @layer rdg.CheckboxInput {\n    display: block;\n    margin: auto;\n    inline-size: 20px;\n    block-size: 20px;\n    &:focus-visible {\n      outline: 2px solid var(--rdg-checkbox-focus-color);\n      outline-offset: -3px;\n    }\n    &:enabled {\n      cursor: pointer;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-07919382 {\n  @layer rdg.GroupCellContent {\n    outline: none;\n  }\n}\n.rdg-7-0-0-beta-58-02a50147 {\n  @layer rdg.GroupCellCaret {\n    margin-inline-start: 4px;\n    stroke: currentColor;\n    stroke-width: 1.5px;\n    fill: transparent;\n    vertical-align: middle;\n    > path {\n      transition: d 0.1s;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-56a248e4 {\n  @layer rdg.SortableHeaderCell {\n    display: flex;\n  }\n}\n.rdg-7-0-0-beta-58-7fad8c83 {\n  @layer rdg.SortableHeaderCellName {\n    flex-grow: 1;\n    overflow: clip;\n    text-overflow: ellipsis;\n  }\n}\n.rdg-7-0-0-beta-58-35ccb4c8 {\n  @layer rdg.Cell {\n    background-color: #ccccff;\n  }\n}\n.rdg-7-0-0-beta-58-46f9ea88 {\n  @layer rdg.EditCell {\n    padding: 0;\n  }\n}\n.rdg-7-0-0-beta-58-0dbd5994 {\n  @layer rdg.HeaderRow {\n    display: contents;\n    background-color: var(--rdg-header-background-color);\n    font-weight: bold;\n    & > .rdg-7-0-0-beta-58-85c48527 {\n      z-index: 2;\n      position: sticky;\n    }\n    & > .rdg-7-0-0-beta-58-17a9a6d4 {\n      z-index: 3;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-2a7e240d {\n  @layer rdg.HeaderCell {\n    cursor: pointer;\n  }\n}\n.rdg-7-0-0-beta-58-1893dc0f {\n  @layer rdg.HeaderCell {\n    touch-action: none;\n  }\n}\n.rdg-7-0-0-beta-58-4e60db91 {\n  @layer rdg.HeaderCell {\n    cursor: col-resize;\n    position: absolute;\n    inset-block-start: 0;\n    inset-inline-end: 0;\n    inset-block-end: 0;\n    inline-size: 10px;\n  }\n}\n.rdg-7-0-0-beta-58-3e1a4ad4 {\n  @layer rdg.HeaderCell {\n    background-color: var(--rdg-header-draggable-background-color);\n  }\n}\n.rdg-7-0-0-beta-58-51abd8b8 {\n  @layer rdg.HeaderCell {\n    background-color: var(--rdg-header-draggable-background-color);\n  }\n}\n.rdg-7-0-0-beta-58-c8d7aa64 {\n  @layer rdg.HeaderCell {\n    border-radius: 4px;\n    width: fit-content;\n    outline: 2px solid hsl(207, 100%, 50%);\n    outline-offset: -2px;\n  }\n}\n.rdg-7-0-0-beta-58-3c083f1b {\n  @layer rdg.Row {\n    display: contents;\n    background-color: var(--rdg-background-color);\n    &:hover {\n      background-color: var(--rdg-row-hover-background-color);\n    }\n    &[aria-selected=true] {\n      background-color: var(--rdg-row-selected-background-color);\n      &:hover {\n        background-color: var(--rdg-row-selected-hover-background-color);\n      }\n    }\n  }\n}\n.rdg-7-0-0-beta-58-3fe773c3 {\n  @layer rdg.FocusSink {\n    outline: 2px solid var(--rdg-selection-color);\n    outline-offset: -2px;\n  }\n}\n.rdg-7-0-0-beta-58-97ce3fde {\n  @layer rdg.FocusSink {\n    &::before {\n      content: "";\n      display: inline-block;\n      block-size: 100%;\n      position: sticky;\n      inset-inline-start: 0;\n      border-inline-start: 2px solid var(--rdg-selection-color);\n    }\n  }\n}\n.rdg-7-0-0-beta-58-3d5115f3 {\n  @layer rdg.SortIcon {\n    fill: currentColor;\n    > path {\n      transition: d 0.1s;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-ccd2e5d9 {\n  @layer rdg.Defaults {\n    *,\n    *::before,\n    *::after {\n      box-sizing: inherit;\n    }\n  }\n  @layer rdg.Root {\n    --rdg-selection-width: 2px;\n    --rdg-selection-color: hsl(207, 75%, 66%);\n    --rdg-font-size: 14px;\n    --rdg-cell-frozen-box-shadow: 2px 0 5px -2px rgba(136, 136, 136, 0.3);\n    --rdg-border-width: 1px;\n    --rdg-summary-border-width: calc(var(--rdg-border-width) * 2);\n    --rdg-color: light-dark(#000, #ddd);\n    --rdg-border-color: light-dark(#ddd, #444);\n    --rdg-summary-border-color: light-dark(#aaa, #555);\n    --rdg-background-color: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 13%));\n    --rdg-header-background-color: light-dark(hsl(0deg 0% 97.5%), hsl(0deg 0% 10.5%));\n    --rdg-header-draggable-background-color: light-dark(hsl(0deg 0% 90.5%), hsl(0deg 0% 17.5%));\n    --rdg-row-hover-background-color: light-dark(hsl(0deg 0% 96%), hsl(0deg 0% 9%));\n    --rdg-row-selected-background-color: light-dark(hsl(207deg 76% 92%), hsl(207deg 76% 42%));\n    --rdg-row-selected-hover-background-color: light-dark(hsl(207deg 76% 88%), hsl(207deg 76% 38%));\n    --rdg-checkbox-focus-color: hsl(207deg 100% 69%);\n    &.rdg-dark {\n      --rdg-color-scheme: dark;\n    }\n    &.rdg-light {\n      --rdg-color-scheme: light;\n    }\n    color-scheme: var(--rdg-color-scheme, light dark);\n    &:dir(rtl) {\n      --rdg-cell-frozen-box-shadow: -2px 0 5px -2px rgba(136, 136, 136, 0.3);\n    }\n    display: grid;\n    accent-color: light-dark(hsl(207deg 100% 29%), hsl(207deg 100% 79%));\n    contain: content;\n    content-visibility: auto;\n    block-size: 350px;\n    border: 1px solid var(--rdg-border-color);\n    box-sizing: border-box;\n    overflow: auto;\n    background-color: var(--rdg-background-color);\n    color: var(--rdg-color);\n    font-size: var(--rdg-font-size);\n    &::before {\n      content: "";\n      grid-column: 1/-1;\n      grid-row: 1/-1;\n    }\n    > :nth-last-child(1 of .rdg-top-summary-row) {\n      > .rdg-7-0-0-beta-58-85c48527 {\n        border-block-end: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);\n      }\n    }\n    > :nth-child(1 of .rdg-bottom-summary-row) {\n      > .rdg-7-0-0-beta-58-85c48527 {\n        border-block-start: var(--rdg-summary-border-width) solid var(--rdg-summary-border-color);\n      }\n    }\n  }\n}\n.rdg-7-0-0-beta-58-e9b0e1c9 {\n  @layer rdg.Root {\n    user-select: none;\n    & .rdg-7-0-0-beta-58-3c083f1b {\n      cursor: move;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-dbb8b3c5 {\n  @layer rdg.FocusSink {\n    grid-column: 1/-1;\n    pointer-events: none;\n    z-index: 1;\n  }\n}\n.rdg-7-0-0-beta-58-e9f55541 {\n  @layer rdg.FocusSink {\n    z-index: 3;\n  }\n}\n.rdg-7-0-0-beta-58-0b90c82c {\n  @layer rdg.SummaryRow {\n    > .rdg-7-0-0-beta-58-85c48527 {\n      position: sticky;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-d0520eab {\n  @layer rdg.SummaryRow {\n    > .rdg-7-0-0-beta-58-85c48527 {\n      z-index: 2;\n    }\n    > .rdg-7-0-0-beta-58-17a9a6d4 {\n      z-index: 3;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-d907aa87 {\n  @layer rdg.SummaryCell {\n    inset-block-start: var(--rdg-summary-row-top);\n    inset-block-end: var(--rdg-summary-row-bottom);\n  }\n}\n.rdg-7-0-0-beta-58-e74a2be3 {\n  @layer rdg.GroupedRow {\n    &:not([aria-selected=true]) {\n      background-color: var(--rdg-header-background-color);\n    }\n    > .rdg-7-0-0-beta-58-85c48527:not(:last-child, .rdg-7-0-0-beta-58-17a9a6d4),\n    > :nth-last-child(n+2 of .rdg-7-0-0-beta-58-17a9a6d4) {\n      border-inline-end: none;\n    }\n  }\n}\n.rdg-7-0-0-beta-58-2f8db206 {\n  @layer rdg.TextEditor {\n    appearance: none;\n    box-sizing: border-box;\n    inline-size: 100%;\n    block-size: 100%;\n    padding-block: 0;\n    padding-inline: 6px;\n    border: 2px solid #ccc;\n    vertical-align: top;\n    color: var(--rdg-color);\n    background-color: var(--rdg-background-color);\n    font-family: inherit;\n    font-size: var(--rdg-font-size);\n    &:focus {\n      border-color: var(--rdg-selection-color);\n      outline: none;\n    }\n    &::placeholder {\n      color: #999;\n      opacity: 1;\n    }\n  }\n}\n.rsi-modal-content {\n  --rsi-error: var(--bs-danger);\n  --rsi-warning: var(--bs-warning);\n  --rsi-info: var(--bs-info);\n}\n.rsi-dropzone {\n  border-style: dashed !important;\n  transition: background-color 120ms ease, border-color 120ms ease;\n}\n.rsi-grid-wrapper .rdg {\n  block-size: 100%;\n  border: 1px solid var(--bs-border-color);\n  border-radius: var(--bs-border-radius);\n  --rdg-border-color: var(--bs-border-color-translucent);\n  --rdg-color: var(--bs-body-color);\n  --rdg-background-color: var(--bs-body-bg);\n  --rdg-header-background-color: var(--bs-tertiary-bg);\n  --rdg-row-hover-background-color: var(--bs-secondary-bg);\n  --rdg-row-selected-background-color: var(--bs-primary-bg-subtle);\n  --rdg-row-selected-hover-background-color: var(--bs-primary-bg-subtle);\n  --rdg-selection-color: var(--bs-primary);\n  font-family: inherit;\n  font-size: 0.875rem;\n}\n.rsi-cell-error {\n  background-color: var(--bs-danger-bg-subtle);\n  color: var(--bs-danger-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n  cursor: default;\n}\n.rsi-tooltip-fixed {\n  pointer-events: none;\n}\n.rsi-tooltip-inner {\n  background-color: #0a2540;\n  color: #ffffff;\n  font-size: 0.8125rem;\n  max-width: 320px;\n  text-align: left;\n  padding: 6px 10px;\n  border-radius: 4px;\n}\n.rsi-tooltip-arrow {\n  width: 0;\n  height: 0;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-top: 6px solid #0a2540;\n  margin: 0 auto;\n}\n.rsi-cell-warning {\n  background-color: var(--bs-warning-bg-subtle);\n  color: var(--bs-warning-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-info {\n  background-color: var(--bs-info-bg-subtle);\n  color: var(--bs-info-text-emphasis);\n  padding: 0 4px;\n  border-radius: 2px;\n}\n.rsi-cell-edit {\n  height: 100%;\n  border-radius: 0;\n}\n.rsi-stepper-row {\n  gap: 1px;\n  background-color: transparent;\n}\n.rsi-stepper-item {\n  min-width: 0;\n  padding-right: 1rem;\n}\n.rsi-stepper-item:last-child {\n  padding-right: 0;\n}\n.rsi-stepper-bar {\n  height: 4px;\n  background-color: var(--bs-border-color);\n  border-radius: 2px;\n  margin-bottom: 0.5rem;\n}\n.rsi-stepper-done .rsi-stepper-bar,\n.rsi-stepper-active .rsi-stepper-bar {\n  background-color: var(--bs-primary);\n}\n.rsi-stepper-label {\n  color: var(--bs-secondary-color);\n  font-weight: 500;\n}\n.rsi-stepper-active .rsi-stepper-label {\n  color: var(--bs-body-color);\n  font-weight: 600;\n}\n.rsi-stepper-num {\n  color: inherit;\n}\n.rsi-stepper-active .rsi-stepper-num {\n  color: #1b9aa9;\n}\n.rsi-inline .btn-primary,\n.rsi-modal-content .btn-primary {\n  color: #1b9aa9;\n  background-color: #ffffff;\n  border-color: #dfeff3;\n}\n.rsi-inline .btn-primary:hover,\n.rsi-modal-content .btn-primary:hover,\n.rsi-inline .btn-primary:focus,\n.rsi-modal-content .btn-primary:focus {\n  color: #2696a6;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:active,\n.rsi-modal-content .btn-primary:active,\n.rsi-inline .btn-primary:disabled,\n.rsi-modal-content .btn-primary:disabled {\n  color: #1b9aa9;\n  background-color: #f2fafb;\n  border-color: #d1ebee;\n}\n.rsi-inline .btn-primary:focus-visible,\n.rsi-modal-content .btn-primary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(27, 154, 169, 0.25);\n}\n.rsi-inline .btn-outline-secondary,\n.rsi-modal-content .btn-outline-secondary {\n  color: #858c9c;\n  background-color: #ffffff;\n  border-color: #e7e7ec;\n}\n.rsi-inline .btn-outline-secondary:hover,\n.rsi-modal-content .btn-outline-secondary:hover,\n.rsi-inline .btn-outline-secondary:focus,\n.rsi-modal-content .btn-outline-secondary:focus {\n  color: #0a2540;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:active,\n.rsi-modal-content .btn-outline-secondary:active,\n.rsi-inline .btn-outline-secondary:disabled,\n.rsi-modal-content .btn-outline-secondary:disabled {\n  color: #858c9c;\n  background-color: #f8f8f8;\n  border-color: #cfcfd7;\n}\n.rsi-inline .btn-outline-secondary:focus-visible,\n.rsi-modal-content .btn-outline-secondary:focus-visible {\n  box-shadow: 0 0 0 0.25rem rgba(133, 140, 156, 0.25);\n}\n.rsi-match-grid > * {\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-grid > *:last-child,\n.rsi-match-grid .rsi-match-col-header:last-child {\n  border-right: 0;\n}\n.rsi-match-section-label {\n  position: sticky;\n  left: 0;\n  padding: 0.75rem 1rem;\n  font-weight: 600;\n  background-color: var(--bs-tertiary-bg);\n  color: var(--bs-body-color);\n  width: max-content;\n  min-width: 100%;\n  border-bottom: 1px solid var(--bs-border-color);\n}\n.rsi-match-section-divider {\n  border-top: 1px solid var(--bs-border-color);\n}\n.rsi-status-dot {\n  display: inline-block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  border: 2px solid var(--bs-border-color);\n  flex-shrink: 0;\n}\n.rsi-status-dot.rsi-status-matched {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-matched-required {\n  background-color: var(--bs-success);\n  border-color: var(--bs-success);\n}\n.rsi-status-dot.rsi-status-ignored {\n  background-color: transparent;\n  border-color: var(--bs-secondary-border-subtle);\n}\n.rsi-ignore-btn {\n  border: 1px solid var(--bs-border-color);\n  background-color: var(--bs-secondary-bg);\n  color: var(--bs-secondary-color);\n  font-size: 14px;\n}\n.rsi-ignore-btn:hover {\n  background-color: var(--bs-tertiary-bg);\n}\n');
 
 // src/ReactSpreadsheetImport.tsx
-import { useEffect as useEffect3, useMemo as useMemo4, useState as useState7 } from "react";
-import { Alert as Alert4, Button as Button6, Modal as Modal3 } from "react-bootstrap";
+var import_react7 = require("react");
+var import_react_bootstrap6 = require("react-bootstrap");
 
 // src/components/Stepper.tsx
-import { jsx, jsxs } from "react/jsx-runtime";
+var import_jsx_runtime = require("react/jsx-runtime");
 var ORDER = ["upload", "selectSheet", "selectHeader", "matchColumns", "validate"];
 var POSITIONS = [
   { stepNames: ["upload", "selectSheet"], key: "upload" },
@@ -38,14 +78,14 @@ var POSITIONS = [
 ];
 function Stepper({ current, translations }) {
   const currentOrder = ORDER.indexOf(current);
-  return /* @__PURE__ */ jsx("nav", { "aria-label": "Import progress", className: "rsi-stepper", children: /* @__PURE__ */ jsx("div", { className: "rsi-stepper-row d-flex", children: POSITIONS.map((pos, idx) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { "aria-label": "Import progress", className: "rsi-stepper", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "rsi-stepper-row d-flex", children: POSITIONS.map((pos, idx) => {
     const positionMaxOrder = Math.max(...pos.stepNames.map((s) => ORDER.indexOf(s)));
     const positionMinOrder = Math.min(...pos.stepNames.map((s) => ORDER.indexOf(s)));
     const status = currentOrder > positionMaxOrder ? "done" : currentOrder >= positionMinOrder ? "active" : "todo";
-    return /* @__PURE__ */ jsxs("div", { className: `rsi-stepper-item flex-fill rsi-stepper-${status}`, children: [
-      /* @__PURE__ */ jsx("div", { className: "rsi-stepper-bar", "aria-hidden": "true" }),
-      /* @__PURE__ */ jsxs("div", { className: "rsi-stepper-label small", children: [
-        /* @__PURE__ */ jsxs("span", { className: "rsi-stepper-num", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: `rsi-stepper-item flex-fill rsi-stepper-${status}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "rsi-stepper-bar", "aria-hidden": "true" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "rsi-stepper-label small", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: "rsi-stepper-num", children: [
           idx + 1,
           "."
         ] }),
@@ -57,11 +97,11 @@ function Stepper({ current, translations }) {
 }
 
 // src/steps/MatchColumnsStep.tsx
-import { useEffect, useMemo, useState } from "react";
-import { Alert, Button, Form, Modal } from "react-bootstrap";
+var import_react = require("react");
+var import_react_bootstrap = require("react-bootstrap");
 
 // src/utils/autoMatch.ts
-import Fuse from "fuse.js";
+var import_fuse = __toESM(require("fuse.js"), 1);
 var NORMALIZE = /[\s_\-./]+/g;
 function normalize(s) {
   return s.toLowerCase().replace(NORMALIZE, "").trim();
@@ -74,7 +114,7 @@ function autoMatchColumns(headers, fields, distance = 0.25) {
       entries.push({ fieldKey: f.key, candidate: normalize(c) });
     }
   }
-  const fuse = new Fuse(entries, {
+  const fuse = new import_fuse.default(entries, {
     keys: ["candidate"],
     threshold: distance,
     ignoreLocation: true,
@@ -110,7 +150,7 @@ function autoMatchColumns(headers, fields, distance = 0.25) {
 }
 
 // src/steps/MatchColumnsStep.tsx
-import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+var import_jsx_runtime2 = require("react/jsx-runtime");
 var IGNORE = "__ignore__";
 var SAMPLE_ROWS = 3;
 var COLUMN_MIN_WIDTH = 180;
@@ -125,13 +165,13 @@ function MatchColumnsStep({
   onNext,
   showTitle = true
 }) {
-  const initial = useMemo(
+  const initial = (0, import_react.useMemo)(
     () => autoMatchColumns(headers, fields, autoMapDistance),
     [headers, fields, autoMapDistance]
   );
-  const [mapping, setMapping] = useState(initial);
-  const [showWarn, setShowWarn] = useState(false);
-  useEffect(() => setMapping(initial), [initial]);
+  const [mapping, setMapping] = (0, import_react.useState)(initial);
+  const [showWarn, setShowWarn] = (0, import_react.useState)(false);
+  (0, import_react.useEffect)(() => setMapping(initial), [initial]);
   const sample = rows.slice(0, SAMPLE_ROWS);
   function setColumn(idx, value) {
     setMapping((prev) => {
@@ -157,20 +197,20 @@ function MatchColumnsStep({
     onNext(mapping);
   }
   const gridCols = `repeat(${headers.length}, minmax(${COLUMN_MIN_WIDTH}px, 1fr))`;
-  return /* @__PURE__ */ jsxs2("div", { className: "d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx2("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsx2("div", { className: "rsi-match-card border rounded overflow-auto", children: /* @__PURE__ */ jsxs2("div", { className: "rsi-match-grid", style: { display: "grid", gridTemplateColumns: gridCols }, children: [
-      /* @__PURE__ */ jsx2("div", { className: "rsi-match-section-label", style: { gridColumn: "1 / -1" }, children: translations.userTableTitle }),
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "rsi-match-card border rounded overflow-auto", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "rsi-match-grid", style: { display: "grid", gridTemplateColumns: gridCols }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "rsi-match-section-label", style: { gridColumn: "1 / -1" }, children: translations.userTableTitle }),
       headers.map((h, idx) => {
         const isIgnored = mapping[idx] === void 0;
-        return /* @__PURE__ */ jsx2(
+        return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "div",
           {
             className: `rsi-match-col-header p-3 border-end ${isIgnored ? "opacity-50" : ""}`,
-            children: /* @__PURE__ */ jsxs2("div", { className: "d-flex justify-content-between align-items-start gap-2", children: [
-              /* @__PURE__ */ jsx2("strong", { className: "text-truncate", title: h, children: h || `(column ${idx + 1})` }),
-              /* @__PURE__ */ jsx2(
-                Button,
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "d-flex justify-content-between align-items-start gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("strong", { className: "text-truncate", title: h, children: h || `(column ${idx + 1})` }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+                import_react_bootstrap.Button,
                 {
                   variant: "light",
                   size: "sm",
@@ -190,7 +230,7 @@ function MatchColumnsStep({
       sample.map(
         (row2, ri) => headers.map((_, ci) => {
           const isIgnored = mapping[ci] === void 0;
-          return /* @__PURE__ */ jsx2(
+          return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "div",
             {
               className: `rsi-match-col-sample px-3 py-2 border-end small text-muted text-truncate ${isIgnored ? "opacity-50" : ""}`,
@@ -202,21 +242,21 @@ function MatchColumnsStep({
           );
         })
       ),
-      /* @__PURE__ */ jsx2("div", { className: "rsi-match-section-label rsi-match-section-divider", style: { gridColumn: "1 / -1" }, children: translations.templateTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "rsi-match-section-label rsi-match-section-divider", style: { gridColumn: "1 / -1" }, children: translations.templateTitle }),
       headers.map((h, idx) => {
         const value = mapping[idx];
         const status = statusFor(value, fields);
-        return /* @__PURE__ */ jsxs2("div", { className: "p-3 border-end d-flex align-items-center gap-2", children: [
-          /* @__PURE__ */ jsxs2(
-            Form.Select,
+        return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "p-3 border-end d-flex align-items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+            import_react_bootstrap.Form.Select,
             {
               size: "sm",
               value: value ?? IGNORE,
               onChange: (e) => setColumn(idx, e.target.value),
               "aria-label": `${translations.matchDropdownTitle}: ${h}`,
               children: [
-                /* @__PURE__ */ jsx2("option", { value: IGNORE, children: translations.ignoredColumnText }),
-                fields.map((f) => /* @__PURE__ */ jsxs2(
+                /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("option", { value: IGNORE, children: translations.ignoredColumnText }),
+                fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
                   "option",
                   {
                     value: f.key,
@@ -231,7 +271,7 @@ function MatchColumnsStep({
               ]
             }
           ),
-          /* @__PURE__ */ jsx2(
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
             "span",
             {
               className: `rsi-status-dot ${status.className}`,
@@ -242,23 +282,23 @@ function MatchColumnsStep({
         ] }, `m-${idx}`);
       })
     ] }) }),
-    unmatchedRequired.length > 0 && /* @__PURE__ */ jsxs2(Alert, { variant: "warning", className: "m-0", children: [
+    unmatchedRequired.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_bootstrap.Alert, { variant: "warning", className: "m-0", children: [
       translations.unmatched,
       ":",
       " ",
       unmatchedRequired.map((k) => fields.find((f) => f.key === k)?.label ?? k).join(", ")
     ] }),
-    /* @__PURE__ */ jsxs2("div", { className: "d-flex justify-content-between", children: [
-      /* @__PURE__ */ jsx2(Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx2(Button, { variant: "primary", onClick: handleNext, children: translations.nextButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "d-flex justify-content-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Button, { variant: "primary", onClick: handleNext, children: translations.nextButtonTitle })
     ] }),
-    /* @__PURE__ */ jsxs2(Modal, { show: showWarn, onHide: () => setShowWarn(false), centered: true, children: [
-      /* @__PURE__ */ jsx2(Modal.Header, { closeButton: true, children: /* @__PURE__ */ jsx2(Modal.Title, { children: alertTranslations.headerTitle }) }),
-      /* @__PURE__ */ jsx2(Modal.Body, { children: alertTranslations.bodyText }),
-      /* @__PURE__ */ jsxs2(Modal.Footer, { children: [
-        /* @__PURE__ */ jsx2(Button, { variant: "outline-secondary", onClick: () => setShowWarn(false), children: alertTranslations.cancelButtonTitle }),
-        /* @__PURE__ */ jsx2(
-          Button,
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_bootstrap.Modal, { show: showWarn, onHide: () => setShowWarn(false), centered: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Modal.Title, { children: alertTranslations.headerTitle }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Modal.Body, { children: alertTranslations.bodyText }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react_bootstrap.Modal.Footer, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react_bootstrap.Button, { variant: "outline-secondary", onClick: () => setShowWarn(false), children: alertTranslations.cancelButtonTitle }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+          import_react_bootstrap.Button,
           {
             variant: "primary",
             onClick: () => {
@@ -280,21 +320,21 @@ function statusFor(key, fields) {
 }
 
 // src/steps/SelectHeaderStep.tsx
-import { useState as useState2 } from "react";
-import { Button as Button2, Table } from "react-bootstrap";
-import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
+var import_react2 = require("react");
+var import_react_bootstrap2 = require("react-bootstrap");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 function SelectHeaderStep({ rows, translations, onBack, onNext, showTitle = true }) {
-  const [selected, setSelected] = useState2(0);
-  return /* @__PURE__ */ jsxs3("div", { className: "d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx3("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsx3("div", { className: "border rounded overflow-auto", style: { maxHeight: 320 }, children: /* @__PURE__ */ jsx3(Table, { hover: true, size: "sm", className: "m-0 align-middle", children: /* @__PURE__ */ jsx3("tbody", { children: rows.slice(0, 25).map((row2, idx) => /* @__PURE__ */ jsxs3(
+  const [selected, setSelected] = (0, import_react2.useState)(0);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "border rounded overflow-auto", style: { maxHeight: 320 }, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react_bootstrap2.Table, { hover: true, size: "sm", className: "m-0 align-middle", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("tbody", { children: rows.slice(0, 25).map((row2, idx) => /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
       "tr",
       {
         onClick: () => setSelected(idx),
         className: selected === idx ? "table-primary" : void 0,
         style: { cursor: "pointer" },
         children: [
-          /* @__PURE__ */ jsx3("td", { style: { width: 36 }, children: /* @__PURE__ */ jsx3(
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("td", { style: { width: 36 }, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
             "input",
             {
               type: "radio",
@@ -305,28 +345,28 @@ function SelectHeaderStep({ rows, translations, onBack, onNext, showTitle = true
               onClick: (e) => e.stopPropagation()
             }
           ) }),
-          row2.map((cell2, ci) => /* @__PURE__ */ jsx3("td", { className: "small text-nowrap", children: cell2 }, ci))
+          row2.map((cell2, ci) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("td", { className: "small text-nowrap", children: cell2 }, ci))
         ]
       },
       idx
     )) }) }) }),
-    /* @__PURE__ */ jsxs3("div", { className: "d-flex justify-content-between", children: [
-      /* @__PURE__ */ jsx3(Button2, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx3(Button2, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "d-flex justify-content-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react_bootstrap2.Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react_bootstrap2.Button, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
     ] })
   ] });
 }
 
 // src/steps/SelectSheetStep.tsx
-import { useState as useState3 } from "react";
-import { Button as Button3, Form as Form2 } from "react-bootstrap";
-import { jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
+var import_react3 = require("react");
+var import_react_bootstrap3 = require("react-bootstrap");
+var import_jsx_runtime4 = require("react/jsx-runtime");
 function SelectSheetStep({ workbook, translations, onBack, onNext, showTitle = true }) {
-  const [selected, setSelected] = useState3(0);
-  return /* @__PURE__ */ jsxs4("div", { className: "d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx4("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsx4(Form2, { children: workbook.sheets.map((s, i) => /* @__PURE__ */ jsx4(
-      Form2.Check,
+  const [selected, setSelected] = (0, import_react3.useState)(0);
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_bootstrap3.Form, { children: workbook.sheets.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+      import_react_bootstrap3.Form.Check,
       {
         type: "radio",
         id: `rsi-sheet-${i}`,
@@ -337,20 +377,20 @@ function SelectSheetStep({ workbook, translations, onBack, onNext, showTitle = t
       },
       s.name + i
     )) }),
-    /* @__PURE__ */ jsxs4("div", { className: "d-flex justify-content-between mt-2", children: [
-      /* @__PURE__ */ jsx4(Button3, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx4(Button3, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "d-flex justify-content-between mt-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_bootstrap3.Button, { variant: "outline-secondary", onClick: onBack, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react_bootstrap3.Button, { variant: "primary", onClick: () => onNext(selected), children: translations.nextButtonTitle })
     ] })
   ] });
 }
 
 // src/steps/UploadStep.tsx
-import { useCallback, useState as useState4 } from "react";
-import { useDropzone } from "react-dropzone";
-import { Alert as Alert2, Button as Button4, Spinner, Table as Table2 } from "react-bootstrap";
+var import_react4 = require("react");
+var import_react_dropzone = require("react-dropzone");
+var import_react_bootstrap4 = require("react-bootstrap");
 
 // src/utils/parseFile.ts
-import ExcelJS from "exceljs";
+var import_exceljs = __toESM(require("exceljs"), 1);
 var CSV_TYPES = ["text/csv", "application/csv"];
 var CSV_EXT = /\.csv$/i;
 function cellToString(value) {
@@ -391,7 +431,7 @@ async function parseFile(file) {
     }
     return { file, sheets: [{ name: "Sheet1", rows }] };
   }
-  const wb = new ExcelJS.Workbook();
+  const wb = new import_exceljs.default.Workbook();
   await wb.xlsx.load(buffer);
   const sheets = wb.worksheets.map((ws) => ({
     name: ws.name,
@@ -446,16 +486,16 @@ function splitCsv(input) {
 }
 
 // src/steps/UploadStep.tsx
-import { Fragment, jsx as jsx5, jsxs as jsxs5 } from "react/jsx-runtime";
+var import_jsx_runtime5 = require("react/jsx-runtime");
 var ACCEPT = {
   "text/csv": [".csv"],
   "application/vnd.ms-excel": [".xls"],
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"]
 };
 function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHook, showTitle = true }) {
-  const [loading, setLoading] = useState4(false);
-  const [error, setError] = useState4(null);
-  const onDrop = useCallback(
+  const [loading, setLoading] = (0, import_react4.useState)(false);
+  const [error, setError] = (0, import_react4.useState)(null);
+  const onDrop = (0, import_react4.useCallback)(
     async (accepted) => {
       const file = accepted[0];
       if (!file) return;
@@ -476,7 +516,7 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
     },
     [onLoaded, uploadStepHook, translations.dropzone.errorToastDescription]
   );
-  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, open } = (0, import_react_dropzone.useDropzone)({
     onDrop,
     accept: ACCEPT,
     maxSize: maxFileSize,
@@ -484,20 +524,20 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
     noClick: true,
     noKeyboard: true
   });
-  return /* @__PURE__ */ jsxs5("div", { className: "rsi-upload-step d-flex flex-column gap-3", children: [
-    showTitle && /* @__PURE__ */ jsx5("h5", { className: "m-0", children: translations.title }),
-    /* @__PURE__ */ jsxs5("div", { children: [
-      /* @__PURE__ */ jsx5("div", { className: "text-secondary small mb-1", children: translations.manifestTitle }),
-      /* @__PURE__ */ jsx5("div", { className: "text-secondary small mb-2", children: translations.manifestDescription }),
-      /* @__PURE__ */ jsx5("div", { className: "border rounded overflow-auto", style: { maxHeight: 160 }, children: /* @__PURE__ */ jsxs5(Table2, { size: "sm", className: "m-0", children: [
-        /* @__PURE__ */ jsx5("thead", { children: /* @__PURE__ */ jsx5("tr", { children: fields.map((f) => /* @__PURE__ */ jsxs5("th", { className: "text-nowrap small", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "rsi-upload-step d-flex flex-column gap-3", children: [
+    showTitle && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h5", { className: "m-0", children: translations.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-secondary small mb-1", children: translations.manifestTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-secondary small mb-2", children: translations.manifestDescription }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "border rounded overflow-auto", style: { maxHeight: 160 }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_react_bootstrap4.Table, { size: "sm", className: "m-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tr", { children: fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("th", { className: "text-nowrap small", children: [
           f.label,
-          f.required && /* @__PURE__ */ jsx5("span", { className: "text-danger ms-1", children: "*" })
+          f.required && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-danger ms-1", children: "*" })
         ] }, f.key)) }) }),
-        /* @__PURE__ */ jsx5("tbody", { children: /* @__PURE__ */ jsx5("tr", { children: fields.map((f) => /* @__PURE__ */ jsx5("td", { className: "text-nowrap small text-muted", children: f.example ?? "" }, f.key)) }) })
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tbody", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("tr", { children: fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("td", { className: "text-nowrap small text-muted", children: f.example ?? "" }, f.key)) }) })
       ] }) })
     ] }),
-    /* @__PURE__ */ jsxs5(
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
       "div",
       {
         ...getRootProps(),
@@ -505,14 +545,14 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
         style: { minHeight: 180, cursor: "pointer" },
         onClick: open,
         children: [
-          /* @__PURE__ */ jsx5("input", { ...getInputProps() }),
-          loading ? /* @__PURE__ */ jsxs5(Fragment, { children: [
-            /* @__PURE__ */ jsx5(Spinner, { animation: "border", className: "mb-2" }),
-            /* @__PURE__ */ jsx5("div", { children: translations.dropzone.loadingTitle })
-          ] }) : isDragActive ? /* @__PURE__ */ jsx5("div", { children: translations.dropzone.activeDropzoneTitle }) : /* @__PURE__ */ jsxs5(Fragment, { children: [
-            /* @__PURE__ */ jsx5("div", { className: "mb-2", children: translations.dropzone.title }),
-            /* @__PURE__ */ jsx5(
-              Button4,
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("input", { ...getInputProps() }),
+          loading ? /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_bootstrap4.Spinner, { animation: "border", className: "mb-2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: translations.dropzone.loadingTitle })
+          ] }) : isDragActive ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: translations.dropzone.activeDropzoneTitle }) : /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "mb-2", children: translations.dropzone.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+              import_react_bootstrap4.Button,
               {
                 type: "button",
                 variant: "primary",
@@ -527,19 +567,19 @@ function UploadStep({ fields, maxFileSize, translations, onLoaded, uploadStepHoo
         ]
       }
     ),
-    error && /* @__PURE__ */ jsx5(Alert2, { variant: "danger", className: "m-0", children: error })
+    error && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_bootstrap4.Alert, { variant: "danger", className: "m-0", children: error })
   ] });
 }
 
 // src/steps/ValidationStep.tsx
-import { useEffect as useEffect2, useMemo as useMemo3, useRef as useRef2, useState as useState6 } from "react";
-import { createPortal } from "react-dom";
-import { Alert as Alert3, Button as Button5, Form as Form3, Modal as Modal2, Spinner as Spinner2 } from "react-bootstrap";
+var import_react6 = require("react");
+var import_react_dom2 = require("react-dom");
+var import_react_bootstrap5 = require("react-bootstrap");
 
 // node_modules/react-data-grid/lib/index.js
-import { createContext, memo, useCallback as useCallback2, useContext, useEffectEvent, useImperativeHandle, useLayoutEffect, useMemo as useMemo2, useRef, useState as useState5 } from "react";
-import { flushSync } from "react-dom";
-import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
+var import_react5 = require("react");
+var import_react_dom = require("react-dom");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function getColSpan(column, lastFrozenColumnIndex, args) {
   const colSpan = typeof column.colSpan === "function" ? column.colSpan(args) : 1;
   if (Number.isInteger(colSpan) && colSpan > 1 && (!column.frozen || column.idx + colSpan - 1 <= lastFrozenColumnIndex)) return colSpan;
@@ -628,7 +668,7 @@ function getLeftRightKey(direction) {
 }
 var measuringCellClassname = "rdg-7-0-0-beta-58-fa71d63e";
 function renderMeasuringCells(viewportColumns) {
-  return viewportColumns.map(({ key, idx, minWidth, maxWidth }) => /* @__PURE__ */ jsx6("div", {
+  return viewportColumns.map(({ key, idx, minWidth, maxWidth }) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     className: measuringCellClassname,
     style: {
       gridColumnStart: idx + 1,
@@ -825,7 +865,7 @@ function renderCheckbox({ onChange, indeterminate, ...props }) {
   function handleChange(e) {
     onChange(e.target.checked, e.nativeEvent.shiftKey);
   }
-  return /* @__PURE__ */ jsx6("input", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", {
     ref: (el) => {
       if (el) el.indeterminate = indeterminate === true;
     },
@@ -842,15 +882,15 @@ function renderValue(props) {
     return null;
   }
 }
-var DataGridDefaultRenderersContext = createContext(void 0);
+var DataGridDefaultRenderersContext = (0, import_react5.createContext)(void 0);
 function useDefaultRenderers() {
-  return useContext(DataGridDefaultRenderersContext);
+  return (0, import_react5.useContext)(DataGridDefaultRenderersContext);
 }
-var RowSelectionContext = createContext(void 0);
-var RowSelectionChangeContext = createContext(void 0);
+var RowSelectionContext = (0, import_react5.createContext)(void 0);
+var RowSelectionChangeContext = (0, import_react5.createContext)(void 0);
 function useRowSelection() {
-  const rowSelectionContext = useContext(RowSelectionContext);
-  const rowSelectionChangeContext = useContext(RowSelectionChangeContext);
+  const rowSelectionContext = (0, import_react5.useContext)(RowSelectionContext);
+  const rowSelectionChangeContext = (0, import_react5.useContext)(RowSelectionChangeContext);
   if (rowSelectionContext === void 0 || rowSelectionChangeContext === void 0) throw new Error("useRowSelection must be used within renderCell");
   return {
     isRowSelectionDisabled: rowSelectionContext.isRowSelectionDisabled,
@@ -858,11 +898,11 @@ function useRowSelection() {
     onRowSelectionChange: rowSelectionChangeContext
   };
 }
-var HeaderRowSelectionContext = createContext(void 0);
-var HeaderRowSelectionChangeContext = createContext(void 0);
+var HeaderRowSelectionContext = (0, import_react5.createContext)(void 0);
+var HeaderRowSelectionChangeContext = (0, import_react5.createContext)(void 0);
 function useHeaderRowSelection() {
-  const headerRowSelectionContext = useContext(HeaderRowSelectionContext);
-  const headerRowSelectionChangeContext = useContext(HeaderRowSelectionChangeContext);
+  const headerRowSelectionContext = (0, import_react5.useContext)(HeaderRowSelectionContext);
+  const headerRowSelectionChangeContext = (0, import_react5.useContext)(HeaderRowSelectionChangeContext);
   if (headerRowSelectionContext === void 0 || headerRowSelectionChangeContext === void 0) throw new Error("useHeaderRowSelection must be used within renderHeaderCell");
   return {
     isIndeterminate: headerRowSelectionContext.isIndeterminate,
@@ -875,7 +915,7 @@ var headerSortCellClassname = "rdg-7-0-0-beta-58-56a248e4";
 var headerSortNameClassname = `rdg-header-sort-name rdg-7-0-0-beta-58-7fad8c83`;
 function renderHeaderCell({ column, sortDirection, priority }) {
   if (!column.sortable) return column.name;
-  return /* @__PURE__ */ jsx6(SortableHeaderCell, {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SortableHeaderCell, {
     sortDirection,
     priority,
     children: column.name
@@ -883,12 +923,12 @@ function renderHeaderCell({ column, sortDirection, priority }) {
 }
 function SortableHeaderCell({ sortDirection, priority, children }) {
   const renderSortStatus$1 = useDefaultRenderers().renderSortStatus;
-  return /* @__PURE__ */ jsxs6("span", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", {
     className: headerSortCellClassname,
-    children: [/* @__PURE__ */ jsx6("span", {
+    children: [/* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", {
       className: headerSortNameClassname,
       children
-    }), /* @__PURE__ */ jsx6("span", { children: renderSortStatus$1({
+    }), /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: renderSortStatus$1({
       sortDirection,
       priority
     }) })]
@@ -905,7 +945,7 @@ function useCalculatedColumns({ rawColumns, defaultColumnOptions, getColumnWidth
   const defaultSortable = defaultColumnOptions?.sortable ?? false;
   const defaultResizable = defaultColumnOptions?.resizable ?? false;
   const defaultDraggable = defaultColumnOptions?.draggable ?? false;
-  const { columns, colSpanColumns, lastFrozenColumnIndex, headerRowsCount } = useMemo2(() => {
+  const { columns, colSpanColumns, lastFrozenColumnIndex, headerRowsCount } = (0, import_react5.useMemo)(() => {
     let lastFrozenColumnIndex$1 = -1;
     let headerRowsCount$1 = 1;
     const columns$1 = [];
@@ -978,7 +1018,7 @@ function useCalculatedColumns({ rawColumns, defaultColumnOptions, getColumnWidth
     defaultSortable,
     defaultDraggable
   ]);
-  const { templateColumns, layoutCssVars, totalFrozenColumnWidth, columnMetrics } = useMemo2(() => {
+  const { templateColumns, layoutCssVars, totalFrozenColumnWidth, columnMetrics } = (0, import_react5.useMemo)(() => {
     const columnMetrics$1 = /* @__PURE__ */ new Map();
     let left = 0;
     let totalFrozenColumnWidth$1 = 0;
@@ -1014,7 +1054,7 @@ function useCalculatedColumns({ rawColumns, defaultColumnOptions, getColumnWidth
     columns,
     lastFrozenColumnIndex
   ]);
-  const [colOverscanStartIdx, colOverscanEndIdx] = useMemo2(() => {
+  const [colOverscanStartIdx, colOverscanEndIdx] = (0, import_react5.useMemo)(() => {
     if (!enableVirtualization) return [0, columns.length - 1];
     const viewportLeft = scrollLeft + totalFrozenColumnWidth;
     const viewportRight = scrollLeft + viewportWidth;
@@ -1065,9 +1105,9 @@ function updateColumnParent(column, index, level) {
   }
 }
 function useColumnWidths(columns, viewportColumns, templateColumns, gridRef, gridWidth, columnWidths, onColumnWidthsChange, onColumnResize, setColumnResizing) {
-  const [columnToAutoResize, setColumnToAutoResize] = useState5(null);
-  const [columnsToMeasureOnResize, setColumnsToMeasureOnResize] = useState5(null);
-  const [prevGridWidth, setPreviousGridWidth] = useState5(gridWidth);
+  const [columnToAutoResize, setColumnToAutoResize] = (0, import_react5.useState)(null);
+  const [columnsToMeasureOnResize, setColumnsToMeasureOnResize] = (0, import_react5.useState)(null);
+  const [prevGridWidth, setPreviousGridWidth] = (0, import_react5.useState)(gridWidth);
   const columnsCanFlex = columns.length === viewportColumns.length;
   const ignorePreviouslyMeasuredColumnsOnGridWidthChange = columnsCanFlex && gridWidth !== prevGridWidth;
   const newTemplateColumns = [...templateColumns];
@@ -1083,7 +1123,7 @@ function useColumnWidths(columns, viewportColumns, templateColumns, gridRef, gri
     }
   }
   const gridTemplateColumns = newTemplateColumns.join(" ");
-  useLayoutEffect(updateMeasuredAndResizedWidths);
+  (0, import_react5.useLayoutEffect)(updateMeasuredAndResizedWidths);
   function updateMeasuredAndResizedWidths() {
     setPreviousGridWidth(gridWidth);
     if (columnsToMeasure.length === 0) return;
@@ -1115,7 +1155,7 @@ function useColumnWidths(columns, viewportColumns, templateColumns, gridRef, gri
   }
   function handleColumnResize(column, nextWidth) {
     const { key: resizingKey } = column;
-    flushSync(() => {
+    (0, import_react_dom.flushSync)(() => {
       if (columnsCanFlex) {
         const columnsToRemeasure = /* @__PURE__ */ new Set();
         for (const { key, width } of viewportColumns) if (resizingKey !== key && typeof width === "string" && columnWidths.get(key)?.type !== "resized") columnsToRemeasure.add(key);
@@ -1144,11 +1184,11 @@ function measureColumnWidth(gridRef, key) {
   return gridRef.current?.querySelector(selector)?.getBoundingClientRect().width;
 }
 function useGridDimensions() {
-  const gridRef = useRef(null);
-  const [inlineSize, setInlineSize] = useState5(1);
-  const [blockSize, setBlockSize] = useState5(1);
-  const [horizontalScrollbarHeight, setHorizontalScrollbarHeight] = useState5(0);
-  useLayoutEffect(() => {
+  const gridRef = (0, import_react5.useRef)(null);
+  const [inlineSize, setInlineSize] = (0, import_react5.useState)(1);
+  const [blockSize, setBlockSize] = (0, import_react5.useState)(1);
+  const [horizontalScrollbarHeight, setHorizontalScrollbarHeight] = (0, import_react5.useState)(0);
+  (0, import_react5.useLayoutEffect)(() => {
     const { ResizeObserver } = window;
     if (ResizeObserver == null) return;
     const { clientWidth, clientHeight, offsetWidth, offsetHeight } = gridRef.current;
@@ -1162,7 +1202,7 @@ function useGridDimensions() {
     const resizeObserver = new ResizeObserver((entries) => {
       const size = entries[0].contentBoxSize[0];
       const { clientHeight: clientHeight$1, offsetHeight: offsetHeight$1 } = gridRef.current;
-      flushSync(() => {
+      (0, import_react_dom.flushSync)(() => {
         setInlineSize(size.inlineSize);
         setBlockSize(size.blockSize);
         setHorizontalScrollbarHeight(offsetHeight$1 - clientHeight$1);
@@ -1181,17 +1221,17 @@ function useGridDimensions() {
   ];
 }
 function useLatestFunc(fn) {
-  const ref = useRef(fn);
-  useLayoutEffect(() => {
+  const ref = (0, import_react5.useRef)(fn);
+  (0, import_react5.useLayoutEffect)(() => {
     ref.current = fn;
   });
-  const callbackFn = useCallback2((...args) => {
+  const callbackFn = (0, import_react5.useCallback)((...args) => {
     ref.current(...args);
   }, []);
   return fn ? callbackFn : fn;
 }
 function useRovingTabIndex(isSelected) {
-  const [isChildFocused, setIsChildFocused] = useState5(false);
+  const [isChildFocused, setIsChildFocused] = (0, import_react5.useState)(false);
   if (isChildFocused && !isSelected) setIsChildFocused(false);
   function onFocus(event) {
     if (event.target === event.currentTarget) {
@@ -1209,7 +1249,7 @@ function useRovingTabIndex(isSelected) {
   };
 }
 function useViewportColumns({ columns, colSpanColumns, rows, topSummaryRows, bottomSummaryRows, colOverscanStartIdx, colOverscanEndIdx, lastFrozenColumnIndex, rowOverscanStartIdx, rowOverscanEndIdx }) {
-  const startIdx = useMemo2(() => {
+  const startIdx = (0, import_react5.useMemo)(() => {
     if (colOverscanStartIdx === 0) return 0;
     let startIdx$1 = colOverscanStartIdx;
     const updateStartIdx = (colIdx, colSpan) => {
@@ -1254,7 +1294,7 @@ function useViewportColumns({ columns, colSpanColumns, rows, topSummaryRows, bot
     lastFrozenColumnIndex,
     colSpanColumns
   ]);
-  return useMemo2(() => {
+  return (0, import_react5.useMemo)(() => {
     const viewportColumns = [];
     for (let colIdx = 0; colIdx <= colOverscanEndIdx; colIdx++) {
       const column = columns[colIdx];
@@ -1269,7 +1309,7 @@ function useViewportColumns({ columns, colSpanColumns, rows, topSummaryRows, bot
   ]);
 }
 function useViewportRows({ rows, rowHeight, clientHeight, scrollTop, enableVirtualization }) {
-  const { totalRowHeight, gridTemplateRows, getRowTop, getRowHeight, findRowIdx } = useMemo2(() => {
+  const { totalRowHeight, gridTemplateRows, getRowTop, getRowHeight, findRowIdx } = (0, import_react5.useMemo)(() => {
     if (typeof rowHeight === "number") return {
       totalRowHeight: rowHeight * rows.length,
       gridTemplateRows: ` repeat(${rows.length}, ${rowHeight}px)`,
@@ -1389,7 +1429,7 @@ function Cell({ column, colSpan, isCellSelected, isDraggedOver, row: row$1, rowI
   function handleRowChange(newRow) {
     onRowChange(column, newRow);
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "gridcell",
     "aria-colindex": column.idx + 1,
     "aria-colspan": colSpan,
@@ -1417,21 +1457,21 @@ function Cell({ column, colSpan, isCellSelected, isDraggedOver, row: row$1, rowI
     })
   });
 }
-var CellComponent = memo(Cell);
+var CellComponent = (0, import_react5.memo)(Cell);
 function defaultRenderCell(key, props) {
-  return /* @__PURE__ */ jsx6(CellComponent, { ...props }, key);
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(CellComponent, { ...props }, key);
 }
 var canUsePostTask = typeof scheduler === "object" && typeof scheduler.postTask === "function";
 var cellEditing = "rdg-7-0-0-beta-58-46f9ea88";
 function EditCell({ column, colSpan, row: row$1, rowIdx, onRowChange, closeEditor, onKeyDown, navigate }) {
-  const captureEventRef = useRef(void 0);
-  const abortControllerRef = useRef(void 0);
-  const frameRequestRef = useRef(void 0);
+  const captureEventRef = (0, import_react5.useRef)(void 0);
+  const abortControllerRef = (0, import_react5.useRef)(void 0);
+  const frameRequestRef = (0, import_react5.useRef)(void 0);
   const commitOnOutsideClick = column.editorOptions?.commitOnOutsideClick ?? true;
-  const commitOnOutsideMouseDown = useEffectEvent(() => {
+  const commitOnOutsideMouseDown = (0, import_react5.useEffectEvent)(() => {
     onClose(true, false);
   });
-  useLayoutEffect(() => {
+  (0, import_react5.useLayoutEffect)(() => {
     if (!commitOnOutsideClick) return;
     function onWindowCaptureMouseDown(event) {
       captureEventRef.current = event;
@@ -1496,7 +1536,7 @@ function EditCell({ column, colSpan, row: row$1, rowIdx, onRowChange, closeEdito
   }
   const { cellClass } = column;
   const className = getCellClassname(column, "rdg-editor-container", !column.editorOptions?.displayCellContent && cellEditing, typeof cellClass === "function" ? cellClass(row$1) : cellClass);
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "gridcell",
     "aria-colindex": column.idx + 1,
     "aria-colspan": colSpan,
@@ -1505,7 +1545,7 @@ function EditCell({ column, colSpan, row: row$1, rowIdx, onRowChange, closeEdito
     style: getCellStyle(column, colSpan),
     onKeyDown: handleKeyDown,
     onMouseDownCapture: cancelTask,
-    children: column.renderEditCell != null && /* @__PURE__ */ jsxs6(Fragment2, { children: [column.renderEditCell({
+    children: column.renderEditCell != null && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [column.renderEditCell({
       column,
       row: row$1,
       rowIdx,
@@ -1532,7 +1572,7 @@ function GroupedColumnHeaderCell({ column, rowIdx, isCellSelected, selectCell })
       rowIdx
     });
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "columnheader",
     "aria-colindex": index,
     "aria-colspan": colSpan,
@@ -1558,8 +1598,8 @@ var cellDraggingClassname = `rdg-cell-dragging rdg-7-0-0-beta-58-3e1a4ad4`;
 var cellOverClassname = `rdg-cell-drag-over rdg-7-0-0-beta-58-51abd8b8`;
 var dragImageClassname = "rdg-7-0-0-beta-58-c8d7aa64";
 function HeaderCell({ column, colSpan, rowIdx, isCellSelected, onColumnResize, onColumnResizeEnd, onColumnsReorder, sortColumns, onSortColumnsChange, selectCell, shouldFocusGrid, direction, draggedColumnKey, setDraggedColumnKey }) {
-  const [isOver, setIsOver] = useState5(false);
-  const dragImageRef = useRef(null);
+  const [isOver, setIsOver] = (0, import_react5.useState)(false);
+  const dragImageRef = (0, import_react5.useRef)(null);
   const isDragging = draggedColumnKey === column.key;
   const rowSpan = getHeaderCellRowSpan(column, rowIdx);
   const { tabIndex, childTabIndex, onFocus } = useRovingTabIndex(shouldFocusGrid || isCellSelected);
@@ -1629,7 +1669,7 @@ function HeaderCell({ column, colSpan, rowIdx, isCellSelected, onColumnResize, o
     }
   }
   function onDragStart(event) {
-    flushSync(() => {
+    (0, import_react_dom.flushSync)(() => {
       setDraggedColumnKey(column.key);
     });
     event.dataTransfer.setDragImage(dragImageRef.current, 0, 0);
@@ -1678,12 +1718,12 @@ function HeaderCell({ column, colSpan, rowIdx, isCellSelected, onColumnResize, o
     priority,
     tabIndex: childTabIndex
   });
-  return /* @__PURE__ */ jsxs6(Fragment2, { children: [isDragging && /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [isDragging && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     ref: dragImageRef,
     style,
     className: getCellClassname(column, column.headerCellClass, dragImageClassname),
     children: content
-  }), /* @__PURE__ */ jsxs6("div", {
+  }), /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", {
     role: "columnheader",
     "aria-colindex": column.idx + 1,
     "aria-colspan": colSpan,
@@ -1699,7 +1739,7 @@ function HeaderCell({ column, colSpan, rowIdx, isCellSelected, onColumnResize, o
     onKeyDown,
     ...dragTargetProps,
     ...dropTargetProps,
-    children: [content, resizable && /* @__PURE__ */ jsx6(ResizeHandle, {
+    children: [content, resizable && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ResizeHandle, {
       direction,
       column,
       onColumnResize,
@@ -1708,7 +1748,7 @@ function HeaderCell({ column, colSpan, rowIdx, isCellSelected, onColumnResize, o
   })] });
 }
 function ResizeHandle({ direction, column, onColumnResize, onColumnResizeEnd }) {
-  const resizingOffsetRef = useRef(void 0);
+  const resizingOffsetRef = (0, import_react5.useRef)(void 0);
   const isRtl = direction === "rtl";
   function onPointerDown(event) {
     if (event.pointerType === "mouse" && event.buttons !== 1) return;
@@ -1733,7 +1773,7 @@ function ResizeHandle({ direction, column, onColumnResize, onColumnResizeEnd }) 
   function onDoubleClick() {
     onColumnResize(column, "max-content");
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     "aria-hidden": true,
     className: resizeHandleClassname,
     onClick: stopPropagation,
@@ -1757,13 +1797,13 @@ var bottomSummaryRowClassname = "rdg-bottom-summary-row";
 var headerRow = "rdg-7-0-0-beta-58-0dbd5994";
 var headerRowClassname = `rdg-header-row ${headerRow}`;
 function HeaderRow({ headerRowClass, rowIdx, columns, onColumnResize, onColumnResizeEnd, onColumnsReorder, sortColumns, onSortColumnsChange, lastFrozenColumnIndex, selectedCellIdx, selectCell, shouldFocusGrid, direction }) {
-  const [draggedColumnKey, setDraggedColumnKey] = useState5();
+  const [draggedColumnKey, setDraggedColumnKey] = (0, import_react5.useState)();
   const cells = [];
   for (let index = 0; index < columns.length; index++) {
     const column = columns[index];
     const colSpan = getColSpan(column, lastFrozenColumnIndex, { type: "HEADER" });
     if (colSpan !== void 0) index += colSpan - 1;
-    cells.push(/* @__PURE__ */ jsx6(HeaderCell, {
+    cells.push(/* @__PURE__ */ (0, import_jsx_runtime6.jsx)(HeaderCell, {
       column,
       colSpan,
       rowIdx,
@@ -1780,14 +1820,14 @@ function HeaderRow({ headerRowClass, rowIdx, columns, onColumnResize, onColumnRe
       setDraggedColumnKey
     }, column.key));
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "row",
     "aria-rowindex": rowIdx,
     className: classnames(headerRowClassname, { [rowSelectedClassname]: selectedCellIdx === -1 }, headerRowClass),
     children: cells
   });
 }
-var HeaderRow_default = memo(HeaderRow);
+var HeaderRow_default = (0, import_react5.memo)(HeaderRow);
 function GroupedColumnHeaderRow({ rowIdx, level, columns, selectedCellIdx, selectCell }) {
   const cells = [];
   const renderedParents = /* @__PURE__ */ new Set();
@@ -1801,7 +1841,7 @@ function GroupedColumnHeaderRow({ rowIdx, level, columns, selectedCellIdx, selec
     if (parent.level === level && !renderedParents.has(parent)) {
       renderedParents.add(parent);
       const { idx } = parent;
-      cells.push(/* @__PURE__ */ jsx6(GroupedColumnHeaderCell, {
+      cells.push(/* @__PURE__ */ (0, import_jsx_runtime6.jsx)(GroupedColumnHeaderCell, {
         column: parent,
         rowIdx,
         isCellSelected: selectedCellIdx === idx,
@@ -1809,14 +1849,14 @@ function GroupedColumnHeaderRow({ rowIdx, level, columns, selectedCellIdx, selec
       }, idx));
     }
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "row",
     "aria-rowindex": rowIdx,
     className: headerRowClassname,
     children: cells
   });
 }
-var GroupedColumnHeaderRow_default = memo(GroupedColumnHeaderRow);
+var GroupedColumnHeaderRow_default = (0, import_react5.memo)(GroupedColumnHeaderRow);
 function Row({ className, rowIdx, gridRowStart, selectedCellIdx, isRowSelectionDisabled, isRowSelected, draggedOverCellIdx, lastFrozenColumnIndex, row: row$1, viewportColumns, selectedCellEditor, onCellMouseDown, onCellClick, onCellDoubleClick, onCellContextMenu, rowClass, onRowChange, selectCell, style, ...props }) {
   const renderCell = useDefaultRenderers().renderCell;
   const handleRowChange = useLatestFunc((column, newRow) => {
@@ -1849,12 +1889,12 @@ function Row({ className, rowIdx, gridRowStart, selectedCellIdx, isRowSelectionD
       selectCell
     }));
   }
-  return /* @__PURE__ */ jsx6(RowSelectionContext, {
-    value: useMemo2(() => ({
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RowSelectionContext, {
+    value: (0, import_react5.useMemo)(() => ({
       isRowSelected,
       isRowSelectionDisabled
     }), [isRowSelectionDisabled, isRowSelected]),
-    children: /* @__PURE__ */ jsx6("div", {
+    children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
       role: "row",
       className,
       style: {
@@ -1866,16 +1906,16 @@ function Row({ className, rowIdx, gridRowStart, selectedCellIdx, isRowSelectionD
     })
   });
 }
-var RowComponent = memo(Row);
+var RowComponent = (0, import_react5.memo)(Row);
 function defaultRenderRow(key, props) {
-  return /* @__PURE__ */ jsx6(RowComponent, { ...props }, key);
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RowComponent, { ...props }, key);
 }
 function ScrollToCell({ scrollToPosition: { idx, rowIdx }, gridRef, setScrollToCellPosition }) {
-  const ref = useRef(null);
-  useLayoutEffect(() => {
+  const ref = (0, import_react5.useRef)(null);
+  (0, import_react5.useLayoutEffect)(() => {
     scrollIntoView(ref.current, "auto");
   });
-  useLayoutEffect(() => {
+  (0, import_react5.useLayoutEffect)(() => {
     function removeScrollToCell() {
       setScrollToCellPosition(null);
     }
@@ -1888,7 +1928,7 @@ function ScrollToCell({ scrollToPosition: { idx, rowIdx }, gridRef, setScrollToC
       observer.disconnect();
     };
   }, [gridRef, setScrollToCellPosition]);
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     ref,
     style: {
       gridColumn: idx === void 0 ? "1/-1" : idx + 1,
@@ -1898,17 +1938,17 @@ function ScrollToCell({ scrollToPosition: { idx, rowIdx }, gridRef, setScrollToC
 }
 var arrowClassname = `rdg-sort-arrow rdg-7-0-0-beta-58-3d5115f3`;
 function renderSortStatus({ sortDirection, priority }) {
-  return /* @__PURE__ */ jsxs6(Fragment2, { children: [renderSortIcon({ sortDirection }), renderSortPriority({ priority })] });
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [renderSortIcon({ sortDirection }), renderSortPriority({ priority })] });
 }
 function renderSortIcon({ sortDirection }) {
   if (sortDirection === void 0) return null;
-  return /* @__PURE__ */ jsx6("svg", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("svg", {
     viewBox: "0 0 12 8",
     width: "12",
     height: "8",
     className: arrowClassname,
     "aria-hidden": true,
-    children: /* @__PURE__ */ jsx6("path", { d: sortDirection === "ASC" ? "M0 8 6 0 12 8" : "M0 0 6 8 12 0" })
+    children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("path", { d: sortDirection === "ASC" ? "M0 8 6 0 12 8" : "M0 0 6 8 12 0" })
   });
 }
 function renderSortPriority({ priority }) {
@@ -1931,7 +1971,7 @@ function SummaryCell({ column, colSpan, row: row$1, rowIdx, isCellSelected, sele
       idx: column.idx
     });
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "gridcell",
     "aria-colindex": column.idx + 1,
     "aria-colspan": colSpan,
@@ -1948,7 +1988,7 @@ function SummaryCell({ column, colSpan, row: row$1, rowIdx, isCellSelected, sele
     })
   });
 }
-var SummaryCell_default = memo(SummaryCell);
+var SummaryCell_default = (0, import_react5.memo)(SummaryCell);
 var summaryRow = "rdg-7-0-0-beta-58-0b90c82c";
 var topSummaryRow = "rdg-7-0-0-beta-58-d0520eab";
 var summaryRowClassname = `rdg-summary-row ${summaryRow}`;
@@ -1962,7 +2002,7 @@ function SummaryRow({ rowIdx, gridRowStart, row: row$1, viewportColumns, top, bo
     });
     if (colSpan !== void 0) index += colSpan - 1;
     const isCellSelected = selectedCellIdx === column.idx;
-    cells.push(/* @__PURE__ */ jsx6(SummaryCell_default, {
+    cells.push(/* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SummaryCell_default, {
       column,
       colSpan,
       row: row$1,
@@ -1971,7 +2011,7 @@ function SummaryRow({ rowIdx, gridRowStart, row: row$1, viewportColumns, top, bo
       selectCell
     }, column.key));
   }
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "row",
     "aria-rowindex": ariaRowIndex,
     className: classnames(rowClassname, `rdg-row-${rowIdx % 2 === 0 ? "even" : "odd"}`, summaryRowClassname, {
@@ -1987,7 +2027,7 @@ function SummaryRow({ rowIdx, gridRowStart, row: row$1, viewportColumns, top, bo
     children: cells
   });
 }
-var SummaryRow_default = memo(SummaryRow);
+var SummaryRow_default = (0, import_react5.memo)(SummaryRow);
 function DataGrid(props) {
   const { ref, columns: rawColumns, rows, topSummaryRows, bottomSummaryRows, rowKeyGetter, onRowsChange, rowHeight: rawRowHeight, headerRowHeight: rawHeaderRowHeight, summaryRowHeight: rawSummaryRowHeight, columnWidths: columnWidthsRaw, onColumnWidthsChange: onColumnWidthsChangeRaw, selectedRows, isRowSelectionDisabled, onSelectedRowsChange, sortColumns, onSortColumnsChange, defaultColumnOptions, onCellMouseDown, onCellClick, onCellDoubleClick, onCellContextMenu, onCellKeyDown, onSelectedCellChange, onScroll, onColumnResize, onColumnsReorder, onFill, onCellCopy, onCellPaste, enableVirtualization: rawEnableVirtualization, renderers, className, style, rowClass, headerRowClass, direction: rawDirection, role: rawRole, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy, "aria-description": ariaDescription, "aria-describedby": ariaDescribedBy, "aria-rowcount": rawAriaRowCount, "data-testid": testId, "data-cy": dataCy } = props;
   const defaultRenderers = useDefaultRenderers();
@@ -2002,22 +2042,22 @@ function DataGrid(props) {
   const noRowsFallback = renderers?.noRowsFallback ?? defaultRenderers?.noRowsFallback;
   const enableVirtualization = rawEnableVirtualization ?? true;
   const direction = rawDirection ?? "ltr";
-  const [scrollTop, setScrollTop] = useState5(0);
-  const [scrollLeft, setScrollLeft] = useState5(0);
-  const [columnWidthsInternal, setColumnWidthsInternal] = useState5(() => columnWidthsRaw ?? /* @__PURE__ */ new Map());
-  const [isColumnResizing, setColumnResizing] = useState5(false);
-  const [isDragging, setDragging] = useState5(false);
-  const [draggedOverRowIdx, setDraggedOverRowIdx] = useState5(void 0);
-  const [scrollToPosition, setScrollToPosition] = useState5(null);
-  const [shouldFocusCell, setShouldFocusCell] = useState5(false);
-  const [previousRowIdx, setPreviousRowIdx] = useState5(-1);
+  const [scrollTop, setScrollTop] = (0, import_react5.useState)(0);
+  const [scrollLeft, setScrollLeft] = (0, import_react5.useState)(0);
+  const [columnWidthsInternal, setColumnWidthsInternal] = (0, import_react5.useState)(() => columnWidthsRaw ?? /* @__PURE__ */ new Map());
+  const [isColumnResizing, setColumnResizing] = (0, import_react5.useState)(false);
+  const [isDragging, setDragging] = (0, import_react5.useState)(false);
+  const [draggedOverRowIdx, setDraggedOverRowIdx] = (0, import_react5.useState)(void 0);
+  const [scrollToPosition, setScrollToPosition] = (0, import_react5.useState)(null);
+  const [shouldFocusCell, setShouldFocusCell] = (0, import_react5.useState)(false);
+  const [previousRowIdx, setPreviousRowIdx] = (0, import_react5.useState)(-1);
   const isColumnWidthsControlled = columnWidthsRaw != null && onColumnWidthsChangeRaw != null && !isColumnResizing;
   const columnWidths = isColumnWidthsControlled ? columnWidthsRaw : columnWidthsInternal;
   const onColumnWidthsChange = isColumnWidthsControlled ? (columnWidths$1) => {
     setColumnWidthsInternal(columnWidths$1);
     onColumnWidthsChangeRaw(columnWidths$1);
   } : setColumnWidthsInternal;
-  const getColumnWidth = useCallback2((column) => {
+  const getColumnWidth = (0, import_react5.useCallback)((column) => {
     return columnWidths.get(column.key)?.width ?? column.width;
   }, [columnWidths]);
   const [gridRef, gridWidth, gridHeight, horizontalScrollbarHeight] = useGridDimensions();
@@ -2037,12 +2077,12 @@ function DataGrid(props) {
   const minRowIdx = -headerAndTopSummaryRowsCount;
   const mainHeaderRowIdx = minRowIdx + groupedColumnHeaderRowsCount;
   const maxRowIdx = rows.length + bottomSummaryRowsCount - 1;
-  const [selectedPosition, setSelectedPosition] = useState5(() => ({
+  const [selectedPosition, setSelectedPosition] = (0, import_react5.useState)(() => ({
     idx: -1,
     rowIdx: minRowIdx - 1,
     mode: "SELECT"
   }));
-  const focusSinkRef = useRef(null);
+  const focusSinkRef = (0, import_react5.useRef)(null);
   const isTreeGrid = role === "treegrid";
   const headerRowsHeight = headerRowsCount * headerRowHeight;
   const summaryRowsHeight = summaryRowsCount * summaryRowHeight;
@@ -2050,7 +2090,7 @@ function DataGrid(props) {
   const isSelectable = selectedRows != null && onSelectedRowsChange != null;
   const { leftKey, rightKey } = getLeftRightKey(direction);
   const ariaRowCount = rawAriaRowCount ?? headerRowsCount + rows.length + summaryRowsCount;
-  const defaultGridComponents = useMemo2(() => ({
+  const defaultGridComponents = (0, import_react5.useMemo)(() => ({
     renderCheckbox: renderCheckbox$1,
     renderSortStatus: renderSortStatus$1,
     renderCell
@@ -2059,7 +2099,7 @@ function DataGrid(props) {
     renderSortStatus$1,
     renderCell
   ]);
-  const headerSelectionValue = useMemo2(() => {
+  const headerSelectionValue = (0, import_react5.useMemo)(() => {
     let hasSelectedRow = false;
     let hasUnselectedRow = false;
     if (rowKeyGetter != null && selectedRows != null && selectedRows.size > 0) for (const row$1 of rows) {
@@ -2114,13 +2154,13 @@ function DataGrid(props) {
   const handleFormatterRowChangeLatest = useLatestFunc(updateRow);
   const selectCellLatest = useLatestFunc(selectCell);
   const selectHeaderCellLatest = useLatestFunc(selectHeaderCell);
-  const focusCell = useCallback2((shouldScroll = true) => {
+  const focusCell = (0, import_react5.useCallback)((shouldScroll = true) => {
     const cell$1 = getCellToScroll(gridRef.current);
     if (cell$1 === null) return;
     if (shouldScroll) scrollIntoView(cell$1);
     cell$1.focus({ preventScroll: true });
   }, [gridRef]);
-  useLayoutEffect(() => {
+  (0, import_react5.useLayoutEffect)(() => {
     if (shouldFocusCell) {
       if (focusSinkRef.current !== null && selectedPosition.idx === -1) {
         focusSinkRef.current.focus({ preventScroll: true });
@@ -2133,7 +2173,7 @@ function DataGrid(props) {
     focusCell,
     selectedPosition.idx
   ]);
-  useImperativeHandle(ref, () => ({
+  (0, import_react5.useImperativeHandle)(ref, () => ({
     element: gridRef.current,
     scrollToCell({ idx, rowIdx }) {
       const scrollToIdx = idx !== void 0 && idx > lastFrozenColumnIndex && idx < columns.length ? idx : void 0;
@@ -2217,7 +2257,7 @@ function DataGrid(props) {
   }
   function handleScroll(event) {
     const { scrollTop: scrollTop$1, scrollLeft: scrollLeft$1 } = event.currentTarget;
-    flushSync(() => {
+    (0, import_react_dom.flushSync)(() => {
       setScrollTop(scrollTop$1);
       setScrollLeft(abs(scrollLeft$1));
     });
@@ -2512,7 +2552,7 @@ function DataGrid(props) {
     const { insetInlineStart, ...style$1 } = getCellStyle(column, colSpan);
     const marginEnd = "calc(var(--rdg-drag-handle-size) * -0.5 + 1px)";
     const isLastColumn = column.idx + colSpan - 1 === maxColIdx;
-    return /* @__PURE__ */ jsx6("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
       style: {
         ...style$1,
         gridRowStart: headerAndTopSummaryRowsCount + rowIdx + 1,
@@ -2546,7 +2586,7 @@ function DataGrid(props) {
       }));
     };
     const onRowChange = (row$2, commitChanges, shouldFocusCell$1) => {
-      if (commitChanges) flushSync(() => {
+      if (commitChanges) (0, import_react_dom.flushSync)(() => {
         updateRow(column, selectedPosition.rowIdx, row$2);
         closeEditor(shouldFocusCell$1);
       });
@@ -2556,7 +2596,7 @@ function DataGrid(props) {
       }));
     };
     if (closeOnExternalRowChange && rows[selectedPosition.rowIdx] !== selectedPosition.originalRow) closeEditor(false);
-    return /* @__PURE__ */ jsx6(EditCell, {
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(EditCell, {
       column,
       colSpan,
       row: row$1,
@@ -2634,7 +2674,7 @@ function DataGrid(props) {
   if (rows.length > 0) templateRows += gridTemplateRows;
   if (bottomSummaryRowsCount > 0) templateRows += ` repeat(${bottomSummaryRowsCount}, ${summaryRowHeight}px)`;
   const isGroupRowFocused = selectedPosition.idx === -1 && selectedPosition.rowIdx !== minRowIdx - 1;
-  return /* @__PURE__ */ jsxs6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", {
     role,
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledBy,
@@ -2664,19 +2704,19 @@ function DataGrid(props) {
     "data-testid": testId,
     "data-cy": dataCy,
     children: [
-      /* @__PURE__ */ jsxs6(DataGridDefaultRenderersContext, {
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(DataGridDefaultRenderersContext, {
         value: defaultGridComponents,
-        children: [/* @__PURE__ */ jsx6(HeaderRowSelectionChangeContext, {
+        children: [/* @__PURE__ */ (0, import_jsx_runtime6.jsx)(HeaderRowSelectionChangeContext, {
           value: selectHeaderRowLatest,
-          children: /* @__PURE__ */ jsxs6(HeaderRowSelectionContext, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(HeaderRowSelectionContext, {
             value: headerSelectionValue,
-            children: [Array.from({ length: groupedColumnHeaderRowsCount }, (_, index) => /* @__PURE__ */ jsx6(GroupedColumnHeaderRow_default, {
+            children: [Array.from({ length: groupedColumnHeaderRowsCount }, (_, index) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(GroupedColumnHeaderRow_default, {
               rowIdx: index + 1,
               level: -groupedColumnHeaderRowsCount + index,
               columns: getRowViewportColumns(minRowIdx + index),
               selectedCellIdx: selectedPosition.rowIdx === minRowIdx + index ? selectedPosition.idx : void 0,
               selectCell: selectHeaderCellLatest
-            }, index)), /* @__PURE__ */ jsx6(HeaderRow_default, {
+            }, index)), /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(HeaderRow_default, {
               headerRowClass,
               rowIdx: headerRowsCount,
               columns: getRowViewportColumns(mainHeaderRowIdx),
@@ -2692,13 +2732,13 @@ function DataGrid(props) {
               direction
             })]
           })
-        }), rows.length === 0 && noRowsFallback ? noRowsFallback : /* @__PURE__ */ jsxs6(Fragment2, { children: [
+        }), rows.length === 0 && noRowsFallback ? noRowsFallback : /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
           topSummaryRows?.map((row$1, rowIdx) => {
             const gridRowStart = headerRowsCount + 1 + rowIdx;
             const summaryRowIdx = mainHeaderRowIdx + 1 + rowIdx;
             const isSummaryRowSelected = selectedPosition.rowIdx === summaryRowIdx;
             const top = headerRowsHeight + summaryRowHeight * rowIdx;
-            return /* @__PURE__ */ jsx6(SummaryRow_default, {
+            return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SummaryRow_default, {
               "aria-rowindex": gridRowStart,
               rowIdx: summaryRowIdx,
               gridRowStart,
@@ -2712,7 +2752,7 @@ function DataGrid(props) {
               selectCell: selectCellLatest
             }, rowIdx);
           }),
-          /* @__PURE__ */ jsx6(RowSelectionChangeContext, {
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RowSelectionChangeContext, {
             value: selectRowLatest,
             children: getViewportRows()
           }),
@@ -2722,7 +2762,7 @@ function DataGrid(props) {
             const isSummaryRowSelected = selectedPosition.rowIdx === summaryRowIdx;
             const top = clientHeight > totalRowHeight ? gridHeight - summaryRowHeight * (bottomSummaryRows.length - rowIdx) : void 0;
             const bottom = top === void 0 ? summaryRowHeight * (bottomSummaryRows.length - 1 - rowIdx) : void 0;
-            return /* @__PURE__ */ jsx6(SummaryRow_default, {
+            return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SummaryRow_default, {
               "aria-rowindex": ariaRowCount - bottomSummaryRowsCount + rowIdx + 1,
               rowIdx: summaryRowIdx,
               gridRowStart,
@@ -2740,7 +2780,7 @@ function DataGrid(props) {
       }),
       getDragHandle(),
       renderMeasuringCells(viewportColumns),
-      isTreeGrid && /* @__PURE__ */ jsx6("div", {
+      isTreeGrid && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
         ref: focusSinkRef,
         tabIndex: isGroupRowFocused ? 0 : -1,
         className: classnames(focusSinkClassname, {
@@ -2750,7 +2790,7 @@ function DataGrid(props) {
         }),
         style: { gridRowStart: selectedPosition.rowIdx + headerAndTopSummaryRowsCount + 1 }
       }),
-      scrollToPosition !== null && /* @__PURE__ */ jsx6(ScrollToCell, {
+      scrollToPosition !== null && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ScrollToCell, {
         scrollToPosition,
         setScrollToCellPosition: setScrollToPosition,
         gridRef
@@ -2770,7 +2810,7 @@ function GroupCell({ id, groupKey, childRows, isExpanded, isCellSelected, column
     toggleGroupWrapper(id);
   }
   const isLevelMatching = isGroupByColumn && groupColumnIndex === column.idx;
-  return /* @__PURE__ */ jsx6("div", {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
     role: "gridcell",
     "aria-colindex": column.idx + 1,
     "aria-selected": isCellSelected,
@@ -2796,7 +2836,7 @@ function GroupCell({ id, groupKey, childRows, isExpanded, isCellSelected, column
     })
   }, column.key);
 }
-var GroupCell_default = memo(GroupCell);
+var GroupCell_default = (0, import_react5.memo)(GroupCell);
 var groupRowClassname = `rdg-group-row rdg-7-0-0-beta-58-e74a2be3`;
 function GroupedRow({ className, row: row$1, rowIdx, viewportColumns, selectedCellIdx, isRowSelected, selectCell, gridRowStart, groupBy, toggleGroup, isRowSelectionDisabled, ...props }) {
   const idx = viewportColumns[0].key === SELECT_COLUMN_KEY ? row$1.level + 1 : row$1.level;
@@ -2806,12 +2846,12 @@ function GroupedRow({ className, row: row$1, rowIdx, viewportColumns, selectedCe
       idx: -1
     }, { shouldFocusCell: true });
   }
-  return /* @__PURE__ */ jsx6(RowSelectionContext, {
-    value: useMemo2(() => ({
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RowSelectionContext, {
+    value: (0, import_react5.useMemo)(() => ({
       isRowSelectionDisabled: false,
       isRowSelected
     }), [isRowSelected]),
-    children: /* @__PURE__ */ jsx6("div", {
+    children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", {
       role: "row",
       "aria-level": row$1.level + 1,
       "aria-setsize": row$1.setSize,
@@ -2821,7 +2861,7 @@ function GroupedRow({ className, row: row$1, rowIdx, viewportColumns, selectedCe
       onMouseDown: handleSelectGroup,
       style: getRowStyle(gridRowStart),
       ...props,
-      children: viewportColumns.map((column) => /* @__PURE__ */ jsx6(GroupCell_default, {
+      children: viewportColumns.map((column) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(GroupCell_default, {
         id: row$1.id,
         groupKey: row$1.groupKey,
         childRows: row$1.childRows,
@@ -2836,12 +2876,12 @@ function GroupedRow({ className, row: row$1, rowIdx, viewportColumns, selectedCe
     })
   });
 }
-var GroupRow_default = memo(GroupedRow);
+var GroupRow_default = (0, import_react5.memo)(GroupedRow);
 var textEditorInternalClassname = "rdg-7-0-0-beta-58-2f8db206";
 var textEditorClassname = `rdg-text-editor ${textEditorInternalClassname}`;
 
 // src/utils/validateRows.ts
-import { ValidationError } from "yup";
+var import_yup = require("yup");
 async function validateRows(opts) {
   const { rows, fields, schema, rowHook } = opts;
   const uniqueFields = fields.filter((f) => f.unique);
@@ -2853,7 +2893,7 @@ async function validateRows(opts) {
       try {
         await schema.validate(values, { abortEarly: false });
       } catch (e) {
-        if (e instanceof ValidationError) {
+        if (e instanceof import_yup.ValidationError) {
           for (const inner of e.inner.length ? e.inner : [e]) {
             const path = inner.path;
             if (!path) continue;
@@ -2910,10 +2950,10 @@ function rowHasErrors(row2) {
 }
 
 // src/steps/ValidationStep.tsx
-import { Fragment as Fragment3, jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
+var import_jsx_runtime7 = require("react/jsx-runtime");
 function SelectHeaderCell(props) {
   const { isIndeterminate, isRowSelected, onRowSelectionChange } = useHeaderRowSelection();
-  return /* @__PURE__ */ jsx7("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }, children: /* @__PURE__ */ jsx7(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     "input",
     {
       type: "checkbox",
@@ -2929,7 +2969,7 @@ function SelectHeaderCell(props) {
 }
 function SelectRowCell(props) {
   const { isRowSelected, onRowSelectionChange } = useRowSelection();
-  return /* @__PURE__ */ jsx7("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }, children: /* @__PURE__ */ jsx7(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     "input",
     {
       type: "checkbox",
@@ -2949,13 +2989,13 @@ var CustomSelectColumn = {
   resizable: false,
   sortable: false,
   frozen: true,
-  renderHeaderCell: (props) => /* @__PURE__ */ jsx7(SelectHeaderCell, { tabIndex: props.tabIndex }),
-  renderCell: (props) => /* @__PURE__ */ jsx7(SelectRowCell, { tabIndex: props.tabIndex, row: props.row })
+  renderHeaderCell: (props) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SelectHeaderCell, { tabIndex: props.tabIndex }),
+  renderCell: (props) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SelectRowCell, { tabIndex: props.tabIndex, row: props.row })
 };
 function ErrorCell({ className, message, children }) {
-  const ref = useRef2(null);
-  const [show, setShow] = useState6(false);
-  const [pos, setPos] = useState6({ top: 0, left: 0 });
+  const ref = (0, import_react6.useRef)(null);
+  const [show, setShow] = (0, import_react6.useState)(false);
+  const [pos, setPos] = (0, import_react6.useState)({ top: 0, left: 0 });
   function handleEnter() {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
@@ -2963,8 +3003,8 @@ function ErrorCell({ className, message, children }) {
     }
     setShow(true);
   }
-  return /* @__PURE__ */ jsxs7(Fragment3, { children: [
-    /* @__PURE__ */ jsx7(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       "div",
       {
         ref,
@@ -2975,10 +3015,10 @@ function ErrorCell({ className, message, children }) {
         children
       }
     ),
-    show && createPortal(
-      /* @__PURE__ */ jsxs7("div", { className: "rsi-tooltip-fixed", style: { position: "fixed", top: pos.top, left: pos.left, transform: "translate(-50%, -100%)", zIndex: 9999 }, children: [
-        /* @__PURE__ */ jsx7("div", { className: "rsi-tooltip-inner", children: message }),
-        /* @__PURE__ */ jsx7("div", { className: "rsi-tooltip-arrow" })
+    show && (0, import_react_dom2.createPortal)(
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "rsi-tooltip-fixed", style: { position: "fixed", top: pos.top, left: pos.left, transform: "translate(-50%, -100%)", zIndex: 9999 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "rsi-tooltip-inner", children: message }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "rsi-tooltip-arrow" })
       ] }),
       document.body
     )
@@ -2996,13 +3036,13 @@ function ValidationStep({
   onSubmit,
   showTitle = true
 }) {
-  const [rows, setRows] = useState6([]);
-  const [selected, setSelected] = useState6(/* @__PURE__ */ new Set());
-  const [filterErrors, setFilterErrors] = useState6(false);
-  const [submitting, setSubmitting] = useState6(false);
-  const [showConfirm, setShowConfirm] = useState6(false);
-  const [loading, setLoading] = useState6(true);
-  useEffect2(() => {
+  const [rows, setRows] = (0, import_react6.useState)([]);
+  const [selected, setSelected] = (0, import_react6.useState)(/* @__PURE__ */ new Set());
+  const [filterErrors, setFilterErrors] = (0, import_react6.useState)(false);
+  const [submitting, setSubmitting] = (0, import_react6.useState)(false);
+  const [showConfirm, setShowConfirm] = (0, import_react6.useState)(false);
+  const [loading, setLoading] = (0, import_react6.useState)(true);
+  (0, import_react6.useEffect)(() => {
     let cancelled = false;
     setLoading(true);
     validateRows({ rows: initialRows, fields, schema, rowHook }).then((res) => {
@@ -3015,13 +3055,13 @@ function ValidationStep({
       cancelled = true;
     };
   }, [initialRows, fields, schema, rowHook]);
-  const columns = useMemo3(() => {
+  const columns = (0, import_react6.useMemo)(() => {
     return [CustomSelectColumn, ...fields.map((f) => ({
       key: f.key,
       name: f.label,
       editable: true,
       resizable: true,
-      renderEditCell: ({ row: row2, onRowChange, onClose }) => /* @__PURE__ */ jsx7(
+      renderEditCell: ({ row: row2, onRowChange, onClose }) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
         "input",
         {
           autoFocus: true,
@@ -3039,9 +3079,9 @@ function ValidationStep({
         const value = row2[f.key];
         const err = row2.__errors?.[f.key];
         if (!err) {
-          return /* @__PURE__ */ jsx7("div", { style: { width: "100%", height: "100%", display: "flex", alignItems: "center" }, children: value ?? "" });
+          return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { width: "100%", height: "100%", display: "flex", alignItems: "center" }, children: value ?? "" });
         }
-        return /* @__PURE__ */ jsx7(ErrorCell, { className: `rsi-cell-${err.level}`, message: err.message, children: value ?? "" });
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ErrorCell, { className: `rsi-cell-${err.level}`, message: err.message, children: value ?? "" });
       }
     }))];
   }, [fields]);
@@ -3081,12 +3121,12 @@ function ValidationStep({
     }
     void doSubmit();
   }
-  return /* @__PURE__ */ jsxs7("div", { className: "d-flex flex-column gap-3", style: { minHeight: 400 }, children: [
-    /* @__PURE__ */ jsxs7("div", { className: "d-flex align-items-center justify-content-between", children: [
-      showTitle ? /* @__PURE__ */ jsx7("h5", { className: "m-0", children: translations.title }) : /* @__PURE__ */ jsx7("div", {}),
-      /* @__PURE__ */ jsxs7("div", { className: "d-flex align-items-center gap-3", children: [
-        /* @__PURE__ */ jsx7(
-          Form3.Check,
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "d-flex flex-column gap-3", style: { minHeight: 400 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "d-flex align-items-center justify-content-between", children: [
+      showTitle ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h5", { className: "m-0", children: translations.title }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", {}),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "d-flex align-items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          import_react_bootstrap5.Form.Check,
           {
             type: "switch",
             id: "rsi-filter-errors",
@@ -3095,7 +3135,7 @@ function ValidationStep({
             onChange: (e) => setFilterErrors(e.target.checked)
           }
         ),
-        /* @__PURE__ */ jsxs7(Button5, { variant: "outline-danger", size: "sm", disabled: selected.size === 0, onClick: handleDiscard, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_react_bootstrap5.Button, { variant: "outline-danger", size: "sm", disabled: selected.size === 0, onClick: handleDiscard, children: [
           translations.discardButtonTitle,
           " (",
           selected.size,
@@ -3103,7 +3143,7 @@ function ValidationStep({
         ] })
       ] })
     ] }),
-    loading ? /* @__PURE__ */ jsx7("div", { className: "d-flex align-items-center justify-content-center flex-grow-1", children: /* @__PURE__ */ jsx7(Spinner2, { animation: "border" }) }) : visibleRows.length === 0 ? /* @__PURE__ */ jsx7(Alert3, { variant: "info", className: "m-0", children: filterErrors ? translations.noRowsMessageWhenFiltered : translations.noRowsMessage }) : /* @__PURE__ */ jsx7("div", { className: "rsi-grid-wrapper", style: { flex: 1, minHeight: 320 }, children: /* @__PURE__ */ jsx7(
+    loading ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "d-flex align-items-center justify-content-center flex-grow-1", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Spinner, { animation: "border" }) }) : visibleRows.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Alert, { variant: "info", className: "m-0", children: filterErrors ? translations.noRowsMessageWhenFiltered : translations.noRowsMessage }) : /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "rsi-grid-wrapper", style: { flex: 1, minHeight: 320 }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       DataGrid,
       {
         className: "rdg-light",
@@ -3121,23 +3161,23 @@ function ValidationStep({
         style: { blockSize: "100%" }
       }
     ) }),
-    errorCount > 0 && /* @__PURE__ */ jsxs7("div", { className: "text-danger small", children: [
+    errorCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "text-danger small", children: [
       errorCount,
       " row",
       errorCount === 1 ? "" : "s",
       " with errors"
     ] }),
-    /* @__PURE__ */ jsxs7("div", { className: "d-flex justify-content-between", children: [
-      /* @__PURE__ */ jsx7(Button5, { variant: "outline-secondary", onClick: onBack, disabled: submitting, children: translations.backButtonTitle }),
-      /* @__PURE__ */ jsx7(Button5, { variant: "primary", onClick: handleSubmit, disabled: submitting || !allowInvalidSubmit && errorCount > 0, children: submitting ? /* @__PURE__ */ jsx7(Spinner2, { size: "sm", animation: "border" }) : translations.submitButtonTitle })
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "d-flex justify-content-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Button, { variant: "outline-secondary", onClick: onBack, disabled: submitting, children: translations.backButtonTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Button, { variant: "primary", onClick: handleSubmit, disabled: submitting || !allowInvalidSubmit && errorCount > 0, children: submitting ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Spinner, { size: "sm", animation: "border" }) : translations.submitButtonTitle })
     ] }),
-    /* @__PURE__ */ jsxs7(Modal2, { show: showConfirm, onHide: () => setShowConfirm(false), centered: true, children: [
-      /* @__PURE__ */ jsx7(Modal2.Header, { closeButton: true, children: /* @__PURE__ */ jsx7(Modal2.Title, { children: alertTranslations.headerTitle }) }),
-      /* @__PURE__ */ jsx7(Modal2.Body, { children: allowInvalidSubmit ? alertTranslations.bodyText : alertTranslations.bodyTextSubmitForbidden }),
-      /* @__PURE__ */ jsxs7(Modal2.Footer, { children: [
-        /* @__PURE__ */ jsx7(Button5, { variant: "outline-secondary", onClick: () => setShowConfirm(false), children: alertTranslations.cancelButtonTitle }),
-        allowInvalidSubmit && /* @__PURE__ */ jsx7(
-          Button5,
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_react_bootstrap5.Modal, { show: showConfirm, onHide: () => setShowConfirm(false), centered: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Modal.Title, { children: alertTranslations.headerTitle }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Modal.Body, { children: allowInvalidSubmit ? alertTranslations.bodyText : alertTranslations.bodyTextSubmitForbidden }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_react_bootstrap5.Modal.Footer, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react_bootstrap5.Button, { variant: "outline-secondary", onClick: () => setShowConfirm(false), children: alertTranslations.cancelButtonTitle }),
+        allowInvalidSubmit && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          import_react_bootstrap5.Button,
           {
             variant: "primary",
             onClick: () => {
@@ -3246,7 +3286,7 @@ function mergeTranslations(base, override) {
 }
 
 // src/ReactSpreadsheetImport.tsx
-import { Fragment as Fragment4, jsx as jsx8, jsxs as jsxs8 } from "react/jsx-runtime";
+var import_jsx_runtime8 = require("react/jsx-runtime");
 var INITIAL_STATE = {
   step: "upload",
   workbook: null,
@@ -3279,12 +3319,12 @@ function ReactSpreadsheetImport(props) {
     hideStepper = false,
     hideStepTitles = false
   } = props;
-  const t = useMemo4(
+  const t = (0, import_react7.useMemo)(
     () => mergeTranslations(defaultTranslations, translationsOverride),
     [translationsOverride]
   );
-  const [state, setState] = useState7(INITIAL_STATE);
-  useEffect3(() => {
+  const [state, setState] = (0, import_react7.useState)(INITIAL_STATE);
+  (0, import_react7.useEffect)(() => {
     if (!inline && isOpen) {
       setState(INITIAL_STATE);
     }
@@ -3354,10 +3394,10 @@ function ReactSpreadsheetImport(props) {
     await onSubmit(result, state.workbook.file);
     onClose?.();
   }
-  const body = /* @__PURE__ */ jsxs8("div", { className: "d-flex flex-column gap-3", children: [
-    !hideStepper && /* @__PURE__ */ jsx8(Stepper, { current: state.step, translations: t.stepper }),
-    state.maxExceeded && maxRecords !== void 0 && /* @__PURE__ */ jsx8(Alert4, { variant: "danger", className: "m-0", children: t.uploadStep.maxRecordsExceeded(maxRecords) }),
-    state.step === "upload" && /* @__PURE__ */ jsx8(
+  const body = /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "d-flex flex-column gap-3", children: [
+    !hideStepper && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Stepper, { current: state.step, translations: t.stepper }),
+    state.maxExceeded && maxRecords !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Alert, { variant: "danger", className: "m-0", children: t.uploadStep.maxRecordsExceeded(maxRecords) }),
+    state.step === "upload" && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       UploadStep,
       {
         fields,
@@ -3368,7 +3408,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "selectSheet" && state.workbook && /* @__PURE__ */ jsx8(
+    state.step === "selectSheet" && state.workbook && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       SelectSheetStep,
       {
         workbook: state.workbook,
@@ -3378,7 +3418,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "selectHeader" && /* @__PURE__ */ jsx8(
+    state.step === "selectHeader" && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       SelectHeaderStep,
       {
         rows: dataRows,
@@ -3391,7 +3431,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "matchColumns" && /* @__PURE__ */ jsx8(
+    state.step === "matchColumns" && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       MatchColumnsStep,
       {
         fields,
@@ -3406,7 +3446,7 @@ function ReactSpreadsheetImport(props) {
         showTitle: !hideStepTitles
       }
     ),
-    state.step === "validate" && /* @__PURE__ */ jsx8(
+    state.step === "validate" && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       ValidationStep,
       {
         fields,
@@ -3423,11 +3463,11 @@ function ReactSpreadsheetImport(props) {
     )
   ] });
   if (inline) {
-    return /* @__PURE__ */ jsx8("div", { className: "rsi-inline", children: body });
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "rsi-inline", children: body });
   }
-  return /* @__PURE__ */ jsxs8(Fragment4, { children: [
-    /* @__PURE__ */ jsxs8(
-      Modal3,
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+      import_react_bootstrap6.Modal,
       {
         show: isOpen,
         onHide: tryClose,
@@ -3437,24 +3477,24 @@ function ReactSpreadsheetImport(props) {
         className: "rsi-modal",
         contentClassName: "rsi-modal-content",
         children: [
-          /* @__PURE__ */ jsx8(Modal3.Header, { closeButton: true, children: /* @__PURE__ */ jsx8(Modal3.Title, { children: title ?? "Spreadsheet importer" }) }),
-          /* @__PURE__ */ jsx8(Modal3.Body, { children: body })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Modal.Title, { children: title ?? "Spreadsheet importer" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Modal.Body, { children: body })
         ]
       }
     ),
-    /* @__PURE__ */ jsxs8(
-      Modal3,
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+      import_react_bootstrap6.Modal,
       {
         show: state.showCloseConfirm,
         onHide: () => setState((s) => ({ ...s, showCloseConfirm: false })),
         centered: true,
         children: [
-          /* @__PURE__ */ jsx8(Modal3.Header, { closeButton: true, children: /* @__PURE__ */ jsx8(Modal3.Title, { children: t.alerts.confirmClose.headerTitle }) }),
-          /* @__PURE__ */ jsx8(Modal3.Body, { children: t.alerts.confirmClose.bodyText }),
-          /* @__PURE__ */ jsxs8(Modal3.Footer, { children: [
-            /* @__PURE__ */ jsx8(Button6, { variant: "outline-secondary", onClick: () => setState((s) => ({ ...s, showCloseConfirm: false })), children: t.alerts.confirmClose.cancelButtonTitle }),
-            /* @__PURE__ */ jsx8(
-              Button6,
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Modal.Header, { closeButton: true, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Modal.Title, { children: t.alerts.confirmClose.headerTitle }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Modal.Body, { children: t.alerts.confirmClose.bodyText }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_react_bootstrap6.Modal.Footer, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_bootstrap6.Button, { variant: "outline-secondary", onClick: () => setState((s) => ({ ...s, showCloseConfirm: false })), children: t.alerts.confirmClose.cancelButtonTitle }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+              import_react_bootstrap6.Button,
               {
                 variant: "danger",
                 onClick: () => {
@@ -3470,11 +3510,12 @@ function ReactSpreadsheetImport(props) {
     )
   ] });
 }
-export {
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
   ReactSpreadsheetImport,
   autoMatchColumns,
   defaultTranslations,
   rowHasErrors,
   validateRows
-};
-//# sourceMappingURL=index.js.map
+});
+//# sourceMappingURL=index.cjs.map

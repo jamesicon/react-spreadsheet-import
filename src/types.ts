@@ -1,139 +1,172 @@
-import type { Meta } from "./steps/ValidationStep/types"
-import type { DeepReadonly } from "ts-essentials"
-import type { TranslationsRSIProps } from "./translationsRSIProps"
-import type { Columns } from "./steps/MatchColumnsStep/MatchColumnsStep"
-import type { StepState } from "./steps/UploadFlow"
+import type { ReactNode } from "react";
+import type { ObjectSchema } from "yup";
 
-export type RsiProps<T extends string> = {
-  // Is modal visible.
-  isOpen: boolean
-  // callback when RSI is closed before final submit
-  onClose: () => void
-  // Field description for requested data
-  fields: Fields<T>
-  // Runs after file upload step, receives and returns raw sheet data
-  uploadStepHook?: (data: RawData[]) => Promise<RawData[]>
-  // Runs after header selection step, receives and returns raw sheet data
-  selectHeaderStepHook?: (headerValues: RawData, data: RawData[]) => Promise<{ headerValues: RawData; data: RawData[] }>
-  // Runs once before validation step, used for data mutations and if you want to change how columns were matched
-  matchColumnsStepHook?: (table: Data<T>[], rawData: RawData[], columns: Columns<T>) => Promise<Data<T>[]>
-  // Runs after column matching and on entry change
-  rowHook?: RowHook<T>
-  // Runs after column matching and on entry change
-  tableHook?: TableHook<T>
-  // Function called after user finishes the flow
-  onSubmit: (data: Result<T>) => void
-  // Allows submitting with errors. Default: true
-  allowInvalidSubmit?: boolean
-  // Translations for each text
-  translations?: TranslationsRSIProps
-  // Theme configuration passed to underlying Chakra-UI
-  customTheme?: object
-  // Specifies maximum number of rows for a single import
-  maxRecords?: number
-  // Maximum upload filesize (in bytes)
-  maxFileSize?: number
-  // Automatically map imported headers to specified fields if possible. Default: true
-  autoMapHeaders?: boolean
-  // Headers matching accuracy: 1 for strict and up for more flexible matching
-  autoMapDistance?: number
-  // Initial Step state to be rendered on load
-  initialStepState?: StepState
-  // Sets SheetJS dateNF option. If date parsing is applied, date will be formatted e.g. "yyyy-mm-dd hh:mm:ss", "m/d/yy h:mm", 'mmm-yy', etc.
-  dateFormat?: string
-  // Sets SheetJS "raw" option. If true, parsing will only be applied to xlsx date fields.
-  parseRaw?: boolean
+export type RawData = string[];
+export type RawSheet = RawData[];
+
+export type FieldInputType = { type: "input" } | { type: "checkbox" } | { type: "select"; options: SelectOption[] };
+
+export interface SelectOption {
+  label: string;
+  value: string;
 }
 
-export type RawData = Array<string | undefined>
-
-export type Data<T extends string> = { [key in T]: string | boolean | undefined }
-
-// Data model RSI uses for spreadsheet imports
-export type Fields<T extends string> = DeepReadonly<Field<T>[]>
-
-export type Field<T extends string> = {
-  // UI-facing field label
-  label: string
-  // Field's unique identifier
-  key: T
-  // UI-facing additional information displayed via tooltip and ? icon
-  description?: string
-  // Alternate labels used for fields' auto-matching, e.g. "fname" -> "firstName"
-  alternateMatches?: string[]
-  // Validations used for field entries
-  validations?: Validation[]
-  // Field entry component, default: Input
-  fieldType: Checkbox | Select | Input
-  // UI-facing values shown to user as field examples pre-upload phase
-  example?: string
+export interface Field<Key extends string = string> {
+  /** The object key produced for this field. */
+  key: Key;
+  /** Human label shown in column-match dropdowns and grid headers. */
+  label: string;
+  /** Cell editor type. Defaults to a text input. */
+  fieldType?: FieldInputType;
+  /** Example value used as placeholder. */
+  example?: string;
+  /** Strings to fuzzy-match against incoming spreadsheet headers. */
+  alternateMatches?: string[];
+  /** Show as required in the match-columns step. Combined with `unique` for cross-row checks. The Yup schema is the source of truth for value validation. */
+  required?: boolean;
+  /** Cross-row uniqueness check (Yup cannot express this). */
+  unique?: boolean;
+  /** Override the message shown for unique violations on this field. */
+  uniqueErrorMessage?: string;
 }
 
-export type Checkbox = {
-  type: "checkbox"
-  // Alternate values to be treated as booleans, e.g. {yes: true, no: false}
-  booleanMatches?: { [key: string]: boolean }
+export type ErrorLevel = "error" | "warning" | "info";
+
+export interface FieldError {
+  message: string;
+  level: ErrorLevel;
 }
 
-export type Select = {
-  type: "select"
-  // Options displayed in Select component
-  options: SelectOption[]
+export type RowErrors<Key extends string = string> = Partial<Record<Key, FieldError>>;
+
+export type ImportedRow<Key extends string = string> = Partial<Record<Key, string>> & {
+  __index: string;
+  __errors?: RowErrors<Key>;
+};
+
+export interface ImportResult<Key extends string = string> {
+  validData: Array<Partial<Record<Key, string>>>;
+  invalidData: Array<ImportedRow<Key>>;
+  all: Array<ImportedRow<Key>>;
 }
 
-export type SelectOption = {
-  // UI-facing option label
-  label: string
-  // Field entry matching criteria as well as select output
-  value: string
+export interface RowHookResult<Key extends string = string> {
+  values: Partial<Record<Key, string>>;
+  errors?: RowErrors<Key>;
 }
 
-export type Input = {
-  type: "input"
+export type RowHook<Key extends string = string> = (
+  row: Partial<Record<Key, string>>,
+  addError: (fieldKey: Key, error: FieldError) => void,
+  table: Array<Partial<Record<Key, string>>>,
+) => Partial<Record<Key, string>>;
+
+export interface Translations {
+  stepper: {
+    upload: string;
+    selectHeader: string;
+    matchColumns: string;
+    submit: string;
+  };
+  uploadStep: {
+    title: string;
+    manifestTitle: string;
+    manifestDescription: string;
+    maxRecordsExceeded: (max: number) => string;
+    dropzone: {
+      title: string;
+      errorToastDescription: string;
+      activeDropzoneTitle: string;
+      buttonTitle: string;
+      loadingTitle: string;
+    };
+  };
+  selectSheetStep: {
+    title: string;
+    nextButtonTitle: string;
+    backButtonTitle: string;
+  };
+  selectHeaderStep: {
+    title: string;
+    nextButtonTitle: string;
+    backButtonTitle: string;
+  };
+  matchColumnsStep: {
+    title: string;
+    nextButtonTitle: string;
+    backButtonTitle: string;
+    userTableTitle: string;
+    templateTitle: string;
+    selectPlaceholder: string;
+    ignoredColumnText: string;
+    subSelectPlaceholder: string;
+    matchDropdownTitle: string;
+    unmatched: string;
+    duplicateColumnWarningTitle: string;
+    duplicateColumnWarningDescription: string;
+  };
+  validationStep: {
+    title: string;
+    nextButtonTitle: string;
+    backButtonTitle: string;
+    noRowsMessage: string;
+    noRowsMessageWhenFiltered: string;
+    discardButtonTitle: string;
+    filterSwitchTitle: string;
+    submitButtonTitle: string;
+  };
+  alerts: {
+    confirmClose: { headerTitle: string; bodyText: string; cancelButtonTitle: string; exitButtonTitle: string };
+    submitIncomplete: { headerTitle: string; bodyText: string; bodyTextSubmitForbidden: string; cancelButtonTitle: string; finishButtonTitle: string };
+    unmatchedRequiredFields: { headerTitle: string; bodyText: string; cancelButtonTitle: string; continueButtonTitle: string };
+    toast: { error: string };
+  };
 }
 
-export type Validation = RequiredValidation | UniqueValidation | RegexValidation
+export type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
 
-export type RequiredValidation = {
-  rule: "required"
-  errorMessage?: string
-  level?: ErrorLevel
+export interface ReactSpreadsheetImportProps<Key extends string = string> {
+  /** Required when `inline` is false (the default). Ignored when inline. */
+  isOpen?: boolean;
+  /** Required when `inline` is false. In inline mode, optional cancel callback. */
+  onClose?: () => void;
+  onSubmit: (data: ImportResult<Key>, file: File) => void | Promise<void>;
+  /** Render the importer inline (no Modal wrapper). Use when embedding inside a host card or page. */
+  inline?: boolean;
+  /** Hide the built-in horizontal step indicator (use when the host renders its own progress chrome). */
+  hideStepper?: boolean;
+  /** Hide the built-in per-step h5 title (use when the host renders its own page heading). */
+  hideStepTitles?: boolean;
+  fields: ReadonlyArray<Field<Key>>;
+  /** Yup schema for per-row validation. Keys must match `fields[].key`. */
+  schema?: ObjectSchema<Partial<Record<Key, string>>>;
+  /** Optional row hook to run after Yup validation; can mutate values and add additional errors. */
+  rowHook?: RowHook<Key>;
+  uploadStepHook?: (data: RawSheet) => RawSheet | Promise<RawSheet>;
+  selectHeaderStepHook?: (
+    headerValues: RawData,
+    data: RawSheet,
+  ) => { headerValues: RawData; data: RawSheet } | Promise<{ headerValues: RawData; data: RawSheet }>;
+  matchColumnsStepHook?: (
+    rows: Array<Partial<Record<Key, string>>>,
+  ) => Array<Partial<Record<Key, string>>> | Promise<Array<Partial<Record<Key, string>>>>;
+  maxRecords?: number;
+  maxFileSize?: number;
+  /** When false, prevents submission when validation errors remain. */
+  allowInvalidSubmit?: boolean;
+  /** When true, automatically advance through MatchColumns if all required columns are auto-matched. */
+  autoMapHeaders?: boolean;
+  /** Minimum fuzzy match score (0–1) to consider an auto-match. Higher = stricter. */
+  autoMapDistance?: number;
+  translations?: DeepPartial<Translations>;
+  dateFormat?: string;
+  /** Custom modal title bar content. */
+  title?: ReactNode;
 }
 
-export type UniqueValidation = {
-  rule: "unique"
-  allowEmpty?: boolean
-  errorMessage?: string
-  level?: ErrorLevel
-}
+export type StepName = "upload" | "selectSheet" | "selectHeader" | "matchColumns" | "validate";
 
-export type RegexValidation = {
-  rule: "regex"
-  value: string
-  flags?: string
-  errorMessage: string
-  level?: ErrorLevel
-}
-
-export type RowHook<T extends string> = (
-  row: Data<T>,
-  addError: (fieldKey: T, error: Info) => void,
-  table: Data<T>[],
-) => Data<T>
-export type TableHook<T extends string> = (
-  table: Data<T>[],
-  addError: (rowIndex: number, fieldKey: T, error: Info) => void,
-) => Data<T>[]
-
-export type ErrorLevel = "info" | "warning" | "error"
-
-export type Info = {
-  message: string
-  level: ErrorLevel
-}
-
-export type Result<T extends string> = {
-  validData: Data<T>[]
-  invalidData: Data<T>[]
-  all: (Data<T> & Meta)[]
+export interface UploadedWorkbook {
+  file: File;
+  sheets: { name: string; rows: RawSheet }[];
 }

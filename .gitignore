@@ -4,5 +4,5 @@ node_modules
 .build
 .idea
 web_modules
-types
 coverage
+.claude

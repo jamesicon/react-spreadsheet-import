@@ -1,0 +1,9 @@
+/* Mirror the host app's theme so the example demo looks like the real integration. */
+:root,
+[data-bs-theme="light"] {
+  --bs-primary: #1b9aa9;
+  --bs-primary-rgb: 27, 154, 169;
+  --bs-primary-bg-subtle: #f2fafb;
+  --bs-primary-border-subtle: #dfeff3;
+  --bs-primary-text-emphasis: #126773;
+}
